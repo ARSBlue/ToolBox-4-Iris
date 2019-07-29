@@ -6,4 +6,8 @@
 
 ## Datentypen
 
-IRIS beinhaltet ein groﬂes Angebot an Datentypen. Die im Package [arsblue.datatype](./arsblue/datatype/README.md) beschriebenen Datentypen sind nicht in IRIS vorhanden, erleichtern aber die Entwicklung von Applikationen.
+IRIS beinhaltet ein groﬂes Angebot an Datentypen. Die im Package [arsblue.datatype](./arsblue/datatype) beschriebenen Datentypen sind nicht in IRIS vorhanden, erleichtern aber die Entwicklung von Applikationen.
+
+## Daten Ein- und Ausgabe
+
+IRIS beinhaltet ein groﬂes Angebot an Daten Ein- und Ausgabemˆglichkeiten. Die [arsblue.io](./arsblue/io) beschriebene Funktionalit‰t ist nicht in IRIS vorhanden, erleichtert aber die Entwicklung von Applikationen.
