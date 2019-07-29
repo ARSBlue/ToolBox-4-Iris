@@ -126,7 +126,7 @@ $$$IsEmpty(<Dateipfad>)
 ```
  ##class(%Library.File).SizeGet()
 ```
-Der Unterschied zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation ist, dass in IRIS nur der Inhalt einer Datei aber nicht der Inhalt eines Verzeichnisses kontrolliert werden kann. Die Funktion liefert nur für Verzeichnisse ohne Dateieintrag (Eigenreferenzen und übergeordnete Verzeichnisreferenzen werden nicht berücksichtigt) bzw. Dateien mit einer Größe von null Bytes den Wert 1. Der übergebene Dateipfad wird zuvor normalisiert.
+Der Unterschied zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation ist, dass in IRIS nur der Inhalt einer Datei aber nicht der Inhalt eines Verzeichnisses kontrolliert werden kann. Die Funktion liefert nur für Verzeichnisse ohne Dateien (Eigenreferenzen `.` und übergeordnete Verzeichnisreferenzen `..` werden nicht berücksichtigt) bzw. Dateien mit einer Größe von `0` Bytes den Wert `1`. Der übergebene Dateipfad wird zuvor normalisiert.
 ```
 USER>set filepath=##class(arsblue.io.File).GetFilePath()
 USER>write filepath
@@ -242,7 +242,7 @@ C:\InterSystems\IRIS\mgr\Temp>dir /S
                1 Datei(en),              0 Bytes
                2 Verzeichnis(se), 101 840 396 288 Bytes frei
 ```
-Durch explizites Setzen kann die Funktionalität, dass übergeordnete Verzeichnisse gelöscht werden, ausgeschaltet werden.
+Durch explizites Setzen des 2. Parameters der Funktion auf `0` kann die Funktionalität, dass übergeordnete Verzeichnisse gelöscht werden, ausgeschaltet werden.
 
 **_IRIS Terminal:_**
 ```
@@ -270,9 +270,9 @@ Der Vorteil dieser Methode besteht darin, dass man automatisch Verzeichnisstrukt
 
 In der Standard IRIS Implementation ist eine Objekt Serialisierung nur im XML Format (`%XML.Adaptor`) vorgesehen. Die angebotene IRIS JSON Implementation ist leider nur für simple Datentypen und nicht für komplexe Klassen (Sammlungen, usw.) verfügbar. Mit der impliziten ars-blue JSON Serialisierung können diese Probleme gelöst werden.
 
-Um die implizite JSON Serialisierung für ein Objekt zu aktivieren, muss dieses Objekt von der JSON Serialisierung `arsblue.io.Serializable` abgeleitet werden. Ab diesem Zeitpunkt stehen die Methoden `%FromJSON` um Daten aus JSON in dieses Objekt zu importieren und `%ToJSON` um Daten aus diesem Objekt nach JSON zu exportieren zur Verfügung.
+Um die implizite JSON Serialisierung für ein Objekt zu aktivieren, muss dieses Objekt von der JSON Serialisierung `arsblue.io.Serializable` abgeleitet werden. Ab diesem Zeitpunkt stehen die Methoden `%FromJSON(...)` um Daten aus JSON in dieses Objekt zu importieren und `%ToJSON(...)` um Daten aus diesem Objekt nach JSON zu exportieren zur Verfügung.
 
-Um beliebige Objekte mit JSON zu serialisieren ist es nicht zwingend erforderlich von dieser Klasse abzuleiten. Es gibt auch die Möglichkeit über die JSON Hilfsprogramme jedes IRIS Objekt nach JSON zu exportieren, das von `%Library.RegisteredObject` ableitet (s. [Nützliche Hilfsprogramme](./arsblue/util/README.md#json)).
+Um beliebige Objekte mit JSON zu serialisieren ist es nicht zwingend erforderlich von dieser Klasse abzuleiten. Es gibt auch die Möglichkeit über die JSON Hilfsprogramme jedes IRIS Objekt nach JSON zu exportieren, das von `%Library.RegisteredObject` ableitet (s. [Objektinstanzen von/nach JSON serialisieren](./arsblue/util/README.md#json)).
 
 ## Temporäre Dateiobjekte für Datenströme
 
@@ -336,4 +336,4 @@ C:\InterSystems\IRIS\mgr\Temp>dir
                0 Datei(en),              0 Bytes
                2 Verzeichnis(se), 105 097 224 192 Bytes frei
 ```
-Die beiden Datentypen funktionieren auf dieselbe Weise, der Unterschied ist wie bei den Standard IRIS Klassen, dass der temporäre zeichenbasierte Datenstrom mit dem entsprechenden Zeichensatz kodiert wird, während der temporäre binäre Datenstrom die Daten unverändert schreibt.
+Die beiden Klassen funktionieren auf dieselbe Weise, der Unterschied ist wie bei den Standard IRIS Klassen, dass der temporäre zeichenbasierte Datenstrom mit dem entsprechenden Zeichensatz kodiert wird, während der temporäre binäre Datenstrom die Daten unverändert schreibt.
