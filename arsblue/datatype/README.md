@@ -1,5 +1,12 @@
 # ARSBlue IRIS Datatype Package
 
+- [Datum, Zeit und Zeitstempel](#datum-zeit-und-zeitstempel)
+  - [Formatierung](#formatierung)
+  - [Speicherbedarf](#speicherbedarf)
+  - [SQL und Performance](#sql-und-performance)
+  - [Migration von IRIS Standard Datentypen](#migration-von-iris-standard-datentypen)
+  - [Aktuelles Datum für Klassenattribute](#aktuelles-datum-f%C3%BCr-klassenattribute)
+
 ## Datum, Zeit und Zeitstempel
 
 Die Standard IRIS Datentypen umfassen eine große Auswahl an mehr oder weniger flexiblen Datum, Zeit und Zeitstempel Datentypen. Die im folgenden beschriebenen Datentypen sind hoch dynamisch und bieten im Gegensatz zu den meisten IRIS Datentypen den Vorteil wesentlich weniger Speicher zu benötigen.
