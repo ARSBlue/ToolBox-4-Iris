@@ -4,6 +4,9 @@
 
 **_Funktionen_**: dabei handelt es sich generell um statische Methoden einer abstrakten Klasse. Abweichungen von dieser Regel werden als solche beschrieben.
 
+- [Datentypen](#datentypen)
+- [Daten Ein- und Ausgabe](#daten-ein--und-ausgabe)
+
 ## Datentypen
 
 IRIS beinhaltet ein groﬂes Angebot an Datentypen. Die im Package [arsblue.datatype](./arsblue/datatype) beschriebenen Datentypen sind nicht in IRIS vorhanden, erleichtern aber die Entwicklung von Applikationen.
