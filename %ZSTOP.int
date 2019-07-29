@@ -1,0 +1,76 @@
+ROUTINE %ZSTOP [Type=INT]
+	; Common stop entry points
+	quit
+SYSTEM	; ISC IRIS shutdown
+	new nsp,namespaces,idx,namespace
+	set nsp=$ZU(5)
+	try
+	{
+		set namespaces=$LISTFROMSTRING($ZU(90,28,0,0,$ZU(90,20,1))) quit:((namespaces="") || (namespaces=$LB()))
+		for idx=1:1:$LL(namespaces)
+		{
+			set namespace=$LG(namespaces,idx) continue:(namespace="")
+			zn namespace
+			do:($D(^oddCOM("arsblue.event.SystemEventProvider","m","FireSystemEvent"))) $ClassMethod("arsblue.event.SystemEventProvider","FireSystemEvent","SYSTEM",2)
+		}
+	}
+	catch (exc)
+	{
+		// should never happen, but to be sure the shutdown succeeds!
+	}
+	zn nsp
+	quit
+LOGIN	; User logout
+	try
+	{
+		do:($D(^oddCOM("arsblue.event.SystemEventProvider","m","FireSystemEvent"))) $ClassMethod("arsblue.event.SystemEventProvider","FireSystemEvent","LOGIN",2,({
+			"$JOB":($JOB),
+			"$IO":($IO),
+			"$ROLES":($ROLES),
+			"$USERNAME":($USERNAME),
+			"ClientIPAddress":($System.Process.ClientIPAddress()),
+			"ClientNodeName":($System.Process.ClientNodeName()),
+			"UserName":($System.Process.UserName())
+		}))
+	}
+	catch (exc)
+	{
+		// should never happen, but to be sure the logout succeeds!
+	}
+	quit
+JOB	; Background process end
+	try
+	{
+		do:($D(^oddCOM("arsblue.event.SystemEventProvider","m","FireSystemEvent"))) $ClassMethod("arsblue.event.SystemEventProvider","FireSystemEvent","JOB",2,({
+			"$JOB":($JOB),
+			"$IO":($IO),
+			"$ROLES":($ROLES),
+			"$USERNAME":($USERNAME),
+			"ClientIPAddress":($System.Process.ClientIPAddress()),
+			"ClientNodeName":($System.Process.ClientNodeName()),
+			"UserName":($System.Process.UserName())
+		}))
+	}
+	catch (exc)
+	{
+		// should never happen, but to be sure the job end succeeds!
+	}
+	quit
+CALLIN	; External program end
+	try
+	{
+		do:($D(^oddCOM("arsblue.event.SystemEventProvider","m","FireSystemEvent"))) $ClassMethod("arsblue.event.SystemEventProvider","FireSystemEvent","CALLIN",2,({
+			"$JOB":($JOB),
+			"$IO":($IO),
+			"$ROLES":($ROLES),
+			"$USERNAME":($USERNAME),
+			"ClientIPAddress":($System.Process.ClientIPAddress()),
+			"ClientNodeName":($System.Process.ClientNodeName()),
+			"UserName":($System.Process.UserName())
+		}))
+	}
+	catch (exc)
+	{
+		// should never happen, but to be sure the external program end succeeds!
+	}
+	quit
