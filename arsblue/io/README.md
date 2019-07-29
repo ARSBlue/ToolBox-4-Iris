@@ -12,7 +12,7 @@ Include (arsblue.io.File)
 
 /// my class
 Class my.Class {
-…
+  ...
 }
 ```
 
@@ -20,7 +20,7 @@ Class my.Class {
 
 **_Syntax:_**
 ```
-\##class(arsblue.io.File).GetFilePath(<Dateiname1>[,<DateinameN>])
+ ##class(arsblue.io.File).GetFilePath(<Dateiname1>[,<DateinameN>])
 ```
 **_Makro:_**
 ```
@@ -29,9 +29,9 @@ $$$FilePath(<Dateiname1>[,<DateinameN>])
 ```
 **_Ersetzt IRIS Funktion:_**
 ```
-\##class(%Library.File).NormalizeDirectory(<Name>,<Verzeichnispfad>)
+ ##class(%Library.File).NormalizeDirectory(<Name>,<Verzeichnispfad>)
 
-\##class(%Library.File).NormalizeFilename(<Name>,<Verzeichnispfad>)
+ ##class(%Library.File).NormalizeFilename(<Name>,<Verzeichnispfad>)
 ```
 Der Unterschied zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation liegt darin, dass es möglich ist, beliebig viele Teile des Dateinamens anzugeben und alle Teile zu einem normalisierten Dateipfad zusammengefügt werden. Wird der erste Teil der Datei relativ angegeben, d.h. es handelt sich nicht um einen Pfadseparator oder eine Festplattenidentifizierung, wird der aktuelle Verzeichnispfad herangezogen. Auch erfordert die Standard IRIS Implementierung, dass ein Verzeichnis, falls angegeben, bereits existieren muss.
 ```
@@ -49,9 +49,9 @@ C:\InterSystems\IRIS\mgr\user\mydir\myfile
 
 **_Syntax:_**
 ```
-\##class(arsblue.io.File).GetDirectory(<Dateipfad>)
+ ##class(arsblue.io.File).GetDirectory(<Dateipfad>)
 
-\##class(arsblue.io.File).GetFileName(<Dateipfad>)
+ ##class(arsblue.io.File).GetFileName(<Dateipfad>)
 ```
 **_Makro:_**
 ```
@@ -63,9 +63,9 @@ $$$FileName(<Dateipfad>)
 ```
 **_Ersetzt IRIS Funktion:_**
 ```
-\##class(%Library.File).ParentDirectoryName(<Verzeichnispfad>)
+ ##class(%Library.File).ParentDirectoryName(<Verzeichnispfad>)
 
-\##class(%Library.File).GetFilename(<Dateipfad>)
+ ##class(%Library.File).GetFilename(<Dateipfad>)
 ```
 Zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation besteht kaum ein Unterschied. Die ars-blue Methoden- und Makronamen sind vereinheitlicht und kürzer zu schreiben als die Standard IRIS Methodennamen und der übergebene Dateipfad wird zuvor normalisiert.
 ```
@@ -82,9 +82,9 @@ user
 
 **_Syntax:_**
 ```
-\##class(arsblue.io.File).IsDirectory(<Dateipfad>)
+ ##class(arsblue.io.File).IsDirectory(<Dateipfad>)
 
-\##class(arsblue.io.File).IsFile(<Dateipfad>)
+ ##class(arsblue.io.File).IsFile(<Dateipfad>)
 ```
 **_Makro:_**
 ```
@@ -96,9 +96,9 @@ $$$IsFile(<Dateipfad>)
 ```
 **_Ersetzt IRIS Funktion:_**
 ```
-\##class(%Library.File).DirectoryExists(<Verzeichnispfad>)
+ ##class(%Library.File).DirectoryExists(<Verzeichnispfad>)
 
-\##class(%Library.File).Exists(<Dateipfad>)
+ ##class(%Library.File).Exists(<Dateipfad>)
 ```
 Der Unterschied zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation ist, dass die Dateiabfrage wirklich nur Dateien und keine Verzeichnisse berücksichtigt. Die ars-blue Methoden- und Makronamen sind vereinheitlicht und kürzer zu schreiben als die Standard IRIS Methodennamen und der übergebene Dateipfad wird zuvor normalisiert.
 ```
@@ -115,7 +115,7 @@ USER>write ##class(arsblue.io.File).IsFile(filepath)
 
 **_Syntax:_**
 ```
-\##class(arsblue.io.File).IsEmpty(<Dateipfad>)
+ ##class(arsblue.io.File).IsEmpty(<Dateipfad>)
 ```
 **_Makro:_**
 ```
@@ -124,7 +124,7 @@ $$$IsEmpty(<Dateipfad>)
 ```
 **_Ersetzt IRIS Funktion:_**
 ```
-\##class(%Library.File).SizeGet()
+ ##class(%Library.File).SizeGet()
 ```
 Der Unterschied zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation ist, dass in IRIS nur der Inhalt einer Datei aber nicht der Inhalt eines Verzeichnisses kontrolliert werden kann. Die Funktion liefert nur für Verzeichnisse ohne Dateieintrag (Eigenreferenzen und übergeordnete Verzeichnisreferenzen werden nicht berücksichtigt) bzw. Dateien mit einer Größe von null Bytes den Wert 1. Der übergebene Dateipfad wird zuvor normalisiert.
 ```
@@ -139,7 +139,7 @@ USER>write ##class(arsblue.io.File).IsEmpty(filepath)
 
 **_Syntax:_**
 ```
-\##class(arsblue.io.File).DeleteFilePath(<Dateipfad>[,<recursive>])
+ ##class(arsblue.io.File).DeleteFilePath(<Dateipfad>[,<recursive>])
 ```
 **_Makro:_**
 ```
