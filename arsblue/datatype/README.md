@@ -69,17 +69,20 @@ Trotz der nicht-nativen Implementation der ars-blue Datum-, Zeit- und Zeitstempe
 
 Um bestehende Standard IRIS Datum-, Zeit- und Zeitstempel Datentypen durch ars-blue Datum-, Zeit- und Zeitstempel Datentypen zu ersetzen, ohne dabei die Datensätze migrieren zu müssen, ist dies einfach möglich, indem man den jeweiligen Datentyp verwendet und im logischen Format das Format des originalen Datentyps definiert.
 ```
-/// migrate %Library.Date
-Property SomeDate As arsblue.datatype.Date (LOGICALFORMAT="$HD")
+class SomeClass
+{
+  /// migrate %Library.Date
+  Property SomeDate As arsblue.datatype.Date (LOGICALFORMAT="$HD")
 
-/// migrate %Library.Time
-Property SomeTime As arsblue.datatype.Time (LOGICALFORMAT="$HT")
+  /// migrate %Library.Time
+  Property SomeTime As arsblue.datatype.Time (LOGICALFORMAT="$HT")
 
-/// migrate %Library.DateTime
-Property SomeDateTime As arsblue.datatype.DateTime (LOGICALFORMAT="yyyy-MM-dd HH:mm:ss")
+  /// migrate %Library.DateTime
+  Property SomeDateTime As arsblue.datatype.DateTime (LOGICALFORMAT="yyyy-MM-dd HH:mm:ss")
 
-/// migrate %Library.TimeStamp
-Property SomeTimeStamp As arsblue.datatype.TimeStamp (LOGICALFORMAT="yyyy-MM-dd HH:mm:ss")
+  /// migrate %Library.TimeStamp
+  Property SomeTimeStamp As arsblue.datatype.TimeStamp (LOGICALFORMAT="yyyy-MM-dd HH:mm:ss")
+}
 ```
 Dies behebt nicht den erhöhten Speicherbedarf, wofür eine tatsächliche Migration der Datensätze notwendig wäre, aber liefert den Vorteil flexible Ausgabeformate definieren zu können.
 
