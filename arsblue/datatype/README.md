@@ -1,14 +1,10 @@
-# ARSBlue IRIS datatypes
+# ARSBlue IRIS Datatype Package
 
-## Datentypen
-
-IRIS beinhaltet ein großes Angebot an Datentypen. Die in diesem Abschnitt beschriebene Funktionalität ist nicht in IRIS vorhanden, erleichtert aber die Entwicklung von Applikationen.
-
-### Datum, Zeit und Zeitstempel
+## Datum, Zeit und Zeitstempel
 
 Die Standard IRIS Datentypen umfassen eine große Auswahl an mehr oder weniger flexiblen Datum, Zeit und Zeitstempel Datentypen. Die im folgenden beschriebenen Datentypen sind hoch dynamisch und bieten im Gegensatz zu den meisten IRIS Datentypen den Vorteil wesentlich weniger Speicher zu benötigen.
 
-#### Formatierung
+### Formatierung
 
 Alle beschriebenen Datum-, Zeit- und Zeitstempel-Datentypen sind vorkonfiguriert, können aber an jedes beliebige Format angepasst werden. Es können folgende Formate verwendet werden:
 
@@ -38,7 +34,7 @@ Zusätzlich werden für JSON und JavaScript weitere Formate spezifiziert. Für JSON
 | `arsblue.datatype.TimeStamp` | yyyyMMddHHmmss.SSS | dd/MM/yyyy HH:mm:ss.SSS <br/> MM/dd/yyyy HH:mm:ss.SSS | yyyy-MM-dd HH:mm:ss | yyyy-MM-ddTHH:mm:ssZ | yyyy-MM-ddTHH:mm:ss.SSS | Y-m-d\TH:i:s.u |
 | `arsblue.datatype.YearWeek` | yyyyww | yyyy/ww | yyyy-MM-dd | yyyy-MM-dd | yyyy-MM-ddTHH:mm:ss | Y-m-d\TH:i:s |
 
-#### Speicherbedarf
+### Speicherbedarf
 
 Einer der großen Vorteile dieser Datentypen liegt im Umstand, dass sie als Dezimalzahlen in IRIS gehandhabt bzw. gespeichert werden. In der folgenden Tabelle wird der Unterschied zwischen den Standard IRIS Datentypen und den ars-blue Datentypen aufgezeigt. Der angegebene Speicherbedarf in Bytes entspricht nur dem Inhalt des jeweiligen Datentyps, tatsächlich werden pro Attribut zwei zusätzliche Byte benötigt (wegen `$LISTBUILD`): Anzahl der Bytes für dieses Attribut und Datentyp des Attributes.
 
@@ -55,9 +51,9 @@ Da IRIS nur den absolut notwendigen Speicher für Dezimalwerte belegt, können Dat
 - Minimaler Zeitstempel wegen IRIS `$HOROLOG` Implementation: **1840/12/31 00:00:00.0**
 - Maximaler Zeitstempel wegen IRIS `$HOROLOG` Implementation: **9999/12/31 23:59:59.9999**
 
-Durch die Verschränkung mit der IRIS `$HOROLOG` und Dezimalwert Implementation ist es leider nicht möglich ein Datum außerhalb der oben genannten Grenzen zu erfassen.
+Durch die Abhängigkeit zur IRIS `$HOROLOG` und Dezimalwert Implementation ist es leider nicht möglich ein Datum außerhalb der oben genannten Grenzen zu erfassen.
 
-#### SQL und Performance
+### SQL und Performance
 
 Ein weiterer Vorteil der Datentypen zeigt sich in SQL Abfragen. Im Gegensatz zu den Standard IRIS Datentypen sind die ars-blue Datentypen in einem menschlich lesbaren und sortierbaren Format. Man kann dadurch im logischen Format statt im Anzeigeformat Abfragen durchführen und erspart sich das Umrechnen von Datum und Zeit von und auf IRIS `$HOROLOG`. Ebenso ist das Datum/Zeit Format wie auch der Zeitstempel bereits in einem Format, mit dem man einfach ohne Konvertierung Zeiträume abfragen kann.
 
@@ -69,7 +65,7 @@ SELECT (Date || $EXTRACT(1000000 + Time,2,7)) AS DateTime
 ```
 Trotz der nicht-nativen Implementation der ars-blue Datum-, Zeit- und Zeitstempel Datentypen und der daraus resultierenden Vorteile (Speicher, Lesbarkeit), ist bei der Performance der SQL Abfragen im Logischen Modus kein Unterschied feststellbar und im Anzeigemodus eine nicht signifikante Verschlechterung durch die nicht-native Implementation in ObjectScript bemerkbar (variiert je nach SQL Abfrage und OS des DBMS).
 
-#### Migration von IRIS Standard Datentypen
+### Migration von IRIS Standard Datentypen
 
 Um bestehende Standard IRIS Datum-, Zeit- und Zeitstempel Datentypen durch ars-blue Datum-, Zeit- und Zeitstempel Datentypen zu ersetzen, ohne dabei die Datensätze migrieren zu müssen, ist dies einfach möglich, indem man den jeweiligen Datentyp verwendet und im logischen Format das Format des originalen Datentyps definiert.
 ```
@@ -87,7 +83,7 @@ Property SomeTimeStamp As arsblue.datatype.TimeStamp (LOGICALFORMAT="yyyy-MM-dd 
 ```
 Dies behebt nicht den erhöhten Speicherbedarf, wofür eine tatsächliche Migration der Datensätze notwendig wäre, aber liefert den Vorteil flexible Ausgabeformate definieren zu können.
 
-#### Aktuelles Datum für Klassenattribute
+### Aktuelles Datum für Klassenattribute
 
 Das aktuelle Datum eines Klassenattributs im logischen Format kann über den Namen des Attributs ermittelt werden.
 ```
