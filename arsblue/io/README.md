@@ -1,5 +1,15 @@
 # ARSBlue IRIS IO Package
 
+- [Datei und Verzeichnis Funktionen](#datei-und-verzeichnis-funktionen)
+  - [Dateimakro in Quellcode einbinden](#dateimakro-in-quellcode-einbinden)
+  - [Normalisierter Datei- bzw. Verzeichnispfad](#normalisierter-datei--bzw-verzeichnispfad)
+  - [Dateiname bzw. Verzeichnispfad aus Dateipfad](#dateiname-bzw-verzeichnispfad-aus-dateipfad)
+  - [Datei bzw. Verzeichnis auf Existenz überprüfen](#datei-bzw-verzeichnis-auf-existenz-%C3%BCberpr%C3%BCfen)
+  - [Datei bzw. Verzeichnis auf Inhalt überprüfen](#datei-bzw-verzeichnis-auf-inhalt-%C3%BCberpr%C3%BCfen)
+  - [Dateien und Verzeichnisse löschen](#dateien-und-verzeichnisse-l%C3%B6schen)
+- [Objektinstanzen von/nach JSON serialisieren](#objektinstanzen-vonnach-json-serialisieren)
+- [Temporäre Dateiobjekte für Datenströme](#tempor%C3%A4re-dateiobjekte-f%C3%BCr-datenstr%C3%B6me)
+
 ## Datei und Verzeichnis Funktionen
 
 In der Standard IRIS Klasse `%Library.File` sind bereits viele Funktionen vorhanden. Die hier beschriebenen Funktionen kombinieren einige der Funktionen bzw. erweitern sie für einen verbesserten Umgang mit Dateien und Verzeichnissen. Zum einen stehen die Funktionen der Klasse `arsblue.io.File` zur Verfügung und zum anderen gibt es das entsprechende Makro `arsblue.io.File` um die wichtigsten Funktionen der Klasse in gekürzter Schreibweise im Quellcode verwenden zu können. Im Folgenden werden die Funktionen immer mit dem äquivalenten Makro (sofern vorhanden) beschrieben.
