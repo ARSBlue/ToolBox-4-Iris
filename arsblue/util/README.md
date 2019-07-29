@@ -320,23 +320,32 @@ In der Standard IRIS Implementation ist es nicht direkt möglich, eine Funktion a
 
 **_Callback Definition:_**
 ```
+Class User.TestCallback [ Abstract ]
+{
 ClassMethod ExecCallback(params...)
 {
-	kill ^callback(%pid)
-	set ^callback(%pid,$I(^callback(%pid)))="PARAMS:"
-	merge ^callback(%pid,$I(^callback(%pid)))=params
-	set ^callback(%pid,$I(^callback(%pid)))="STDOUT:"
-	do %out.Rewind()
-	while ('%out.AtEnd)
-	{
-		set ^callback(%pid,$I(^callback(%pid)))=%out.ReadLine()
-	}
-	set ^callback(%pid,$I(^callback(%pid)))="STDERR:"
-	do %err.Rewind()
-	while ('%err.AtEnd)
-	{
-		set ^callback(%pid,$I(^callback(%pid)))=%err.ReadLine()
-	}
+  // kill process callback information
+  kill ^callback(%pid)
+  
+  // copy all process parameters
+  set ^callback(%pid,$I(^callback(%pid)))="PARAMS:"
+  merge ^callback(%pid,$I(^callback(%pid)))=params
+  
+  // save process output
+  set ^callback(%pid,$I(^callback(%pid)))="STDOUT:"
+  do %out.Rewind()
+  while ('%out.AtEnd)
+  {
+    set ^callback(%pid,$I(^callback(%pid)))=%out.ReadLine()
+  }
+  
+  // save process error
+  set ^callback(%pid,$I(^callback(%pid)))="STDERR:"
+  do %err.Rewind()
+  while ('%err.AtEnd)
+  {
+    set ^callback(%pid,$I(^callback(%pid)))=%err.ReadLine()
+  }
 }
 }
 ```
