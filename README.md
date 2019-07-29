@@ -4,6 +4,8 @@
 
 **_Funktionen_**: dabei handelt es sich generell um statische Methoden einer abstrakten Klasse. Abweichungen von dieser Regel werden als solche beschrieben.
 
+## Inhalt
+
 - [Datentypen](#datentypen)
 - [Daten Ein- und Ausgabe](#daten-ein--und-ausgabe)
 
