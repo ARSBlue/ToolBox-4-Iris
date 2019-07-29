@@ -96,7 +96,7 @@ USER>set eventQueue.Name="MyEventQueue",eventQueue.EventRun=1
 USER>write $System.Status.GetErrorText(eventQueue.%Save())
 ```
 
-**-SQL Statement:_**
+**_SQL Statement:_**
 ```
 // Anlegen der Ereignisqueue
 INSERT INTO arsblue_event.EventQueue (Name) values ('MyEventQueue')
