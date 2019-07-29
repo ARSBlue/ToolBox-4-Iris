@@ -1,5 +1,24 @@
 # ARSBlue IRIS Event Package
 
+
+- [Serverseitige Ereignisbehandlung](#serverseitige-ereignisbehandlung)
+  - [Synchrone Ereignisbehandlung](#synchrone-ereignisbehandlung)
+  - [Asynchrone Ereignisbehandlung](#asynchrone-ereignisbehandlung)
+    - [Behandlung durch Benutzerprozess](#behandlung-durch-benutzerprozess)
+    - [Behandlung durch Ereignisqueue](#behandlung-durch-ereignisqueue)
+  - [System Ereignisse](#system-ereignisse)
+    - [System Ereignis Adapter und System Ereignis](#system-ereignis-adapter-und-system-ereignis)
+    - [System Ereignisse synchron behandeln](#system-ereignisse-synchron-behandeln)
+    - [System Ereignisse asynchron mit Ereignisqueue behandeln](#system-ereignisse-asynchron-mit-ereignisqueue-behandeln)
+    - [System Ereignis asynchron in Benutzerprozess behandeln](#system-ereignis-asynchron-in-benutzerprozess-behandeln)
+    - [Standard IRIS System Ereignisse](#standard-iris-system-ereignisse)
+    - [System Ereignis für Betriebssystemaufrufe](#system-ereignis-f%C3%BCr-betriebssystemaufrufe)
+  - [Persistierte Daten Ereignisse](#persistierte-daten-ereignisse)
+    - [Persistierter Daten Ereignis Adapter und Persistiertes Daten Ereignis](#persistierter-daten-ereignis-adapter-und-persistiertes-daten-ereignis)
+    - [Persistierte Daten Ereignisse synchron behandeln](#persistierte-daten-ereignisse-synchron-behandeln)
+    - [Persistierte Daten Ereignisse asynchron mit Ereignisqueue behandeln](#persistierte-daten-ereignisse-asynchron-mit-ereignisqueue-behandeln)
+    - [Persistierte Daten Ereignis asynchron in Benutzerprozess behandeln](#persistierte-daten-ereignis-asynchron-in-benutzerprozess-behandeln)
+
 ## Serverseitige Ereignisbehandlung
 
 Mit der serverseitigen Ereignisbehandlung stellt ars-blue eine Möglichkeit zur Verfügung, wie man in ObjectScript am Server über Ereignisse informiert werden kann, die durch andere Prozesse ausgelöst wurden. Der Unterschied zu Standard IRIS Systemereignis-Implementation liegt darin, dass man entscheiden kann, wie auf das jeweilige Ereignis reagiert werden soll und ob es eine Protokollierung der Ereignisse geben soll.
@@ -170,6 +189,7 @@ Folgende Informationen können in den Ereignis Details abgerufen werden:
 | **CALLOUT** | Beginnen/Beenden eines Betriebssystembefehls liefert folgende JSON Informationen: <br/><ul><li>**$JOB**: die Prozessnummer</li><li>**$IO**: das Standard Eingabe/Ausgabe Gerät</li><li>**$ROLES**: die Berechtigungen in der Datenbank</li><li>**$USERNAME**: der IRIS Benutzername</li><li>**ClientIPAddress**: die IP-Adresse des Aufrufers</li><li>**ClientNodeName**: der Host-Name des Aufrufers</li><li>**UserName**: der Betriebssystem Benutzername</li><li>**program**: der Betriebssystem Befehl bzw. das Programm</li><li>**path**: das Verzeichnis im Betriebssystem</li><li>**stdin**: der Standard Eingabe-Datenstrom</li><li>**stdout**: der Standard Ausgabe-Datenstrom</li><li>**stderr**: der Standard Fehler-Datenstrom</li><li>**async**: Flag ob Befehl bzw. Programm im Hintergrund (`1`) oder Vordergrund (`0` = Default) ausgeführt wird</li><li>**pid**: die Prozess ID im Betriebssystem</li><li>**callback**: Name der Klasse und Method die nach dem Ausführen aufgerufen werden soll</li><li>**cmd**: der Befehl bzw. das Programm inklusive Verzeichnisses für das Betriebssystem</li></ul><br/> Folgende Information steht zusätzlich beim Beenden eines Betriebssystembefehls in den JSON Informationen zur Verfügung: <br/><ul><li>**status**: Status OK oder die Fehlermeldung für den Befehl bzw. das Programm</li></ul> |
 
 ### Persistierte Daten Ereignisse
+
 Es können sich zu jeder Zeit Interessenten für persistierte Daten Ereignisse anmelden bzw. abmelden. Diese Ereignisse ähneln grob der Implementation eines Triggers in IRIS, jedoch anders als bei IRIS Datenbank Triggern, deren Implementation jedes Mal angepasst werden muss, wenn sich die Anforderung verändert, können sich über die ars-blue Daten Ereignis-Implementation im laufenden Betrieb Prozess registrieren und auch wieder abmelden ohne das die Datenklasse geändert oder kompiliert werden muss. Dies erhöht die Wartbarkeit des Programmcodes, da nicht immer die Datenklasse mitgetestet werden muss, wenn sich die Businesslogik verändert.
 
 Die Ereignisbehandlung kann für alle Persistierten Daten Ereignisse wie beschrieben angewendet werden. Um die Funktionalität zu aktivieren muss die Datenklasse von der ars-blue Anbieterklasse `arsblue.event.PersistentEventProvider` abgeleitet und kompiliert werden. Ab diesem Zeitpunkt kann man sich für diese Datenklasse registrieren lassen um über Datenmanipulationen informiert zu werden.
