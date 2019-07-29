@@ -9,7 +9,7 @@
 - [Datentypen](#datentypen)
 - [Daten Ein- und Ausgabe](#daten-ein--und-ausgabe)
 - [Serverseitige Ereignisbehandlung](#serverseitige-ereignisbehandlung)
-- [Nützliche Hilfsprogramme](#nützliche-hilfsprogramme]
+- [Nützliche Hilfsprogramme](#nützliche-hilfsprogramme)
 
 ## Datentypen
 
