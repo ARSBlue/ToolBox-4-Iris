@@ -10,4 +10,4 @@ IRIS beinhaltet ein großes Angebot an Datentypen. Die im Package [arsblue.dataty
 
 ## Daten Ein- und Ausgabe
 
-IRIS beinhaltet ein großes Angebot an Daten Ein- und Ausgabemöglichkeiten. Die [arsblue.io](./arsblue/io) beschriebene Funktionalität ist nicht in IRIS vorhanden, erleichtert aber die Entwicklung von Applikationen.
+IRIS beinhaltet ein großes Angebot an Daten Ein- und Ausgabemöglichkeiten. Die im Package [arsblue.io](./arsblue/io) beschriebene Funktionalität ist nicht in IRIS vorhanden, erleichtert aber die Entwicklung von Applikationen.
