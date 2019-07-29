@@ -9,6 +9,7 @@
 - [Datentypen](#datentypen)
 - [Daten Ein- und Ausgabe](#daten-ein--und-ausgabe)
 - [Serverseitige Ereignisbehandlung](#serverseitige-ereignisbehandlung)
+- [Nützliche Hilfsprogramme](#n%C3%BCtzliche-hilfsprogramme)
 
 ## Datentypen
 
@@ -21,3 +22,7 @@ IRIS beinhaltet ein großes Angebot an Daten Ein- und Ausgabemöglichkeiten. Die i
 ## Serverseitige Ereignisbehandlung
 
 IRIS beinhaltet eine prozessbasiertes Ereignisbehandlung, aber keine Möglichkeit dynamisch auf System- bzw. Datenereignisse (nur durch Implementation von Triggern) zu reagieren. Die im Package [arsblue.event](./arsblue/event) beschriebene Funktionalität ermöglicht die Entwicklung von Applikationen die dynamisch auf System- bzw. Datenereignisse reagieren können sollen.
+
+## Nützliche Hilfsprogramme
+
+Die im Package [arsblue.util](./arsblue/util) beschriebenen Hilfsprogramme erweitern den Funktioneumfang der in IRIS nicht vorhandenen Standardfunktionen.
