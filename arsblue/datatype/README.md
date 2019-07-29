@@ -11,6 +11,7 @@ Die Standard IRIS Datentypen umfassen eine große Auswahl an mehr oder weniger fl
 #### Formatierung
 
 Alle beschriebenen Datum-, Zeit- und Zeitstempel-Datentypen sind vorkonfiguriert, können aber an jedes beliebige Format angepasst werden. Es können folgende Formate verwendet werden:
+
 | Muster | Charakter | Beschreibung
 | --- | --- | --- |
 | **y** <br/> (Jahr) | **yy**: Jahr im aktuellen Jahrhundert (z.B. 19 => 2019) <br/> **yyyy**: vollwertiges Jahr (z.B. 2019) |
