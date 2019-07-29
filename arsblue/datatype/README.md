@@ -12,8 +12,8 @@ Die Standard IRIS Datentypen umfassen eine große Auswahl an mehr oder weniger fl
 
 Alle beschriebenen Datum-, Zeit- und Zeitstempel-Datentypen sind vorkonfiguriert, können aber an jedes beliebige Format angepasst werden. Es können folgende Formate verwendet werden:
 
-| Muster | Charakter | Beschreibung
-| --- | --- | --- |
+| Muster Charakter | Beschreibung |
+| --- | --- |
 | **y** <br/> (Jahr) | **yy**: Jahr im aktuellen Jahrhundert (z.B. 19 => 2019) <br/> **yyyy**: vollwertiges Jahr (z.B. 2019) |
 | **M** <br/> (Monat im Jahr) | **M**: Monat als ein bzw. zweistellige Zahl (z.B. 1 – 12) <br/> **MM**: Monat als zweistellige Zahl mit Vornullen (z.B. 01 – 12) <br/> **MMM**: Abgekürzter Monatsname mit NLS (z.B. Jan, Feb, Mar, ...) <br/> **MMMM**: Monatsname mit NLS (z.B. Januar, Februar, März, ...) |
 | **d** <br/> (Tag im Monat) | **d**: Tag als ein bzw. zweistellige Zahl (z.B. 1 – 31) <br/> **dd**: Tag als zweistellige Zahl mit Vornullen (z.B. 01 – 31) |
