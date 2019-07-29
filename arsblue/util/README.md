@@ -1,5 +1,25 @@
 # ARSBlue IRIS Util Package
 
+- [Gregorianischer Kalender](#gregorianischer-kalender)
+  - [Schaltjahr](#schaltjahr)
+  - [Anzahl Tage im Monat](#anzahl-tage-im-monat)
+  - [Anzahl der Kalenderwochen im Jahr](#anzahl-der-kalenderwochen-im-jahr)
+  - [Kalenderwoche für Datum](#kalenderwoche-f%C3%BCr-datum)
+  - [Erster Tag in Kalenderwoche](#erster-tag-in-kalenderwoche)
+  - [Letzter Tag in Kalenderwoche](#letzter-tag-in-kalenderwoche)
+  - [Wochentag für Datum](#wochentag-f%C3%BCr-datum)
+  - [Ostersonntag](#ostersonntag)
+  - [Feiertage](#feiertage)
+- [Datum, Zeit und Zeitstempel](#datum-zeit-und-zeitstempel)
+  - [Frei Formattieren](#frei-formattieren)
+- [Betriebssystem Befehle ausführen](#betriebssystem-befehle-ausf%C3%BChren)
+  - [Ausgabe und Fehlerausgabe einfangen](#ausgabe-und-fehlerausgabe-einfangen)
+  - [Eingabe übergeben](#eingabe-%C3%BCbergeben)
+  - [Verzeichnis angeben](#verzeichnis-angeben)
+  - [Rückruf verwenden](#r%C3%BCckruf-verwenden)
+  - [Befehl asynchron ausführen](#befehl-asynchron-ausf%C3%BChren)
+  - [Befehl asynchron ausführen mit Rückruf](#befehl-asynchron-ausf%C3%BChren-mit-r%C3%BCckruf)
+
 ## Gregorianischer Kalender
 
 Die Klasse `arsblue.util.Calendar` unterstütz bei Datum und Zeit Problemen. Im Folgenden werden die Funktionen vorgestellt, die in keiner Standard IRIS Datum oder Zeit Implementation vorhanden sind. Eine detaillierte Information der Methodenparameter der vorgestellten Methoden bzw. aller verfügbaren Methoden kann über die IRIS Klassendokumentation abgerufen werden.
