@@ -86,7 +86,7 @@ Die `arsblue.NLS` Include-Datei beinhaltet Makros, die NLS Einstellungen auslese
 
 ## JavaScript Makros
 
-Die `arsblue.JS` Include-Datei beinhaltet JavaScript-Makros.
+Die `arsblue.JS` Include-Datei beinhaltet JavaScript-Makros. Die `arsblue.util.Json` Include-Datei ist Teil der JavaScript Makros. 
 
 | Makro | Beschreibung |
 | --- | --- |

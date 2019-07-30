@@ -19,6 +19,7 @@
   - [Rückruf verwenden](#r%C3%BCckruf-verwenden)
   - [Befehl asynchron ausführen](#befehl-asynchron-ausf%C3%BChren)
   - [Befehl asynchron ausführen mit Rückruf](#befehl-asynchron-ausf%C3%BChren-mit-r%C3%BCckruf)
+- [JSON Hilfsprogramme](#json-hilfsprogramme)
 
 ## Gregorianischer Kalender
 
@@ -444,3 +445,130 @@ USER>zw ^callback(pid)
 ^callback(1832,16)="STDERR:"
 ^callback(1832,17)=""
 ```
+
+## JSON Hilfsprogramme
+
+In der Standard IRIS JSON Implementation sind bereits viele Funktionen vorhanden. Die hier beschriebenen Funktionen kombinieren einige der Funktionen bzw. erweitern sie für einen verbesserten Umgang mit JSON Objekten. Zum einen stehen die Funktionen der Klasse `arsblue.util.Json` zur Verfügung und zum anderen gibt es das entsprechende Makro `arsblue.util.Json` um die wichtigsten Funktionen der Klasse in gekürzter Schreibweise im Quellcode verwenden zu können. Im Folgenden werden die Funktionen immer mit dem äquivalenten Makro (sofern vorhanden) beschrieben. 
+
+### JSON Makro in Quellcode einbinden
+
+Um das Makro im eigenen Quellcode verwenden zu können, ist es notwendig es in der ersten Zeile der Klasse einzubinden.
+```
+Include (arsblue.util.Json)
+
+/// my class
+Class my.Class {
+  ...
+}
+```
+
+### JSON Index Suche nach Wert
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).IndexOf(<JSON-Array-Oder-Objekt>,<Wert>[,<Start-Index>])
+```
+
+**_Makro:_**
+```
+$$$JSON.IndexOf(<JSON-Array-Oder-Objekt>,<Wert>[,<Start-Index>])
+```
+
+Die Suche liefert Default den Index an dem der Wert als erstes vorkommt. Über den optionalen Parameter `Start-Index` kann nach den weiteren Vorkommen gesucht werden. Wird kein Index für einen Wert gefunden, wird eine leere Zeichenkette zurückgeliefert.
+
+**_JSON Array:_**
+```
+USER>set array=["a","b","a","c","a","d"]
+ 
+USER>write ##class(arsblue.util.Json).IndexOf(array,"a")
+0
+USER>write ##class(arsblue.util.Json).IndexOf(array,"a",0)
+2
+USER>write ##class(arsblue.util.Json).IndexOf(array,"a",2)
+4
+USER>write ##class(arsblue.util.Json).IndexOf(array,"a",4)
+
+```
+
+**_JSON Objekt:_**
+```
+USER>set object={"key0":"a","key1":"b","key2":"a","key3":"c","key4":"a","key5":"d"}
+ 
+USER>write ##class(arsblue.util.Json).IndexOf(object,"a")
+key0
+USER>write ##class(arsblue.util.Json).IndexOf(object,"a","key0")
+key2
+USER>write ##class(arsblue.util.Json).IndexOf(object,"a","key2")
+key4
+USER>write ##class(arsblue.util.Json).IndexOf(object,"a","key4")
+
+```
+
+### JSON Arrays bzw. Objekte kopieren
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).Copy(<JSON-Quell-Array-Oder-Objekt>,<JSON-Ziel-Array-Oder-Objekt>[,<Bedingung>])
+```
+
+**_Makro:_**
+```
+$$$JSON.Copy(<JSON-Quell-Array-Oder-Objekt>,<JSON-Ziel-Array-Oder-Objekt>[,<Bedingung>])
+```
+ 
+Mit dieser Funktion können JSON Arrays bzw. Objekte kopiert bzw. verbunden werden. Wird ein leeres Ziel Array bzw. Objekt angegeben, handelt es sich um eine reine Kopierfunktion. Wird ein nicht leeres Ziel Array bzw. Objekt angegeben, werden die Daten im Zeil mit den Daten der Quelle verbunden. Die Art und Weise, wie die Daten verbunden werden, kann über die Bedingung angegeben werden.
+
+| Bedingung | Beschreibung |
+| --- | --- |
+| **0** (Default) | Kopiert alle Daten der Quelle und überschreibt ggf. die Daten im Ziel. |
+| **1** | Kopiert nur jene Daten der Quelle, die im Ziel nicht vorhanden sind. |
+| **2** | Kopiert nur jene Daten der Quelle, die im Ziel vorhanden sind und überschreibt diese. |
+
+#### JSON kopieren
+
+```
+USER>set source={"array":[1,2,3],"object":{"a":"b","c":"d"}},target=""
+ 
+USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.target))
+ 
+USER>write target.%ToJSON()
+{"array":[1,2,3],"object":{"a":"b","c":"d"}}
+```
+Bei dieser Bedingung wird eine Tiefe-Kopie erstellt. Der Vorteil gegenüber der von IRIS vorgeschlagenen Variante (`set target={}.%FromJson(source.%ToJson())`) ist, dass Objektreferenzen kopiert werden, welche im IRIS Standardfall nicht nach JSON exportiert und damit auch nicht mehr von JSON importiert werden können.
+
+#### JSON kopieren mit überschreiben der Zieldaten
+
+```
+USER>set source={"array":[1,2,3],"object":{"a":"b","c":"d"}},target={"array":[3,4,5],"object":{"a":"x","b":"z"}}
+ 
+USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.target,0))
+ 
+USER>write target.%ToJSON()
+{"array":[1,2,3],"object":{"a":"b","b":"z","c":"d"}}
+```
+Bei dieser Bedingung werden JSON Arrays vollständig ersetzt, in JSON Objekte werden die Daten nur überschrieben.
+
+#### JSON kopieren von nicht vorhandenen Daten
+
+```
+USER>set source={"array":[1,2,3],"object":{"a":"b","c":"d"}},target={"array":[3,4,5],"object":{"a":"x","b":"z"}}
+ 
+USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.target,1))
+ 
+USER>write target.%ToJSON()
+{"array":[3,4,5,1,2],"object":{"a":"x","b":"z","c":"d"}}
+```
+Bei dieser Bedingung werden nicht vorhandene Werte in JSON Arrays am Ende hinzugefügt, in JSON Objekten werden nur nicht vorhandene Daten eingefügt.
+
+#### JSON kopieren von vorhandenen Daten
+
+```
+USER>set source={"array":[1,2,3],"object":{"a":"b","c":"d"}},target={"array":[3,4,5],"object":{"a":"x","b":"z"}}
+ 
+USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.target,2))
+ 
+USER>write target.%ToJSON()
+{"array":[3,4,5],"object":{"a":"b","b":"z"}}
+```
+Bei dieser Bedingung bleiben JSON Arrays unberührt, in JSON Objekten werden nur vorhandene Daten überschrieben.
+

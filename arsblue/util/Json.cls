@@ -1,4 +1,4 @@
-Include arsblue.Macros
+Include (arsblue.OS, arsblue.Status, arsblue.JS)
 
 /// This class contains JSON utilities
 Class arsblue.util.Json [ Abstract ]
@@ -9,9 +9,10 @@ Class arsblue.util.Json [ Abstract ]
 /// <ul>
 /// <li>json...the JSON object.</li>
 /// <li>value...the value to search for in JSON object.</li>
+/// <li>index...the index to search from in JSON object (optional).</li>
 /// </ul>
 /// Returns the index of first occurrence of the value or null if not found!
-ClassMethod IndexOf(json As %DynamicAbstractObject = {$$$NULLOREF}, value As %RawString) As %RawString
+ClassMethod IndexOf(json As %DynamicAbstractObject = {$$$NULLOREF}, value As %RawString, index As %RawString = {$$$NULLOREF}) As %RawString
 {
 	quit:('$$$TypeOf(json,"%DynamicAbstractObject")) $$$NULLOREF
 	
@@ -20,6 +21,8 @@ ClassMethod IndexOf(json As %DynamicAbstractObject = {$$$NULLOREF}, value As %Ra
 	set iterator=json.%GetIterator()
 	while (iterator.%GetNext(.key, .jsonValue))
 	{
+		$$$Continue('$$$ISNULL(index) && (key']index))
+		
 		set type=json.%GetTypeOf(key)
 		continue:($CASE(type,"null":$$$YES,"unassigned":$$$YES,:$$$NO))
 				
