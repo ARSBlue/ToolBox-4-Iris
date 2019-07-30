@@ -45,10 +45,10 @@ Die `arsblue.Status` Include-Datei beinhaltet Makros, die `%Library.Status` Abfr
 | **$$$ISWARNING(%sc)** | Prüft, ob es sich beim Status um eine Warnung handelt. |
 | **$$$GETWARNING(%sc)** | Liefert die Warnung aus dem Status (`%sc`). |
 | **_`QUIT`-Mit Rückgabewert-Makros:_** ||
-| **$$$Quit(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und quittiert den aktuellen Befehlsblock mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
-| **$$$QuitIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und quittiert den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
-| **$$$QuitOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und quittiert den aktuellen Befehlsblock in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
-| **$$$QuitError(%msg)** | Quittiert den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`).|
+| **$$$Quit(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und beendet den aktuellen Befehlsblock mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
+| **$$$QuitIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
+| **$$$QuitOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet den aktuellen Befehlsblock in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
+| **$$$QuitError(%msg)** | Beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`).|
 | **_`THROW`-Makros:_** ||
 | **$$$Throw(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und wirft eine Status-Ausnahme. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
 | **$$$ThrowIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und wirft eine generelle Fehler-Ausnahme mit dem übergebenen Fehlertext (`%msg`). |
@@ -62,10 +62,10 @@ Die `arsblue.Status` Include-Datei beinhaltet Makros, die `%Library.Status` Abfr
 | **$$$ReturnOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet die Methode in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
 | **$$$ReturnError(%msg)** | Beendet die Methode mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`).|
 | **_`QUIT`-Ohne Rückgabewert-Makros:_** ||
-| **$$$Break(%expr)** | Prüft, ob der Befehl (`%expr`) wahr ist und unterbricht die aktuelle Schleife. |
-| **$$$BreakOnError(%expr)** | Prüft, ob der Befehl (`%expr`) ein Fehler-Status ist und unterbricht die aktuelle Schleife. |
-| **$$$BREAKONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prüft, ob der Status ein Fehler ist und unterbricht die aktuelle Schleife. | 
-| **$$$BreakOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und unterbricht die aktuelle Schleife. |
+| **$$$Break(%expr)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet den aktuellen Befehlsblock. |
+| **$$$BreakOnError(%expr)** | Prüft, ob der Befehl (`%expr`) ein Fehler-Status ist und beendet den aktuellen Befehlsblock. |
+| **$$$BREAKONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prüft, ob der Status ein Fehler ist und beendet den aktuellen Befehlsblock. | 
+| **$$$BreakOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet den aktuellen Befehlsblock. |
 | **_`CONTINUE`-Makros:_** ||
 | **$$$Continue(%expr)** | Prüft, ob der Befehl (`%expr`) wahr ist und beginnt den nächsten Schleifendurchlauf. |
 | **$$$ContinueOnError(%expr)** | Prüft, ob der Befehl (`%expr`) ein Fehler-Status ist und beginnt den nächsten Schleifendurchlauf. |
