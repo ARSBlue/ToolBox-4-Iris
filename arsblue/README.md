@@ -44,7 +44,7 @@ Die `arsblue.Status` Include-Datei beinhaltet Makros, die `%Library.Status` Abfr
 | **$$$WARNING(%msg)** | Erzeugt einen Fehlerstatus mit dem Fehlercode `0` und der übergebenen Warnung (`%msg`). |
 | **$$$ISWARNING(%sc)** | Prüft, ob es sich beim Status um eine Warnung handelt. |
 | **$$$GETWARNING(%sc)** | Liefert die Warnung aus dem Status (`%sc`). |
-| **_`QUIT`-Makros:_** ||
+| **_`QUIT`-Mit Rückgabewert-Makros:_** ||
 | **$$$Quit(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und quittiert den aktuellen Befehlsblock mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
 | **$$$QuitIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und quittiert den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
 | **$$$QuitOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und quittiert den aktuellen Befehlsblock in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
@@ -61,7 +61,7 @@ Die `arsblue.Status` Include-Datei beinhaltet Makros, die `%Library.Status` Abfr
 | **$$$ReturnIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet die Methode mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
 | **$$$ReturnOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet die Methode in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
 | **$$$ReturnError(%msg)** | Beendet die Methode mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`).|
-| **_`BREAK`-Makros:_** ||
+| **_`QUIT`-Ohne Rückgabewert-Makros:_** ||
 | **$$$Break(%expr)** | Prüft, ob der Befehl (`%expr`) wahr ist und unterbricht die aktuelle Schleife. |
 | **$$$BreakOnError(%expr)** | Prüft, ob der Befehl (`%expr`) ein Fehler-Status ist und unterbricht die aktuelle Schleife. |
 | **$$$BREAKONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prüft, ob der Status ein Fehler ist und unterbricht die aktuelle Schleife. | 
