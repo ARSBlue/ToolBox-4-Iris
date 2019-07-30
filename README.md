@@ -6,10 +6,15 @@
 
 ## Inhalt
 
+- [Makros](#makros)
 - [Datentypen](#datentypen)
 - [Daten Ein- und Ausgabe](#daten-ein--und-ausgabe)
 - [Serverseitige Ereignisbehandlung](#serverseitige-ereignisbehandlung)
 - [Nützliche Hilfsprogramme](#n%C3%BCtzliche-hilfsprogramme)
+
+## Makros
+
+IRIS beinhaltet ein großes Angebot an Makros. Die im Package [arsblue](./arsblue) beschriebenen Makros sind nicht in IRIS vorhanden, erleichtern aber die Entwicklung von Applikationen und erhöhen deren Lesbarkeit.
 
 ## Datentypen
 

@@ -78,7 +78,7 @@ Die `arsblue.NLS` Include-Datei beinhaltet Makros, die NLS Einstellungen auslese
 
 | Makro | Beschreibung |
 | --- | --- |
-| **$$$NLSFormat(%idx)$$$** | Liefert die Einstellung für den entsprechenden Formatierungsindex (s. `%syNLS` Include-Datei) |
+| **$$$NLSFormat(%idx)** | Liefert die Einstellung für den entsprechenden Formatierungsindex (s. `%syNLS` Include-Datei) |
 | **$$$NLSMonthAbbr** | Liefert die abgekrüzten Monatsnamen der aktuellen NLS-Einstellungen. |
 | **$$$NLSMonthName** | Liefert die vollständigen Monatsnamen der aktuellen NLS-Einstellungen. |
 | **$$$NLSWeekdayAbbr** | Liefert die abgekürzten Wochentagsnamen der aktuellen NLS-Einstellungen. |
