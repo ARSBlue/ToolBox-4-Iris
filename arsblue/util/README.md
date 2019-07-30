@@ -20,6 +20,13 @@
   - [Befehl asynchron ausführen](#befehl-asynchron-ausf%C3%BChren)
   - [Befehl asynchron ausführen mit Rückruf](#befehl-asynchron-ausf%C3%BChren-mit-r%C3%BCckruf)
 - [JSON Hilfsprogramme](#json-hilfsprogramme)
+  - [JSON Makro in Quellcode einbinden](#json-makro-in-quellcode-einbinden)
+  - [JSON Index Suche nach Wert](#json-index-suche-nach-wert)
+  - [JSON Arrays bzw. Objekte kopieren](#json-arrays-bzw-objekte-kopieren)
+    - [JSON kopieren](#json-kopieren)
+    - [JSON kopieren mit überschreiben der Zieldaten](#json-kopieren-mit-%C3%BCberschreiben-der-zieldaten)
+    - [JSON kopieren von nicht vorhandenen Daten](#json-kopieren-von-nicht-vorhandenen-daten)
+    - [JSON kopieren von vorhandenen Daten](#json-kopieren-von-vorhandenen-daten)
 
 ## Gregorianischer Kalender
 
