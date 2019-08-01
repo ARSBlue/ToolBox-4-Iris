@@ -182,7 +182,7 @@ ClassMethod Equals(json1 As %DynamicAbstractObject = {$$$NULLOREF}, json2 As %Dy
 /// <li>json2...the 2nd JSON object to check</li>
 /// <ul>
 /// Returns the JSON object with the differences between the given JSON objects or null if no differences found!
-ClassMethod GetDiff(json1 As %DynamicAbstractObject = {$$$NULLOREF}, json2 As %DynamicAbstractObject = {$$$NULLOREF}) As %DynamicAbstractObject
+ClassMethod Diff(json1 As %DynamicAbstractObject = {$$$NULLOREF}, json2 As %DynamicAbstractObject = {$$$NULLOREF}) As %DynamicAbstractObject
 {
 	quit:(json1=json2) $$$NULLOREF
 	
@@ -231,7 +231,7 @@ ClassMethod GetDiff(json1 As %DynamicAbstractObject = {$$$NULLOREF}, json2 As %D
 		}
 		elseif ($$$TypeOf(value1,"%DynamicAbstractObject"))
 		{
-			set jsonDiff=..GetDiff(value1,value2)
+			set jsonDiff=..Diff(value1,value2)
 		}
 		elseif (value1'=value2)
 		{

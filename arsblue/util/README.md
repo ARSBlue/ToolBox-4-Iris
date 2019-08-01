@@ -579,3 +579,56 @@ USER>write target.%ToJSON()
 ```
 Bei dieser Bedingung bleiben JSON Arrays unberührt, in JSON Objekten werden nur vorhandene Daten überschrieben.
 
+### JSON Arrays bzw. Objekte auf Gleichheit prüfen
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).Equals(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
+```
+
+**_Makro:_**
+```
+$$$JSON.Equals(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
+```
+ 
+Mit dieser Funktion können JSON Arrays bzw. Objekte auf Gleichheit geprüft werden.
+```
+USER>set json1={"a":[{"b":"c"},1,2,3]},json2={"a":[{"b":"c"},1,2,3]}
+ 
+USER>write ##class(arsblue.util.Json).Equals(json1,json2)
+1
+USER>set json1={"a":[{"b":"c"},1,2,3]},json2={"a":[{"b":"c","d":"e"},1,2,3]}
+ 
+USER>write ##class(arsblue.util.Json).Equals(json1,json2)
+0
+USER>set json1={"a":[{"b":"c"},1,2,3,4,5]},json2={"a":[{"b":"c"},1,2,3]}
+ 
+USER>write ##class(arsblue.util.Json).Equals(json1,json2)
+0
+```
+Es werden alle Ebenen der beiden JSON Arrays bzw. Objekte verglichen. Der Vorteil gegenüber der von IRIS vorgeschlagenen Variante (`set equals=(json1.%ToJSON()=json2.%ToJSON())`) ist, dass Objektreferenzen verglichen werden, welche im IRIS Standardfall nicht nach JSON exportiert und damit auch nicht verglichen werden können. Des Weiteren wird im IRIS JSON Export die Reihenfolge der Anlage der Werte berücksichtigt, womit es nicht möglich ist, zu prüfen, ob ein JSON Objekt (bei dem es nur auf den Inhalt und nicht auf die Reihenfolge - wie beim JSON Array - ankommt) wirklich gleich ist.
+```
+USER>set json1={"a":"b","c":"d"},json2={"c":"d","a":"b"}
+ 
+USER>write json1.%ToJSON(),!,json2.%ToJSON()
+{"a":"b","c":"d"}
+{"c":"d","a":"b"}
+USER>write json1.%ToJSON()=json2.%ToJSON()
+0
+USER>write ##class(arsblue.util.Json).Equals(json1,json2)
+1
+```
+
+### JSON Arrays bzw. Objekte vergleichen
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).Diff(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
+```
+
+**_Makro:_**
+```
+$$$JSON.Diff(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
+```
+ 
+Mit dieser Funktion können JSON Arrays bzw. Objekte miteinander verglichen werden.

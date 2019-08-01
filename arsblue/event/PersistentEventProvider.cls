@@ -89,7 +89,7 @@ Trigger PersistentEventAfter [ Event = INSERT/UPDATE/DELETE, Foreach = row/objec
 				new jsonBefore,jsonAfter
 				set jsonBefore=actionDetails
 				$$$BreakOnError($$$JSON.GetJSONFromObject(##class({%%CLASSNAME}).%Open($LB({%%ID},{%%CLASSNAMEQ})),.jsonAfter,$$$YES))
-				set actionDetails=$$$JSON.GetDiff(jsonBefore,jsonAfter)
+				set actionDetails=$$$JSON.Diff(jsonBefore,jsonAfter)
 			}
 		}
 	}
