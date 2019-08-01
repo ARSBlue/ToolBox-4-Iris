@@ -27,6 +27,14 @@
     - [JSON kopieren mit überschreiben der Zieldaten](#json-kopieren-mit-%C3%BCberschreiben-der-zieldaten)
     - [JSON kopieren von nicht vorhandenen Daten](#json-kopieren-von-nicht-vorhandenen-daten)
     - [JSON kopieren von vorhandenen Daten](#json-kopieren-von-vorhandenen-daten)
+  - [JSON Arrays bzw. Objekte auf Gleichheit prüfen](#json-arrays-bzw-objekte-auf-gleichheit-pr%C3%BCfen)
+  - [JSON Arrays bzw. Objekte vergleichen](#json-arrays-bzw-objekte-vergleichen)
+  - [Datenobjekte nach JSON exportieren](#datenobjekte-nach-json-exportieren)
+  - [Datenobjekte von JSON importieren](#datenobjekte-von-json-importieren)
+  - [JSON und `$LIST`](#json-und-list)
+  - [JSON und `%Library.Status`](#json-und-librarystatus)
+  - [JSON lesen](#json-lesen)
+  - [JSON schreiben](#json-schreiben)
 
 ## Gregorianischer Kalender
 
