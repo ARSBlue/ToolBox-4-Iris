@@ -27,6 +27,14 @@
     - [JSON kopieren mit überschreiben der Zieldaten](#json-kopieren-mit-%C3%BCberschreiben-der-zieldaten)
     - [JSON kopieren von nicht vorhandenen Daten](#json-kopieren-von-nicht-vorhandenen-daten)
     - [JSON kopieren von vorhandenen Daten](#json-kopieren-von-vorhandenen-daten)
+  - [JSON Arrays bzw. Objekte auf Gleichheit prüfen](#json-arrays-bzw-objekte-auf-gleichheit-pr%C3%BCfen)
+  - [JSON Arrays bzw. Objekte vergleichen](#json-arrays-bzw-objekte-vergleichen)
+  - [Datenobjekte nach JSON exportieren](#datenobjekte-nach-json-exportieren)
+  - [Datenobjekte von JSON importieren](#datenobjekte-von-json-importieren)
+  - [JSON und `$LIST`](#json-und-list)
+  - [JSON und `%Library.Status`](#json-und-librarystatus)
+  - [JSON lesen](#json-lesen)
+  - [JSON schreiben](#json-schreiben)
 
 ## Gregorianischer Kalender
 
@@ -579,3 +587,198 @@ USER>write target.%ToJSON()
 ```
 Bei dieser Bedingung bleiben JSON Arrays unberührt, in JSON Objekten werden nur vorhandene Daten überschrieben.
 
+### JSON Arrays bzw. Objekte auf Gleichheit prüfen
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).Equals(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
+```
+
+**_Makro:_**
+```
+$$$JSON.Equals(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
+```
+ 
+Mit dieser Funktion können JSON Arrays bzw. Objekte auf Gleichheit geprüft werden.
+```
+USER>set json1={"a":[{"b":"c"},1,2,3]},json2={"a":[{"b":"c"},1,2,3]}
+ 
+USER>write ##class(arsblue.util.Json).Equals(json1,json2)
+1
+USER>set json1={"a":[{"b":"c"},1,2,3]},json2={"a":[{"b":"c","d":"e"},1,2,3]}
+ 
+USER>write ##class(arsblue.util.Json).Equals(json1,json2)
+0
+USER>set json1={"a":[{"b":"c"},1,2,3,4,5]},json2={"a":[{"b":"c"},1,2,3]}
+ 
+USER>write ##class(arsblue.util.Json).Equals(json1,json2)
+0
+```
+Es werden alle Ebenen der beiden JSON Arrays bzw. Objekte verglichen. Der Vorteil gegenüber der von IRIS vorgeschlagenen Variante (`set equals=(json1.%ToJSON()=json2.%ToJSON())`) ist, dass Objektreferenzen verglichen werden, welche im IRIS Standardfall nicht nach JSON exportiert und damit auch nicht verglichen werden können. Des Weiteren wird im IRIS JSON Export die Reihenfolge der Anlage der Werte berücksichtigt, womit es nicht möglich ist, zu prüfen, ob ein JSON Objekt (bei dem es nur auf den Inhalt und nicht auf die Reihenfolge - wie beim JSON Array - ankommt) wirklich gleich ist.
+```
+USER>set json1={"a":"b","c":"d"},json2={"c":"d","a":"b"}
+ 
+USER>write json1.%ToJSON(),!,json2.%ToJSON()
+{"a":"b","c":"d"}
+{"c":"d","a":"b"}
+USER>write json1.%ToJSON()=json2.%ToJSON()
+0
+USER>write ##class(arsblue.util.Json).Equals(json1,json2)
+1
+```
+
+### JSON Arrays bzw. Objekte vergleichen
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).Diff(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
+```
+
+**_Makro:_**
+```
+$$$JSON.Diff(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
+```
+ 
+Mit dieser Funktion können JSON Arrays bzw. Objekte miteinander verglichen werden.
+```
+USER>set json1={"a":"b","c":["d","e","f"]},json2={"c":["d","e","f"],"a":"b"}
+ 
+USER>write ##class(arsblue.util.Json).Diff(json1,json2)
+ 
+USER>set json1={"a":"b","c":["d","E","f"]},json2={"c":["d","e","f"],"a":"B"}
+ 
+USER>write ##class(arsblue.util.Json).Diff(json1,json2).%ToJSON()
+{"a":["b","B"],"c":[null,["E","e"]]}
+```
+Es werden alle Ebenen der beiden JSON Arrays bzw. Objekte verglichen. Wird kein JSON Array bzw. Objekt zurückgeliefert, sind die beiden JSON Arrays bzw. Objekte ident, andernfalls werden im zurückgelieferten JSON Array bzw. Objekt jene Werte als JSON Array (`[<Wert-1>,<Wert-2>]`) aufgelistet, die sich geändert haben (in einem JSON Array bedeutet `null`, dass sich der Wert an diesem Index nicht geändert hat, aber es einen Index dahinter gibt, der eine Änderung beinhaltet).
+
+### Datenobjekte nach JSON exportieren
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).GetJSONFromObject(<Objektreferenz>,<Exportierte-JSON-Objektreferenz>[,<Alle-Daten-exportieren>][,<ID/GUID-nicht-exportieren>][,<Transiente-Daten-exportieren>])
+ ##class(arsblue.util.Json).GetJSONFromExtent(<Objekt-ID>,<Exportierte-JSON-Objektreferenz>[,<Alle-Daten-exportieren>][,<ID/GUID-nicht-exportieren>])
+```
+
+**_Makro:_**
+```
+$$$JSON.GetJSONFromObject(<Objektreferenz>,<Exportierte-JSON-Objektreferenz>[,<Alle-Daten-exportieren>][,<ID/GUID-nicht-exportieren>][,<Transiente-Daten-exportieren>])
+$$$JSON.GetJSONFromExtent(<Objekt-ID>,<Exportierte-JSON-Objektreferenz>[,<Alle-Daten-exportieren>][,<ID/GUID-nicht-exportieren>])
+```
+
+Mit diesen Funktionen können Datenobjekte nach JSON exportiert werden. Der Unterschied zwischen den beiden Methoden ist, dass die Methode `GetJSONFromObject` mit den geladenen Objektreferenzen im Speicher arbeitet, wohingegen `GetJSONFromExtent` mit den Daten in den jeweiligen Objektglobal arbeitet. Die IRIS Architektur ist dahingehend ausgelegt, dass ein Datenobjekt nur einmal geladen wird, d.h. egal wie oft ich ein Objekt mit derselben Objekt-ID lade, im Speicher verweist es immer auf dieselbe Objektreferenz (mit all ihren bereits durchgeführten Änderungen). Dies ist manchmal nicht erwünscht, und die Applikation möchte wissen, was den nun tatsächlich noch im Objektglobal steht bzw. welche Änderungen bereits im Objektglobal verfügbar sind, dafür wurde die Möglichkeit geschaffen, diese Daten als JSON direkt vom Extent einzulesen.
+Mit der Methode `GetJSONFromObject` können alle im Speicher befindlichen Objektreferenzen nach JSON exportiert werden. Es ist nicht zwingend notwendig, dass es sich dabei um persistierbare Daten handelt, sondern nur, dass sie von `%Library.RegisteredObject` abgeleitet wurden.
+Der Entwickler kann sich entscheiden, ob er alle Daten exportieren will oder nur die "Kopf"-Daten (also Klasse, ID und wenn vorhanden GUID).
+Der Entwickler kann sich entscheiden, ob er alle Daten ausser den "Kopf"-Daten exportieren will. Diese Option ist vor allem dafür interessant, wenn man mit Fremdsystemen kommunizieren muss, die nicht unbedingt über interne Klassennamen und ID's Bescheid wissen sollen.
+Der Entwickler kann sich entscheiden, ob er auch transiente Daten exportieren will. Diese Option steht natürlich nicht für `GetJSONFromExtent` zur Verfügung, da hier nur Nicht-transiente Daten exportiert werden können.
+
+### Datenobjekte von JSON importieren
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).GetObjectFromJSON(<JSON-Objekt>,<Importierte-Objektreferenz>[,<Alle-Daten-importieren>][,<ID/GUID-nicht-importieren>][,<Transiente-Daten-importieren>])
+```
+
+**_Makro:_**
+```
+$$$JSON.GetObjectFromJSON(<JSON-Objekt>,<Importierte-Objektreferenz>[,<Alle-Daten-importieren>][,<ID/GUID-nicht-importieren>][,<Transiente-Daten-importieren>])
+```
+
+Mit dieser Funktion können Datenobjekte von JSON importiert werden. Dabei werden die Objektreferenzen geladen (falls Datenobjekte) und entsprechend verändert aber nicht gespeichert (falls Datenobjekte). Das Speicher der Datenobjekte obliegt dem Entwickler. Es können prinzipiell alle von `%Library.RegisteredObject` abgeleiteten Klassen importiert werden.
+Der Entwickler kann sich entscheiden, ob er alle Daten importieren will oder nur die "Kopf"-Daten (also Klasse, ID und wenn vorhanden GUID). Dies entspricht einer Verfügbarkeitsprüfung, da nur kontrolliert werden kann, ob sich ein Datenobjekt mit den gegebenen "Kopf"-Daten laden läßt.
+Der Entwickler kann sich entscheiden, ob er alle Daten ausser den "Kopf"-Daten importieren will. Diese Option ist vor allem dafür interessant, wenn man Kopien von Daten erstellen muss, d.h. ein Export mit darauffolgendem Import ohne "Kopf"-Daten erzeugt eine Kopie der exportierten Daten (sofern mit automatischen IDs gearbeitet wird).
+Der Entwickler kann sich entscheiden, ob er auch transiente Daten importieren will.
+
+### JSON und `$LIST`
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).GetJSONFromList(<$LIST>)
+ ##class(arsblue.util.Json).GetListFromJSON(<JSON-Array>)
+```
+
+**_Makro:_**
+```
+$$$JSON.GetJSONFromList(<$LIST>)
+$$$JSON.GetListFromJSON(<JSON-Array>)
+```
+
+Mit diesen Funktionen kann aus einer `$LIST` ein JSON Array bzw. aus einem JSON Array eine `$LIST` erzeugt werden.
+```
+USER>set list=$LISTBUILD("a","b","c",$LISTBUILD(1,2,3))
+ 
+USER>write ##class(arsblue.util.Json).GetJSONFromList(list).%ToJSON()
+["a","b","c",[1,2,3]]
+
+USER>set json=["a","b","c",[1,2,3]]
+ 
+USER>zwrite ##class(arsblue.util.Json).GetListFromJSON(json)
+$lb("a","b","c",$lb(1,2,3))
+```
+
+### JSON und `%Library.Status`
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).GetJSONFromStatus(<Status>)
+ ##class(arsblue.util.Json).GetStatusFromJSON(<JSON-Objekt>)
+```
+
+**_Makro:_**
+```
+$$$JSON.GetJSONFromStatus(<Status>)
+$$$JSON.GetStatusFromJSON(<JSON-Objekt>)
+```
+
+Mit diesen Funktionen kann aus einem `%Library.Status` ein JSON Objekt bzw. aus einem JSON Objekt ein `%Library.Status` erzeugt werden.
+```
+USER>set status=$System.Status.Error(5001,"This is an error!")
+ 
+USER>write ##class(arsblue.util.Json).GetJSONFromStatus(status).%ToJSON()
+{"_ClassName":"%Library.Status","_Status":[[5001,"This is an error!",null,null,null,null,null,null,null,[null,"USER",["e^zError+1^%SYSTEM.Status.1^1","e^^^0"]]]]}
+USER>set json={"_ClassName":"%Library.Status","_Status":[[5001,"This is an error!",null,null,null,null,null,null,null,[null,"USER",["e^zError+1^%SYSTEM.Status.1^1","e^^^0"]]]]}
+ 
+USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).GetStatusFromJSON(json))
+FEHLER #5001: This is an error!
+```
+
+### JSON lesen
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).%FromJSON(<Zeichenkette-Oder-Datenstrom>)
+```
+
+**_Makro:_**
+```
+$$$JSON.%FromJSON(<Zeichenkette-Oder-Datenstrom>)
+```
+
+Mit dieser Funktion kann JSON aus einer Zeichenkette bzw. einem Datenstrom gelesen werden. Der Unterschied zur Standard IRIS Implementation ist, dass sowohl strikte als auch nicht strikte JSON Syntax (Objektschlüsselwörter mit oder ohne Hochkommas), einzeilige wie auch mehrzeilige Kommentare und JavaScript-Funktionen (werden als Datenstrom-Objekte gespeichert) erlaubt sind. Die Einschränkung dabei ist, dass die Objekt-Schlüsselwörter immer am Anfang einer neuen Zeile (Leerzeichen und Tabulatoren werden dabei ignoriert) stehen müssen.
+
+### JSON schreiben
+
+**_Syntax:_**
+```
+ ##class(arsblue.util.Json).%ToJSON(<JSON-Array-Oder-Objekt>,<Ausgabedatenstrom-Objektreferenz>[,<Einrückungszeichen>][,<Einrückungsebene>])
+```
+
+**_Makro:_**
+```
+$$$JSON.%ToJSON(<JSON-Array-Oder-Objekt>,<Ausgabedatenstrom-Objektreferenz>[,<Einrückungszeichen>][,<Einrückungsebene>])
+```
+
+Mit dieser Funktion kann JSON in einen Ausgabedatenstrom geschrieben werden. Die Ausgabe wird dabei automatisch formatiert. Die Formatierung kann mit den Zusatzparametern angepasst werden. Die Standard IRIS Implementation (`%ZEN.Auxiliary.jsonProvider`) weißt bei manchen Datentypen leider eine falsche bzw. unvollständige Implementation auf.
+```
+USER>set json={"a":"b","c":[1,2,3]}
+ 
+USER>do ##class(arsblue.util.Json).%ToJSON(json)
+{
+    "a": "b",
+    "c": [
+        1,
+        2,
+        3
+    ]
+}
+```
