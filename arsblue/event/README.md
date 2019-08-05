@@ -175,7 +175,7 @@ The following information can be found in the Event Details:
 | Event | JSON Information |
 | --- | --- |
 | **SYSTEM** | No additional information for starting / stopping the database. |
-| **LOGIN** <br/> **JOB** <br/> **CALLIN** | Logging in / logging out a user, <br/> Starting / stopping a background program or <br/> Starting / stopping an external database call provide the following JSON information: <br/><ul><li> **$JOB**: the process number </li><li> **$IO**: the default input / output device </li><li> **$ROLES**: the permissions in the database </li><li> **$USERNAME**: the InterSystems IRIS username </li><li> **ClientIPAddress**: the IP address of the caller </li><li> **ClientNodeName**: the hostname of the caller </li><li> **UserName**: the operating system username </li></ul> Unfortunately, no information can be provided about which program or command is called, as InterSystems IRIS does not provide this information. |
+| **LOGIN** <br/> **JOB** <br/> **CALLIN** | Logging in / logging out a user, <br/> Starting / stopping a background program or <br/> Starting / stopping an external database call provide the following JSON information: <br/><ul><li> **$JOB**: the process number </li><li> **$IO**: the default input / output device </li><li> **$ROLES**: the permissions in the database </li><li> **$USERNAME**: the InterSystems IRIS username </li><li> **ClientIPAddress**: the IP address of the caller </li><li> **ClientNodeName**: the hostname of the caller </li><li> **UserName**: the operating system username </li></ul><br/> Unfortunately, no information can be provided about which program or command is called, as InterSystems IRIS does not provide this information. |
 
 #### System Event for Operating System Calls
 
