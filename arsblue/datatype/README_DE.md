@@ -65,19 +65,19 @@ Durch die Abhängigkeit zur InterSystems IRIS `$HOROLOG` und Dezimalwert Impleme
 
 ### SQL und Performance
 
-Ein weiterer Vorteil der ars-blue Datentypen zeigt sich in SQL Abfragen. Im Gegensatz zu den Standard InterSystems IRIS Datentypen sind die ars-blue Datentypen in einem menschlich lesbaren und sortierbaren Format. Man kann dadurch im logischen Format statt im Anzeigeformat Abfragen durchführen und erspart sich das Umrechnen von Datum und Zeit von und auf InterSystems IRIS `$HOROLOG`. Ebenso ist das Datum/Zeit Format wie auch der Zeitstempel bereits in einem Format, mit dem man einfach ohne Konvertierung Zeiträume abfragen kann.
+Ein weiterer Vorteil der ars-blue Datentypen zeigt sich in SQL Abfragen. Im Gegensatz zu den Standard InterSystems IRIS Datentypen sind die arsblue Datentypen in einem menschlich lesbaren und sortierbaren Format. Man kann dadurch im logischen Format statt im Anzeigeformat Abfragen durchführen und erspart sich das Umrechnen von Datum und Zeit von und auf InterSystems IRIS `$HOROLOG`. Ebenso ist das Datum/Zeit Format wie auch der Zeitstempel bereits in einem Format, mit dem man einfach ohne Konvertierung Zeiträume abfragen kann.
 
-Eine korrekte SQL Abfrage für einen Datumsbereich mit separatem Datum und Zeit Attribut kann mit Standard InterSystems IRIS Datum und Zeit Datentypen nur durch komplexe Umformung der beiden Attribute zu einem Datum/Zeit Attribut erfolgen. Dasselbe Problem kann mit ars-blue Datum und Zeit Attributen hingegen sehr einfach gelöst werden, z.B. durch Verkettung der beiden Attribute oder durch Multiplikation und Addition der beiden Attribute:
+Eine korrekte SQL Abfrage für einen Datumsbereich mit separatem Datum und Zeit Attribut kann mit Standard InterSystems IRIS Datum und Zeit Datentypen nur durch komplexe Umformung der beiden Attribute zu einem Datum/Zeit Attribut erfolgen. Dasselbe Problem kann mit arsblue Datum und Zeit Attributen hingegen sehr einfach gelöst werden, z.B. durch Verkettung der beiden Attribute oder durch Multiplikation und Addition der beiden Attribute:
 ```
 SELECT (Date || $EXTRACT(1000000 + Time,2,7)) AS DateTime
   FROM MyClassWithDateAndTime
   WHERE ((Date * 1000000) + Time) BETWEEN ? AND ?
 ```
-Trotz der nicht-nativen Implementation der ars-blue Datum-, Zeit- und Zeitstempel Datentypen und der daraus resultierenden Vorteile (Speicher, Lesbarkeit), ist bei der Performance der SQL Abfragen im Logischen Modus kein Unterschied feststellbar und im Anzeigemodus eine nicht signifikante Verschlechterung durch die nicht-native Implementation in ObjectScript bemerkbar (variiert je nach SQL Abfrage und OS des DBMS).
+Trotz der nicht-nativen Implementation der arsblue Datum-, Zeit- und Zeitstempel Datentypen und der daraus resultierenden Vorteile (Speicher, Lesbarkeit), ist bei der Performance der SQL Abfragen im Logischen Modus kein Unterschied feststellbar und im Anzeigemodus eine nicht signifikante Verschlechterung durch die nicht-native Implementation in ObjectScript bemerkbar (variiert je nach SQL Abfrage und OS des DBMS).
 
 ### Migration von InterSystems IRIS Standard Datentypen
 
-Um bestehende Standard InterSystems IRIS Datum-, Zeit- und Zeitstempel Datentypen durch ars-blue Datum-, Zeit- und Zeitstempel Datentypen zu ersetzen, ohne dabei die Datensätze migrieren zu müssen, ist dies einfach möglich, indem man den jeweiligen Datentyp verwendet und im logischen Format das Format des originalen Datentyps definiert.
+Um bestehende Standard InterSystems IRIS Datum-, Zeit- und Zeitstempel Datentypen durch arsblue Datum-, Zeit- und Zeitstempel Datentypen zu ersetzen, ohne dabei die Datensätze migrieren zu müssen, ist dies einfach möglich, indem man den jeweiligen Datentyp verwendet und im logischen Format das Format des originalen Datentyps definiert.
 ```
 Class SomeClass Extends %Persistent
 {
