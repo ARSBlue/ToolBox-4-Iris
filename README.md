@@ -4,13 +4,13 @@
 
 **Toolbox-4-Iris** includes functionality that is not available in InterSystems IRIS, but can greatly simplify the development of applications. This functionality includes additional classes, single methods or even more efficient macros. These are described in the respective packages.
 
-**_Funktionen_**: These are generally static methods of an abstract class. Deviations from this rule are described as such..
+**_Funktionen_**: These are generally static methods of an abstract class. Deviations from this rule are described as such.
 
 ## Content
 
 - [Macros](#macros)
 - [DataTypes](#datatypes)
-- [Data Input and Output](#data-input-and-outuput)
+- [Data Input and Output](#data-input-and-output)
 - [Serverside Eventhandling](#serverside-eventhandling)
 - [Useful Utilities](#useful-utilities)
 
