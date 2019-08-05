@@ -96,4 +96,4 @@ Die `arsblue.JS` Include-Datei beinhaltet JavaScript-Makros. Die `arsblue.util.J
 | **$$$ISJSNUMERIC(%val)** | Prüft, ob der übergeben Wert (`%val`) ein numerischer JavaScript Wert ist. Vornullen und die speziellen `$DOUBLE`-Werte `INF`, `-INF` und `NAN` werden als Zeichenketten interpretiert. |  
 | **_Konvertierungsmakros:_** ||
 | **$$$GETJSVALUE(%val)** | Prüft, ob der übergebene Wert (`%val`) eine JavaScript-Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
-| **$$$GETJSVALUEQ(%val)** | Wie `$$$GETJSVALUE` nur werden Zeichenketten mit einfachen Anführungszeichen umschlossen. |
+| **$$$GETJSVALUEQ(%val)** | Wie `$$$GETJSVALUE` - nur werden Zeichenketten mit einfachen Anführungszeichen umschlossen. |
