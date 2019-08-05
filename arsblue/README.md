@@ -1,37 +1,37 @@
-# ARSBlue IRIS Macros
+# ARSBlue ToolBox-4-Iris -- Macros 
 
 ## Include Makro
 
-Die `arsblue.Include` Include-Datei beinhaltet alle unten beschriebenen Makros.
+The `arsblue.Include` include-file contains all the macros described below:
 
-- [ObjectScript Makros](#objectscript-makros)
-- [Status Makros](#status-makros)
-- [National Language Support Makros](#national-language-support-makros)
-- [JavaScript Makros](#javascript-makros)
+- [ObjectScript Macros](#objectscript-macros)
+- [Status Macros](#status-macros)
+- [National Language Support Macros](#national-language-support-macros)
+- [JavaScript Macros](#javascript-macros)
 
-## ObjectScript Makros
+## ObjectScript Macros
 
-Die `arsblue.OS` Include-Datei beinhaltet Makros, die ObjectScript Befehle abkürzen bzw. für IRIS Standard Funktionen sprechende Namen geben sollen.
+Die `arsblue.OS` include-file contains macros, that should abbreviate ObjectScript commands or give descriptive names for InterSystems IRIS standard functions.
 
-| Makro | Beschreibung |
+| Macro | Description |
 | --- | --- |
-| **_Zeichenketten-Makros:_** ||
-| **$$$NULL** | Entspricht dem NULL-Charakter (`$C(0)`), der in einigen IRIS Funktionen zur Anwendung kommt (z.B. Streams, ...). |
-| **$$$ISNULL(%val)** | Prüft, ob der übergebene Wert (`%val`) eine leere Zeichenkette (`$$$NULLOREF`) oder ein NULL-Charakter (`$$$NULL`) ist. |
-| **$$$IFNULL(%val,%def)** | Prüft, den übergebene Wert (`%val`) und liefert den Default-Wert (`%def`) wenn `$$$ISNULL` zutrifft, sonst den Wert (`%val`) selbst. |
+| **_String-Macros:_** ||
+| **$$$NULL** | Corresponds to the NULL character (`$C(0)`) used in some InterSystems IRIS functions (e.g. streams, ...). |
+| **$$$ISNULL(%val)** | Checks if the passed value (`%val`) is an empty string (`$$$NULLOREF`) or a NULL character (`$$$NULL`). |
+| **$$$IFNULL(%val,%def)** | Checks the passed value (`%val`) and returns the default value (`%def`) if `$$$ISNULL` matches, otherwise the value (`%val`) itself. |
 | **_Zahlen-Makros:_** ||
-| **$$$MININT** | Der Wert der kleinsten möglichen Integer-Zahl in IRIS. |
-| **$$$MAXINT** | Der Wert der größten möglichen Integer-Zahl in IRIS. |
-| **$$$ISNUMERIC(%val)** | Prüft, ob der übergeben Wert (`%val`) ein numerischer Wert ist. Vornullen und die speziellen `$DOUBLE`-Werte `INF`, `-INF` und `NAN` werden als Zeichenketten interpretiert. |  
+| **$$$MININT** | The value of the smallest possible integer number in InterSystems IRIS. |
+| **$$$MAXINT** | The value of the largest possible integer number in InterSystems IRIS. |
+| **$$$ISNUMERIC(%val)** | Checks if the passed value (`%val`) is a numeric value. Lead zeros and the special `$DOUBLE` values `INF`, `-INF` und `NAN` are interpreted as strings. |  
 | **_Datum- bzw. Zeit-Makros:_** ||
-| **$$$DAYINSEC** | Die Anzahl Sekunden für einen Tag (24 Stunden * 60 Minuten * 60 Sekunden = 86400 Sekunden). |
+| **$$$DAYINSEC** | Die Anzahl Sekunden fÃ¼r einen Tag (24 Stunden * 60 Minuten * 60 Sekunden = 86400 Sekunden). |
 | **$$$TimeStamp** | Der aktuelle Zeitstempel im Format yyyyMMddHHmmss.SSSSS |
 | **_$LIST-Makros:_** ||
-| **$$$ISLIST(%val)** | Prüft, ob der übergebene Wert (`%val`) eine `$LIST` ist (im Gegensatz zu `$LISTVALID` darf es sich nicht um einen Leerstring handeln). |
-| **$$$ISLISTEMPTY(%val)** | Prüft, ob der übergeben Wert (`%val`) eine `$LIST` mit mindestens einem nicht NULL-Eintrag ist. |
+| **$$$ISLIST(%val)** | PrÃ¼ft, ob der Ã¼bergebene Wert (`%val`) eine `$LIST` ist (im Gegensatz zu `$LISTVALID` darf es sich nicht um einen Leerstring handeln). |
+| **$$$ISLISTEMPTY(%val)** | PrÃ¼ft, ob der Ã¼bergeben Wert (`%val`) eine `$LIST` mit mindestens einem nicht NULL-Eintrag ist. |
 | **_Konvertierungsmakros:_** ||
-| **$$$GETVALUE(%val)** | Prüft. ob der übergebene Wert (`%val`) eine Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
-| **$$$GETVALUEQ(%val)** | Wie `$$$GETVALUE` nur werden Zeichenketten mit doppelten Anführungszeichen umschlossen. |
+| **$$$GETVALUE(%val)** | PrÃ¼ft. ob der Ã¼bergebene Wert (`%val`) eine Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
+| **$$$GETVALUEQ(%val)** | Wie `$$$GETVALUE` nur werden Zeichenketten mit doppelten AnfÃ¼hrungszeichen umschlossen. |
 
 ## Status Makros
 
@@ -39,38 +39,38 @@ Die `arsblue.Status` Include-Datei beinhaltet Makros, die `%Library.Status` Abfr
 
 | Makro | Beschreibung |
 | --- | --- |
-| **$$$ISSTATUS(%val)** | Prüft, ob der übergebene Wert (`%val`) eine gültige `%Library.Status` Zeichenkette ist. |
+| **$$$ISSTATUS(%val)** | PrÃ¼ft, ob der Ã¼bergebene Wert (`%val`) eine gÃ¼ltige `%Library.Status` Zeichenkette ist. |
 | **_Warnungen:_** ||
-| **$$$WARNING(%msg)** | Erzeugt einen Fehlerstatus mit dem Fehlercode `0` und der übergebenen Warnung (`%msg`). |
-| **$$$ISWARNING(%sc)** | Prüft, ob es sich beim Status um eine Warnung handelt. |
+| **$$$WARNING(%msg)** | Erzeugt einen Fehlerstatus mit dem Fehlercode `0` und der Ã¼bergebenen Warnung (`%msg`). |
+| **$$$ISWARNING(%sc)** | PrÃ¼ft, ob es sich beim Status um eine Warnung handelt. |
 | **$$$GETWARNING(%sc)** | Liefert die Warnung aus dem Status (`%sc`). |
-| **_`QUIT`-Mit Rückgabewert-Makros:_** ||
-| **$$$Quit(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und beendet den aktuellen Befehlsblock mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
-| **$$$QuitIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
-| **$$$QuitOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet den aktuellen Befehlsblock in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
-| **$$$QuitError(%msg)** | Beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`).|
+| **_`QUIT`-Mit RÃ¼ckgabewert-Makros:_** ||
+| **$$$Quit(%sc)** | PrÃ¼ft, ob der Status (`%sc`) ein Fehler ist und beendet den aktuellen Befehlsblock mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur VerfÃ¼gung steht, ein Befehl wÃ¼rde mehrmals ausgefÃ¼hrt werden! |
+| **$$$QuitIf(%expr,%msg)** | PrÃ¼ft, ob der Befehl (`%expr`) wahr ist und beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem Ã¼bergebenen Fehlertext (`%msg`). |
+| **$$$QuitOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prÃ¼ft, ob das Objekt einen SQL-Fehlercode aufweist und beendet den aktuellen Befehlsblock in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
+| **$$$QuitError(%msg)** | Beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem Ã¼bergebenen Fehlertext (`%msg`).|
 | **_`THROW`-Makros:_** ||
-| **$$$Throw(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und wirft eine Status-Ausnahme. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
-| **$$$ThrowIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und wirft eine generelle Fehler-Ausnahme mit dem übergebenen Fehlertext (`%msg`). |
-| **$$$ThrowOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und wirft in diesem Fall eine SQL-Fehler-Ausnahme mit der Fehlermeldung aus dem Objekt. |
-| **$$$ThrowError(%msg)** | Wirft eine generelle Fehler-Ausnahme mit dem übergebenen Fehlertext (`%msg`).|
+| **$$$Throw(%sc)** | PrÃ¼ft, ob der Status (`%sc`) ein Fehler ist und wirft eine Status-Ausnahme. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur VerfÃ¼gung steht, ein Befehl wÃ¼rde mehrmals ausgefÃ¼hrt werden! |
+| **$$$ThrowIf(%expr,%msg)** | PrÃ¼ft, ob der Befehl (`%expr`) wahr ist und wirft eine generelle Fehler-Ausnahme mit dem Ã¼bergebenen Fehlertext (`%msg`). |
+| **$$$ThrowOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prÃ¼ft, ob das Objekt einen SQL-Fehlercode aufweist und wirft in diesem Fall eine SQL-Fehler-Ausnahme mit der Fehlermeldung aus dem Objekt. |
+| **$$$ThrowError(%msg)** | Wirft eine generelle Fehler-Ausnahme mit dem Ã¼bergebenen Fehlertext (`%msg`).|
 | **_`RETURN`-Makros:_** ||
-| **$$$Return(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und beendet die Methode mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
-| **$$$ReturnOnError(%sc)** | Setzt den Status (`%sc`) und prüft, ob der Status ein Fehler ist und beendet die Methode mit diesem Status. <br/> **_Achtung:_** im Gegensatz zu `$$$Return` funktioniert dieses Makro auch für übergebene Befehle! |
-| **$$$RETURNONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prüft, ob der Status ein Fehler ist und beendet die Methode mit diesem Status. | 
-| **$$$ReturnIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet die Methode mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
-| **$$$ReturnOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet die Methode in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
-| **$$$ReturnError(%msg)** | Beendet die Methode mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`).|
-| **_`QUIT`-Ohne Rückgabewert-Makros:_** ||
-| **$$$Break(%expr)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet den aktuellen Befehlsblock. |
-| **$$$BreakOnError(%expr)** | Prüft, ob der Befehl (`%expr`) ein Fehler-Status ist und beendet den aktuellen Befehlsblock. |
-| **$$$BREAKONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prüft, ob der Status ein Fehler ist und beendet den aktuellen Befehlsblock. | 
-| **$$$BreakOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet den aktuellen Befehlsblock. |
+| **$$$Return(%sc)** | PrÃ¼ft, ob der Status (`%sc`) ein Fehler ist und beendet die Methode mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur VerfÃ¼gung steht, ein Befehl wÃ¼rde mehrmals ausgefÃ¼hrt werden! |
+| **$$$ReturnOnError(%sc)** | Setzt den Status (`%sc`) und prÃ¼ft, ob der Status ein Fehler ist und beendet die Methode mit diesem Status. <br/> **_Achtung:_** im Gegensatz zu `$$$Return` funktioniert dieses Makro auch fÃ¼r Ã¼bergebene Befehle! |
+| **$$$RETURNONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prÃ¼ft, ob der Status ein Fehler ist und beendet die Methode mit diesem Status. | 
+| **$$$ReturnIf(%expr,%msg)** | PrÃ¼ft, ob der Befehl (`%expr`) wahr ist und beendet die Methode mit einem generellen Fehler mit dem Ã¼bergebenen Fehlertext (`%msg`). |
+| **$$$ReturnOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prÃ¼ft, ob das Objekt einen SQL-Fehlercode aufweist und beendet die Methode in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
+| **$$$ReturnError(%msg)** | Beendet die Methode mit einem generellen Fehler mit dem Ã¼bergebenen Fehlertext (`%msg`).|
+| **_`QUIT`-Ohne RÃ¼ckgabewert-Makros:_** ||
+| **$$$Break(%expr)** | PrÃ¼ft, ob der Befehl (`%expr`) wahr ist und beendet den aktuellen Befehlsblock. |
+| **$$$BreakOnError(%expr)** | PrÃ¼ft, ob der Befehl (`%expr`) ein Fehler-Status ist und beendet den aktuellen Befehlsblock. |
+| **$$$BREAKONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prÃ¼ft, ob der Status ein Fehler ist und beendet den aktuellen Befehlsblock. | 
+| **$$$BreakOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prÃ¼ft, ob das Objekt einen SQL-Fehlercode aufweist und beendet den aktuellen Befehlsblock. |
 | **_`CONTINUE`-Makros:_** ||
-| **$$$Continue(%expr)** | Prüft, ob der Befehl (`%expr`) wahr ist und beginnt den nächsten Schleifendurchlauf. |
-| **$$$ContinueOnError(%expr)** | Prüft, ob der Befehl (`%expr`) ein Fehler-Status ist und beginnt den nächsten Schleifendurchlauf. |
-| **$$$CONTINUEONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prüft, ob der Status ein Fehler ist und beginnt den nächsten Schleifendurchlauf. | 
-| **$$$ContinueOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beginnt den nächsten Schleifendurchlauf. |
+| **$$$Continue(%expr)** | PrÃ¼ft, ob der Befehl (`%expr`) wahr ist und beginnt den nÃ¤chsten Schleifendurchlauf. |
+| **$$$ContinueOnError(%expr)** | PrÃ¼ft, ob der Befehl (`%expr`) ein Fehler-Status ist und beginnt den nÃ¤chsten Schleifendurchlauf. |
+| **$$$CONTINUEONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prÃ¼ft, ob der Status ein Fehler ist und beginnt den nÃ¤chsten Schleifendurchlauf. | 
+| **$$$ContinueOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prÃ¼ft, ob das Objekt einen SQL-Fehlercode aufweist und beginnt den nÃ¤chsten Schleifendurchlauf. |
 
 ## National Language Support Makros
 
@@ -78,11 +78,11 @@ Die `arsblue.NLS` Include-Datei beinhaltet Makros, die NLS Einstellungen auslese
 
 | Makro | Beschreibung |
 | --- | --- |
-| **$$$NLSFormat(%idx)** | Liefert die Einstellung für den entsprechenden Formatierungsindex (s. `%syNLS` Include-Datei) |
-| **$$$NLSMonthAbbr** | Liefert die abgekrüzten Monatsnamen der aktuellen NLS-Einstellungen. |
-| **$$$NLSMonthName** | Liefert die vollständigen Monatsnamen der aktuellen NLS-Einstellungen. |
-| **$$$NLSWeekdayAbbr** | Liefert die abgekürzten Wochentagsnamen der aktuellen NLS-Einstellungen. |
-| **$$$NLSWeekdayName** | Liefert die vollständigen Wochentagsnamen der aktuellen NLS-Einstellungen. |
+| **$$$NLSFormat(%idx)** | Liefert die Einstellung fÃ¼r den entsprechenden Formatierungsindex (s. `%syNLS` Include-Datei) |
+| **$$$NLSMonthAbbr** | Liefert die abgekrÃ¼zten Monatsnamen der aktuellen NLS-Einstellungen. |
+| **$$$NLSMonthName** | Liefert die vollstÃ¤ndigen Monatsnamen der aktuellen NLS-Einstellungen. |
+| **$$$NLSWeekdayAbbr** | Liefert die abgekÃ¼rzten Wochentagsnamen der aktuellen NLS-Einstellungen. |
+| **$$$NLSWeekdayName** | Liefert die vollstÃ¤ndigen Wochentagsnamen der aktuellen NLS-Einstellungen. |
 
 ## JavaScript Makros
 
@@ -91,11 +91,11 @@ Die `arsblue.JS` Include-Datei beinhaltet JavaScript-Makros. Die `arsblue.util.J
 | Makro | Beschreibung |
 | --- | --- |
 | **_Zahlenmakros:_** ||
-| **$$$JSMININT** | Der Wert der kleinsten möglichen Integer-Zahl in JavaScript. |
-| **$$$JSMAXINT** | Der Wert der größten möglichen Integer-Zahl in JavaScript. |
-| **$$$ISJSNUMERIC(%val)** | Prüft, ob der übergeben Wert (`%val`) ein numerischer JavaScript Wert ist. Vornullen und die speziellen `$DOUBLE`-Werte `INF`, `-INF` und `NAN` werden als Zeichenketten interpretiert. |  
+| **$$$JSMININT** | Der Wert der kleinsten mÃ¶glichen Integer-Zahl in JavaScript. |
+| **$$$JSMAXINT** | Der Wert der grÃ¶ÃŸten mÃ¶glichen Integer-Zahl in JavaScript. |
+| **$$$ISJSNUMERIC(%val)** | PrÃ¼ft, ob der Ã¼bergeben Wert (`%val`) ein numerischer JavaScript Wert ist. Vornullen und die speziellen `$DOUBLE`-Werte `INF`, `-INF` und `NAN` werden als Zeichenketten interpretiert. |  
 | **_Konvertierungsmakros:_** ||
-| **$$$GETJSVALUE(%val)** | Prüft. ob der übergebene Wert (`%val`) eine JavaScript-Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
-| **$$$GETJSVALUEQ(%val)** | Wie `$$$GETJSVALUE` nur werden Zeichenketten mit einfachen Anführungszeichen umschlossen. |
+| **$$$GETJSVALUE(%val)** | PrÃ¼ft. ob der Ã¼bergebene Wert (`%val`) eine JavaScript-Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
+| **$$$GETJSVALUEQ(%val)** | Wie `$$$GETJSVALUE` nur werden Zeichenketten mit einfachen AnfÃ¼hrungszeichen umschlossen. |
 
 
