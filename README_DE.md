@@ -1,4 +1,6 @@
-# ARSBlue ToolBox-4-Iris - API für InterSystems IRIS mit einer Sammlung praktischer und nützlicher Tools
+# ARSBlue ToolBox-4-Iris
+
+API für InterSystems IRIS mit einer Sammlung praktischer und nützlicher Tools
 
 Die **Toolbox-4-IRIS** beinhaltet Funktionalität, die in InterSystems IRIS nicht verfügbar ist, aber die Entwicklung von Applikationen wesentlich vereinfachen kann. Diese Funktionalität umfasst zusätzliche Klassen, einzelne Methoden oder auch effizientere Makros. Diese sind  in den jeweiligen Packages beschrieben.
 
