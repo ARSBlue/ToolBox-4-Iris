@@ -2,7 +2,7 @@
 
 ## Include Makro
 
-Die `arsblue.Include` Include-Datei beinhaltet alle unten beschriebenen Makros.
+Die `arsblue.Include` Include-Datei beinhaltet alle unten beschriebenen Makros:
 
 - [ObjectScript Makros](#objectscript-makros)
 - [Status Makros](#status-makros)
@@ -18,7 +18,7 @@ Die `arsblue.OS` Include-Datei beinhaltet Makros, die ObjectScript Befehle abkü
 | **_Zeichenketten-Makros:_** ||
 | **$$$NULL** | Entspricht dem NULL-Charakter (`$C(0)`), der in einigen IRIS Funktionen zur Anwendung kommt (z.B. Streams, ...). |
 | **$$$ISNULL(%val)** | Prüft, ob der übergebene Wert (`%val`) eine leere Zeichenkette (`$$$NULLOREF`) oder ein NULL-Charakter (`$$$NULL`) ist. |
-| **$$$IFNULL(%val,%def)** | Prüft, den übergebene Wert (`%val`) und liefert den Default-Wert (`%def`) wenn `$$$ISNULL` zutrifft, sonst den Wert (`%val`) selbst. |
+| **$$$IFNULL(%val,%def)** | Prüft den übergebenen Wert (`%val`) und liefert den Default-Wert (`%def`) wenn `$$$ISNULL` zutrifft ansonsten den Wert (`%val`) selbst. |
 | **_Zahlen-Makros:_** ||
 | **$$$MININT** | Der Wert der kleinsten möglichen Integer-Zahl in IRIS. |
 | **$$$MAXINT** | Der Wert der größten möglichen Integer-Zahl in IRIS. |
@@ -27,11 +27,11 @@ Die `arsblue.OS` Include-Datei beinhaltet Makros, die ObjectScript Befehle abkü
 | **$$$DAYINSEC** | Die Anzahl Sekunden für einen Tag (24 Stunden * 60 Minuten * 60 Sekunden = 86400 Sekunden). |
 | **$$$TimeStamp** | Der aktuelle Zeitstempel im Format yyyyMMddHHmmss.SSSSS |
 | **_$LIST-Makros:_** ||
-| **$$$ISLIST(%val)** | Prüft, ob der übergebene Wert (`%val`) eine `$LIST` ist (im Gegensatz zu `$LISTVALID` darf es sich nicht um einen Leerstring handeln). |
+| **$$$ISLIST(%val)** | Prüft, ob der übergebene Wert (`%val`) eine `$LIST` ist. Im Gegensatz zu `$LISTVALID` darf es sich nicht um einen Leerstring handeln. |
 | **$$$ISLISTEMPTY(%val)** | Prüft, ob der übergeben Wert (`%val`) eine `$LIST` mit mindestens einem nicht NULL-Eintrag ist. |
 | **_Konvertierungsmakros:_** ||
-| **$$$GETVALUE(%val)** | Prüft. ob der übergebene Wert (`%val`) eine Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
-| **$$$GETVALUEQ(%val)** | Wie `$$$GETVALUE` nur werden Zeichenketten mit doppelten Anführungszeichen umschlossen. |
+| **$$$GETVALUE(%val)** | Prüft, ob der übergebene Wert (`%val`) eine Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
+| **$$$GETVALUEQ(%val)** | Wie `$$$GETVALUE` - nur werden Zeichenketten mit doppelten Anführungszeichen umschlossen. |
 
 ## Status Makros
 
