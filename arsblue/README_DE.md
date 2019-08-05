@@ -48,9 +48,9 @@ Die `arsblue.Status` Include-Datei beinhaltet Makros, die `%Library.Status` Abfr
 | **$$$Quit(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und beendet den aktuellen Befehlsblock mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
 | **$$$QuitIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
 | **$$$QuitOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet den aktuellen Befehlsblock in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
-| **$$$QuitError(%msg)** | Beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`).|
+| **$$$QuitError(%msg)** | Beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
 | **_`THROW`-Makros:_** ||
-| **$$$Throw(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und wirft eine Status-Ausnahme. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
+| **$$$Throw(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und wirft eine Status-Ausnahme. <br/> **_Achtung:_** Nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
 | **$$$ThrowIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und wirft eine generelle Fehler-Ausnahme mit dem übergebenen Fehlertext (`%msg`). |
 | **$$$ThrowOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und wirft in diesem Fall eine SQL-Fehler-Ausnahme mit der Fehlermeldung aus dem Objekt. |
 | **$$$ThrowError(%msg)** | Wirft eine generelle Fehler-Ausnahme mit dem übergebenen Fehlertext (`%msg`).|
@@ -79,7 +79,7 @@ Die `arsblue.NLS` Include-Datei beinhaltet Makros, die NLS Einstellungen auslese
 | Makro | Beschreibung |
 | --- | --- |
 | **$$$NLSFormat(%idx)** | Liefert die Einstellung für den entsprechenden Formatierungsindex (s. `%syNLS` Include-Datei) |
-| **$$$NLSMonthAbbr** | Liefert die abgekrüzten Monatsnamen der aktuellen NLS-Einstellungen. |
+| **$$$NLSMonthAbbr** | Liefert die abgekürzten Monatsnamen der aktuellen NLS-Einstellungen. |
 | **$$$NLSMonthName** | Liefert die vollständigen Monatsnamen der aktuellen NLS-Einstellungen. |
 | **$$$NLSWeekdayAbbr** | Liefert die abgekürzten Wochentagsnamen der aktuellen NLS-Einstellungen. |
 | **$$$NLSWeekdayName** | Liefert die vollständigen Wochentagsnamen der aktuellen NLS-Einstellungen. |
@@ -95,7 +95,5 @@ Die `arsblue.JS` Include-Datei beinhaltet JavaScript-Makros. Die `arsblue.util.J
 | **$$$JSMAXINT** | Der Wert der größten möglichen Integer-Zahl in JavaScript. |
 | **$$$ISJSNUMERIC(%val)** | Prüft, ob der übergeben Wert (`%val`) ein numerischer JavaScript Wert ist. Vornullen und die speziellen `$DOUBLE`-Werte `INF`, `-INF` und `NAN` werden als Zeichenketten interpretiert. |  
 | **_Konvertierungsmakros:_** ||
-| **$$$GETJSVALUE(%val)** | Prüft. ob der übergebene Wert (`%val`) eine JavaScript-Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
+| **$$$GETJSVALUE(%val)** | Prüft, ob der übergebene Wert (`%val`) eine JavaScript-Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
 | **$$$GETJSVALUEQ(%val)** | Wie `$$$GETJSVALUE` nur werden Zeichenketten mit einfachen Anführungszeichen umschlossen. |
-
-
