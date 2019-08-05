@@ -45,7 +45,7 @@ The `arsblue.Status` include-file contains macros that make `%Library.Status` qu
 | **$$$ISWARNING(%sc)** | Checks if the status is a warning. |
 | **$$$GETWARNING(%sc)** | Returns the warning from the status (`%sc`). |
 | **_`QUIT`-Macros with Return Value:_** ||
-| **$$$Quit(%sc)** | Checks if the status (`%sc`)  is an error and exits the current command block with this status. <br/> **_Attention:_** only use if the status is available in a variable, a command would be executed several times! |
+| **$$$Quit(%sc)** | Checks if the status (`%sc`)  is an error and exits the current command block with this status. <br/> **_Attention:_** <br/> Only use if the status is available in a variable, a command would be executed several times! |
 | **$$$QuitIf(%expr,%msg)** | Checks if the command (`%expr`) is true and terminates the current command block with a general error with the given error text (`%msg`). |
 | **$$$QuitOnSQLError(%rs,%rssql)** | Sets the `%SQL.StatementResult` object with the variable name (`%rs`) and checks if the object has a SQL error code and in this case exits the current command block with an SQL error with the error message from the object. |
 | **$$$QuitError(%msg)** | Ends the current command block with a general error with the given error text (`%msg`). |
