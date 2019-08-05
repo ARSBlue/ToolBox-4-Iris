@@ -2,7 +2,7 @@
 
 **API for InterSystems IRIS with a collection of practical and useful tools**
 
-**Toolbox-4-Iris** includes functionality that is not available in InterSystems IRIS, but can greatly simplify the development of applications. This functionality includes additional classes, single methods or even more efficient macros. These are described in the respective packages.
+**Toolbox-4-Iris** includes functionality that is not available in InterSystems IRIS, but can greatly simplify the development of applications. This functionality includes additional classes, single methods or even more efficient macros, which are described in the respective packages.
 
 **_Functions_**: These are generally static methods of an abstract class. Deviations from this rule are described as such.
 
