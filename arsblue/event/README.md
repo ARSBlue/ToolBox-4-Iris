@@ -16,7 +16,7 @@
     - [Persisted Data Event Adapter und Persisted Data Event](#persisted-data-event-adapter-und-persisted-data-event)
     - [Handle Persisted Data Events synchronously](#handle-persisted-data-events-synchronously)
     - [Handle Persisted Data Events asynchronously with Event Queue](#handle-persisted-data-events-asynchronously-with-event-queue)
-    - [Handle Persisted Data Events asynchronously in User Process](#handle-persisted-data-events-asynchronously-in-user-prozess)
+    - [Handle Persisted Data Events asynchronously in User Process](#handle-persisted-data-events-asynchronously-in-user-process)
 
 ## Server-side Event Handling
 
@@ -185,7 +185,7 @@ The following information can be found in the Event Details:
 
 | Event | JSON Information |
 | --- | --- |
-| **CALLOUT** | Starting / stopping an operating system command provides the following JSON information: <br/><ul><li> **$JOB**: the process number </li><li> **$IO**: the default input / output device </li><li> **$ROLES**: the permissions in the database </li><li> **$USERNAME**: the InterSystems IRIS username </li><li> **ClientIPAddress**: the IP Address of the caller </li><li> **ClientNodeName**: the caller's hostname </li><li> **UserName**: the operating system username </li><li> **program**: the operating system command or the program </li><li> **path**: the directory in the operating system </li><li> **stdin**: the default input data stream </li><li> **stdout**: the standard output stream </li><li> **stderr**: the default error stream </li><li> **async**: Flag if command or program in Background (`1`) or foreground (`0` = default) is executed </li><li> **pid**: the process ID in the operating system </li><li> **callback**: Name of the Class and method to call after execution </li><li> **cmd *: command or program including directory for the operating system </li></ul><br/> The following information is also available when exiting an operating system command in the JSON information: <br/><ul><li> **status**: Status OK or the error message for the command or program </li></ul> |
+| **CALLOUT** | Starting / stopping an operating system command provides the following JSON information: <br/><ul><li> **$JOB**: the process number </li><li> **$IO**: the default input / output device </li><li> **$ROLES**: the permissions in the database </li><li> **$USERNAME**: the InterSystems IRIS username </li><li> **ClientIPAddress**: the IP Address of the caller </li><li> **ClientNodeName**: the caller's hostname </li><li> **UserName**: the operating system username </li><li> **program**: the operating system command or the program </li><li> **path**: the directory in the operating system </li><li> **stdin**: the default input data stream </li><li> **stdout**: the standard output stream </li><li> **stderr**: the default error stream </li><li> **async**: Flag if command or program in Background (`1`) or foreground (`0` = default) is executed </li><li> **pid**: the process ID in the operating system </li><li> **callback**: Name of the Class and method to call after execution </li><li> **cmd**: command or program including directory for the operating system </li></ul><br/> The following information is also available when exiting an operating system command in the JSON information: <br/><ul><li> **status**: Status OK or the error message for the command or program </li></ul> |
 
 ### Persisted Data Events
 
