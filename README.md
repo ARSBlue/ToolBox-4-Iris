@@ -30,7 +30,7 @@ InterSystems IRIS contains a wide range of data input and output options. The fu
 
 InterSystems IRIS includes process-based event handling, but no ability to respond dynamically to system or data events (only through the implementation of triggers). The functionality described in the package [arsblue.event] (./arsblue/event) enables the development of applications which should react dynamically to system or data events.
 
-## Useful Utilites
+## Useful Utilities
 
 The utilities described in the package [arsblue.util] (./arsblue/util) extend the functionality of the standard functions that are not available in InterSystems IRIS.
 
