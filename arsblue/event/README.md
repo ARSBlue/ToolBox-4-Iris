@@ -1,4 +1,4 @@
-# ARSBlue IRIS Event Package
+# ARSBlue ToolBox-4-Iris -- Event Package
 
 - [Server-side Event Handling](#server-side-event-handling)
   - [Synchronous Event Handling](#synchronous-event-handling)
