@@ -1,36 +1,38 @@
-# ARSBlue IRIS API
+# ARSBlue ToolBox-4-Iris
 
-**Toolbox-4-IRIS** beinhaltet Funktionalität, die in IRIS nicht verfügbar ist, aber die Entwicklung von Applikationen wesentlich vereinfachen kann. Diese Funktionalität umfasst zusätzliche Klassen, einzelne Methoden oder auch effizientere Makros und werden in den jeweiligen Packages beschrieben.
+**API for InterSystems IRIS with a collection of practical and useful tools**
 
-**_Funktionen_**: dabei handelt es sich generell um statische Methoden einer abstrakten Klasse. Abweichungen von dieser Regel werden als solche beschrieben.
+The **Toolbox-4-IRIS** includes functionality that is not available in InterSystems IRIS, but can greatly simplify the development of applications. This functionality includes additional classes, single methods or even more efficient macros. These are described in the respective packages.
 
-## Inhalt
+**_Funktionen_**: These are generally static methods of an abstract class. Deviations from this rule are described as such..
 
-- [Makros](#makros)
-- [Datentypen](#datentypen)
-- [Daten Ein- und Ausgabe](#daten-ein--und-ausgabe)
-- [Serverseitige Ereignisbehandlung](#serverseitige-ereignisbehandlung)
-- [Nützliche Hilfsprogramme](#n%C3%BCtzliche-hilfsprogramme)
+## Content
 
-## Makros
+- [Macros](#macros)
+- [DataTypes](#datatypes)
+- [Data Input and Output](#data-input-and-outuput)
+- [Serverside Eventhandling](#serverside-eventhandling)
+- [Useful Utilities](#useful-utilities)
 
-IRIS beinhaltet ein großes Angebot an Makros. Die im Package [arsblue](./arsblue) beschriebenen Makros sind nicht in IRIS vorhanden, erleichtern aber die Entwicklung von Applikationen und erhöhen deren Lesbarkeit.
+## Macros
 
-## Datentypen
+InterSystems IRIS contains a wide range of macros. The macros described in the package [arsblue](./arsblue) are not available in InterSystems IRIS, but facilitate the development of applications and increase their readability.
 
-IRIS beinhaltet ein großes Angebot an Datentypen. Die im Package [arsblue.datatype](./arsblue/datatype) beschriebenen Datentypen sind nicht in IRIS vorhanden, erleichtern aber die Entwicklung von Applikationen.
+## DataTypes
 
-## Daten Ein- und Ausgabe
+InterSystems IRIS contains a wide range of DataTypes. The DataTypes described in the package [arsblue.datatype](./arsblue/datatype) are not available in InterSystems IRIS, but facilitate the development of applications and increase their readability.
 
-IRIS beinhaltet ein großes Angebot an Daten Ein- und Ausgabemöglichkeiten. Die im Package [arsblue.io](./arsblue/io) beschriebene Funktionalität ist nicht in IRIS vorhanden, erleichtert aber die Entwicklung von Applikationen.
+## Data Input and Output
 
-## Serverseitige Ereignisbehandlung
+InterSystems IRIS contains a wide range of data input and output options. The functionality described in the package [arsblue.io](./arsblue/io) is not available in IRIS, but facilitates the development of applications.
 
-IRIS beinhaltet eine prozessbasiertes Ereignisbehandlung, aber keine Möglichkeit dynamisch auf System- bzw. Datenereignisse (nur durch Implementation von Triggern) zu reagieren. Die im Package [arsblue.event](./arsblue/event) beschriebene Funktionalität ermöglicht die Entwicklung von Applikationen die dynamisch auf System- bzw. Datenereignisse reagieren können sollen.
+## Serverside Eventhandling
 
-## Nützliche Hilfsprogramme
+InterSystems IRIS includes process-based event handling, but no ability to respond dynamically to system or data events (only through the implementation of triggers). The functionality described in the package [arsblue.event] (./arsblue/event) enables the development of applications which should react dynamically to system or data events.
 
-Die im Package [arsblue.util](./arsblue/util) beschriebenen Hilfsprogramme erweitern den Funktioneumfang der in IRIS nicht vorhandenen Standardfunktionen.
+## Useful Utilites
+
+The utilities described in the package [arsblue.util] (./arsblue/util) extend the functionality of the standard functions that are not available in InterSystems IRIS.
 
 ## License ##
 
