@@ -1,37 +1,37 @@
 # ARSBlue ToolBox-4-Iris -- DataTypes
 
-- [Datum, Zeit und Zeitstempel](#datum-zeit-und-zeitstempel)
-  - [Formatierung](#formatierung)
-  - [Speicherbedarf](#speicherbedarf)
-  - [SQL und Performance](#sql-und-performance)
-  - [Migration von IRIS Standard Datentypen](#migration-von-iris-standard-datentypen)
-  - [Aktuelles Datum für Klassenattribute](#aktuelles-datum-f%C3%BCr-klassenattribute)
+- [Date, Time and Timestamp](#date-time-and-timestamp)
+  - [Formatting](#formatting)
+  - [Memory Requirements](#memory-requirements)
+  - [SQL and Performance](#sql-and-performance)
+  - [Migration of InterSystems IRIS Standard DataTypes](#migration-of-InterSystems-iris-standard-datatypes)
+  - [Current Date for Class Attributes](#current-date-for-class-attributes)
 
-## Datum, Zeit und Zeitstempel
+## Date, Time and Timestamp
 
-Die Standard IRIS Datentypen umfassen eine große Auswahl an mehr oder weniger flexiblen Datum, Zeit und Zeitstempel Datentypen. Die im folgenden beschriebenen Datentypen sind hoch dynamisch und bieten im Gegensatz zu den meisten IRIS Datentypen den Vorteil wesentlich weniger Speicher zu benötigen.
+The standard InterSystems IRIS data types include a large selection of more or less flexible date, time, and timestamp data types. The data types described below are highly dynamic and require - unlike most InterSystems IRIS data types - significantly less memory.
 
-### Formatierung
+### Formatting
 
-Alle beschriebenen Datum-, Zeit- und Zeitstempel-Datentypen sind vorkonfiguriert, können aber an jedes beliebige Format angepasst werden. Es können folgende Formate verwendet werden:
+All described date, time, and timestamp data types are preconfigured but can be customized to any format. The following formats can be used:
 
-| Muster Charakter | Beschreibung |
+| Pattern Character | Description |
 | --- | --- |
-| **y** <br/> (Jahr) | **yy**: Jahr im aktuellen Jahrhundert (z.B. 19 => 2019) <br/> **yyyy**: vollwertiges Jahr (z.B. 2019) |
-| **M** <br/> (Monat im Jahr) | **M**: Monat als ein bzw. zweistellige Zahl (z.B. 1 – 12) <br/> **MM**: Monat als zweistellige Zahl mit Vornullen (z.B. 01 – 12) <br/> **MMM**: Abgekürzter Monatsname mit NLS (z.B. Jan, Feb, Mar, ...) <br/> **MMMM**: Monatsname mit NLS (z.B. Januar, Februar, März, ...) |
-| **d** <br/> (Tag im Monat) | **d**: Tag als ein bzw. zweistellige Zahl (z.B. 1 – 31) <br/> **dd**: Tag als zweistellige Zahl mit Vornullen (z.B. 01 – 31) |
-| **w** <br/> (Woche im Jahr) | **w**: Woche als ein bzw. zweistellige Zahl (z.B. 1 – 53) <br/> **ww**: Woche als zweistellige Zahl mit Vornullen (z.B. 01 – 53) |
-| **E** <br/> (Name des Wochentags) | **E**: einstelliger Wochentagname mit NLS (z.B. M, D, M, ...) <br/> **EE**: zweistelliger Wochentagname mit NLS (z.B. Mo, Di, Mi, ...) <br/> **EEE**: Abgekürzter Wochentagname mit NLS (z.B. Mon, Die, Mit, ...) <br/> **EEEE**: Wochentagname mit NLS (z.B. Montag, Dienstag, ...) |
-| **u** <br/> (Tag in der Woche) | **u**: Tag in der Woche (z.B. 1 – 7 für Montag – Sonntag) |
-| **H** <br/> (Stunde am Tag) | **H**: Stunde als einstellige Zahl (z.B. 0 – 24) <br/> **HH**: Stunde als zweistellige Zahl mit Vornullen (z.B. 00 – 24) |
-| **m** <br/> (Minute in Stunde) | **m**: Minute als einstellige Zahl (z.B. 0 – 59) <br/> **mm**: Minute als zweistellige Zahl mit Vornullen (z.B. 00 – 59) |
-| **s** <br/> (Sekunde in Minute) | **s**: Sekunde als einstellige Zahl (z.B. 0 – 59) <br/> **ss**: Sekunde als zweistellige Zahl mit Vornullen (z.B. 00 – 59) |
-| **S** <br/> (Teile einer Sekunde) | **S**: Zehntel einer Sekunde <br/> **SS**: Hundertstel einer Sekunde <br/> **SSS**: Tausendstel einer Sekunde = Millisekunde (Standard für `$ZTS`) <br/> **SSSS**: Zehntausendstel einer Sekunde = Microsekunde |
-| [**$H**[**D**\|**T**]\|**$ZTS**] <br/> (IRIS Horolog) | **$H**: entspricht `$HOROLOG` in IRIS <br/> **$HD**: entspricht dem Datumsanteil von `$HOROLOG` <br/> **$HT**: entspricht dem Zeitanteil von `$HOROLOG` <br/> **$ZTS**: entspricht `$ZTIMESTAMP` in IRIS |
+| **y** <br/> (Year) | **yy**: year in the current century (e.g. 19 => 2019) <br/> **yyyy**: full year (e.g. 2019) |
+| **M** <br/> (Month in the Year) | **M**: month as one or two digit number (e.g. 1 - 12) <br/> **MM**: month as two digit number with leading zeros (e.g. 01 - 12) <br/> **MMM** : abbreviated month name with NLS (e.g. Jan, Feb, Mar, ...) <br/> **MMMM**: month name with NLS (e.g. January, February, March, ...) |
+| **d** <br/> (Day of the Month) | **d**: day as a one- or two-digit number (e.g. 1-31). <br/> **dd**: day as a two-digit number with leading zeros (e.g. 01-31) |
+| **w** <br/> (Week a Year) | **w**: week as a one- or two-digit number (e.g. 1-53) <br/> **ww**: week as a two-digit number with leading zeros (e.g. 01-53) |
+| **E** <br/> (Name of the Weekday) | **E**: single-digit weekday name with NLS (e.g. M, D, M, ...) <br/> **EE**: two-digit weekday name with NLS (e.g. Mo, Tu, We, ...) <br /> **EEE**: abbreviated weekday name with NLS (e.g. Mon, Tue, Wed, ...) <br/> **EEEE**: Weekday name with NLS (e.g. Monday, Tuesday, Wednesday, ...) |
+| **u** <br/> (Day of the Week) | **u**: day in the week (e.g. 1 - 7 for Monday - Sunday) |
+| **H** <br/> (Hour a Day) | **H**: hour as a one-digit number (e.g. 0-24) <br/> **HH**: hour as a two-digit number with leading zeroes (e.g. 00-24) |
+| **m** <br/> (Minute in Hour) | **m**: minute as a one-digit number (e.g. 0-59) <br/> **mm**: Minute as a two-digit number with leading zeros (e.g. 00-59) |
+| **s** <br/> (Second in Minute) | **s**: second as a one-digit number (e.g. 0-59) <br /> **ss**: second as a two-digit number with leading zeros (e.g. 00-59) |
+| **S** <br/> (Parts of a Second) | **S**: tenth of a second <br/> **SS**: hundredth of a second <br/> **SSS**: thousandth of a second = millisecond (standard for `$ ZTS`) <br/> **SSSS**: Ten thousandths of a second = microsecond |
+| [**$H**[**D**\|**T**]\|**$ZTS**] <br/> (InterSystems IRIS Horolog) | **$H**: corresponds to `$HOROLOG` in InterSystems IRIS <br/> **$HD**: corresponds to the date portion of `$HOROLOG` <br/> **$HT**: corresponds to the time portion of `$HOROLOG` <br/> **$ZTS**: corresponds  `$ZTIMESTAMP` in InterSystems IRIS |
 
-Die im Folgenden beschriebenen Datum-, Zeit- und Zeitstempel-Datentypen wurden mittels dieser Formatierungskriterien spezifiziert. Jeder der Datentypen kann daher über die Angabe der entsprechenden Parameter in der Definition der Eigenschaften an die individuellen Bedürfnisse angepasst werden. Ein Beispiel für einen solchen Fall ist der Datentyp `arsblue.datatype.YearWeek` welcher für statistische Zwecke benutzt werden kann. In der ODBC, XSD bzw. JSON Repräsentation wird der erste Tag (Montag) der entsprechenden Woche herangezogen (ausgenommen beim Jahreswechsel wird der erste Tag im Jahr genommen, um etwaige Selektionskriterien nicht zu verletzen).
-Dies gilt ebenso für ODBC und XSD Formate, welche auf den für die jeweilige Implementation als Standard definierten Wert spezifiziert wurden.
-Zusätzlich werden für JSON und JavaScript weitere Formate spezifiziert. Für JSON gibt es die jeweilige Methode für die Konvertierung ins und vom logischen Format. Für JavaScript wurde das Format lediglich spezifiziert und es wird auch nicht auf Syntax und Semantik geprüft.
+The date, time, and timestamp data types described below are specified using these formatting criteria. Each of the data types can therefore be adapted to individual needs by specifying the corresponding parameters in the definition of the properties. An example of such a case is the data type `arsblue.datatype.YearWeek`, which can be used for statistical purposes. In the ODBC, XSD or JSON representation, the first day (Monday) of the corresponding week is used (except at the turn of the year, the first day of the year is used, so as not to violate any selection criteria)
+This also applies to ODBC and XSD formats, which have been specified at the value defined as the default for the respective implementation.
+In addition, additional formats are specified for JSON and JavaScript. For JSON there is the respective method for conversion to and from the logical format. For JavaScript the format has only been specified and it is not checked for syntax and semantics.
 
 | Datentyp | Logisches Format | Display Format (je nach NLS) | ODBC Format | XSD Format | JSON Format | JavaScript Format |
 | --- | --- | --- | --- | --- | --- | --- |
