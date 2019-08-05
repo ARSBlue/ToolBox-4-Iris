@@ -50,13 +50,13 @@ The `arsblue.Status` include-file contains macros that make `%Library.Status` qu
 | **$$$QuitOnSQLError(%rs,%rssql)** | Sets the `%SQL.StatementResult` object with the variable name (`%rs`) and checks if the object has a SQL error code and in this case exits the current command block with an SQL error with the error message from the object. |
 | **$$$QuitError(%msg)** | Ends the current command block with a general error with the given error text (`%msg`). |
 | **_`THROW`-Makros:_** ||
-| **$$$Throw(%sc)** | Checks if the status (`%sc`) is an error and throws a status exception. <br/> **_Attention:_** only use if the status is available in a variable, a command would be executed several times! |
+| **$$$Throw(%sc)** | Checks if the status (`%sc`) is an error and throws a status exception. <br/> **_Attention:_** <br/> Only use if the status is available in a variable, a command would be executed several times! |
 | **$$$ThrowIf(%expr,%msg)** | Checks if the command (`%expr`) is true and throws a general error exception with the given error text (`%msg`). |
 | **$$$ThrowOnSQLError(%rs,%rssql)** | Sets the `%SQL.StatementResult` object with the variable name (`%rs`) and checks if the object has a SQL error code and throws an SQL error exception with the error message out of the object in this case. |
 | **$$$ThrowError(%msg)** | Throws a general error exception with the given error text (`%msg`).|
 | **_`RETURN`-Macros:_** ||
 | **$$$Return(%sc)** | Checks if the status (`%sc`) is an error and ends the method with this status. <br/> **_Attention:_** only use if the status is available in a variable, a command would be executed several times! |
-| **$$$ReturnOnError(%sc)** | Sets the status (`%sc`) and checks if the status is an error and ends the method with this status. <br/> **_Attention:_** Unlike `$$$Return` this macro also works for passed commands! |
+| **$$$ReturnOnError(%sc)** | Sets the status (`%sc`) and checks if the status is an error and ends the method with this status. <br/> **_Attention:_** <br/> Unlike `$$$Return` this macro also works for passed commands! |
 | **$$$RETURNONERROR(%sc,%expr)** | Sets the result of the command (`%expr`) with the variable name (`%sc`) and checks if the status is an error and ends the method with this status. | 
 | **$$$ReturnIf(%expr,%msg)** | Checks if the command (`%expr`) is true and terminates the method with a general error with the given error text (`%msg`). |
 | **$$$ReturnOnSQLError(%rs,%rssql)** | Sets the `%SQL.StatementResult` object with the variable name (`%rs`) and checks if the object has a SQL error code and in this case exits the method with an SQL error with the error message from the object. |
