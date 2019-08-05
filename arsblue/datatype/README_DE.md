@@ -1,4 +1,4 @@
-# ARSBlue ToolBox-4-Iris -- DataTypes
+# ARSBlue ToolBox-4-Iris -- Data Types
 
 - [Datum, Zeit und Zeitstempel](#datum-zeit-und-zeitstempel)
   - [Formatierung](#formatierung)
@@ -29,7 +29,10 @@ Alle beschriebenen Datum-, Zeit- und Zeitstempel-Datentypen sind vorkonfiguriert
 | **S** <br/> (Teile einer Sekunde) | **S**: Zehntel einer Sekunde <br/> **SS**: Hundertstel einer Sekunde <br/> **SSS**: Tausendstel einer Sekunde = Millisekunde (Standard für `$ZTS`) <br/> **SSSS**: Zehntausendstel einer Sekunde = Microsekunde |
 | [**$H**[**D**\|**T**]\|**$ZTS**] <br/> (InterSystems IRIS Horolog) | **$H**: entspricht `$HOROLOG` in IRIS <br/> **$HD**: entspricht dem Datumsanteil von `$HOROLOG` <br/> **$HT**: entspricht dem Zeitanteil von `$HOROLOG` <br/> **$ZTS**: entspricht `$ZTIMESTAMP` in InterSystems IRIS |
 
-Die im Folgenden beschriebenen Datum-, Zeit- und Zeitstempel-Datentypen wurden mittels dieser Formatierungskriterien spezifiziert. Jeder der Datentypen kann daher über die Angabe der entsprechenden Parameter in der Definition der Eigenschaften an die individuellen Bedürfnisse angepasst werden. Ein Beispiel für einen solchen Fall ist der Datentyp `arsblue.datatype.YearWeek`, welcher für statistische Zwecke benutzt werden kann. In der ODBC, XSD bzw. JSON Repräsentation wird der erste Tag (Montag) der entsprechenden Woche herangezogen (ausgenommen beim Jahreswechsel wird der erste Tag im Jahr genommen, um etwaige Selektionskriterien nicht zu verletzen).
+Die im Folgenden beschriebenen Datum-, Zeit- und Zeitstempel-Datentypen wurden mittels dieser Formatierungskriterien spezifiziert. Jeder der Datentypen kann daher über die Angabe der entsprechenden Parameter in der Definition der Eigenschaften an die individuellen Bedürfnisse angepasst werden. Ein Beispiel für einen solchen Fall ist der Datentyp `arsblue.datatype.YearWeek`, welcher für statistische Zwecke benutzt werden kann. 
+
+In der ODBC, XSD bzw. JSON Repräsentation wird der erste Tag (Montag) der entsprechenden Woche herangezogen (ausgenommen beim Jahreswechsel wird der erste Tag im Jahr genommen, um etwaige Selektionskriterien nicht zu verletzen).
+
 Dies gilt ebenso für ODBC und XSD Formate, welche auf den für die jeweilige Implementation als Standard definierten Wert spezifiziert wurden.
 Zusätzlich werden für JSON und JavaScript weitere Formate spezifiziert. Für JSON gibt es die jeweilige Methode für die Konvertierung ins und vom logischen Format. Für JavaScript wurde das Format lediglich spezifiziert und es wird auch nicht auf Syntax und Semantik geprüft.
 
