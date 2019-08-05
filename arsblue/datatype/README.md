@@ -45,9 +45,9 @@ In addition, additional formats are specified for JSON and JavaScript. For JSON 
 
 ### Memory Requirements
 
-One of the great advantages of these types of data is that they are handled or stored as decimal numbers in InterSystems IRIS. The following table shows the difference between the standard InterSystems IRIS data types and the ars-blue data types. The specified memory requirement in bytes only corresponds to the content of the respective data type, in fact two additional bytes per attribute are required (because of `$ LISTBUILD`): Number of bytes for this attribute and data type of the attribute.
+One of the great advantages of these types of data is that they are handled or stored as decimal numbers in InterSystems IRIS. The following table shows the difference between the standard InterSystems IRIS data types and the arsblue data types. The specified memory requirement in bytes only corresponds to the content of the respective data type, in fact two additional bytes per attribute are required (because of `$LISTBUILD`): Number of bytes for this attribute and data type of the attribute.
 
-| ars-blue Data Types | Bytes | IRIS Data Types | Bytes |
+| arsblue Data Types | Bytes | IRIS Data Types | Bytes |
 | --- | --- | --- | --- |
 | `arsblue.datatype.Date` | 4 | `%Library.Date` | 0 – 3 |
 | `arsblue.datatype.DateTime` | 6 | `%Library.DateTime` | 19 |
@@ -72,13 +72,11 @@ SELECT (Date || $EXTRACT(1000000 + Time,2,7)) AS DateTime
   FROM MyClassWithDateAndTime
   WHERE ((Date * 1000000) + Time) BETWEEN ? AND ?
 ```
-Trotz der nicht-nativen Implementation der ars-blue Datum-, Zeit- und Zeitstempel Datentypen und der daraus resultierenden Vorteile (Speicher, Lesbarkeit), ist bei der Performance der SQL Abfragen im Logischen Modus kein Unterschied feststellbar und im Anzeigemodus eine nicht signifikante Verschlechterung durch die nicht-native Implementation in ObjectScript bemerkbar (variiert je nach SQL Abfrage und OS des DBMS).
-
-Despite the non-native implementation of the ars-blue date, time and timestamp data types and the resulting advantages (memory, readability), there is no difference in the performance of SQL queries in logical mode and a non-significant degradation in display mode noticeable by the non-native implementation in ObjectScript (varies depending on SQL query and OS of the DBMS).
+Despite the non-native implementation of the arsblue date, time and timestamp data types and the resulting advantages (memory, readability), there is no difference in the performance of SQL queries in logical mode and a non-significant degradation in display mode noticeable by the non-native implementation in ObjectScript (varies depending on SQL query and OS of the DBMS).
 
 ### Migration of InterSystems IRIS Standard Data Types
 
-To replace existing standard InterSystems IRIS date, time and timestamp data types with ars-blue date, time and timestamp data types, without having to migrate the datasets, this is easily possible by using the respective data type and in logical format defines the format of the original data type.
+To replace existing standard InterSystems IRIS date, time and timestamp data types with arsblue date, time and timestamp data types, without having to migrate the datasets, this is easily possible by using the respective data type and in logical format defines the format of the original data type.
 ```
 Class SomeClass Extends %Persistent
 {
