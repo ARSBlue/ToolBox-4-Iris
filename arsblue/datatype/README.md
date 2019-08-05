@@ -33,7 +33,7 @@ The date, time, and timestamp data types described below are specified using the
 This also applies to ODBC and XSD formats, which have been specified at the value defined as the default for the respective implementation.
 In addition, additional formats are specified for JSON and JavaScript. For JSON there is the respective method for conversion to and from the logical format. For JavaScript the format has only been specified and it is not checked for syntax and semantics.
 
-| Datentyp | Logisches Format | Display Format (je nach NLS) | ODBC Format | XSD Format | JSON Format | JavaScript Format |
+| Data Type | Logical Format | Display Format (depending on NLS) | ODBC Format | XSD Format | JSON Format | JavaScript Format |
 | --- | --- | --- | --- | --- | --- | --- |
 | `arsblue.datatype.Date` | yyyyMMdd | dd/MM/yyyy <br/> MM/dd/yyyy | yyyy-MM-dd | yyyy-MM-dd | yyyy-MM-ddTHH:mm:ss | Y-m-d\TH:i:s |
 | `arsblue.datatype.DateTime` | yyyyMMddHHmmss | dd/MM/yyyy HH:mm:ss <br/> MM/dd/yyyy HH:mm:ss | yyyy-MM-dd HH:mm:ss | yyyy-MM-ddTHH:mm:ssZ | yyyy-MM-ddTHH:mm:ss | Y-m-d\TH:i:s |
@@ -41,11 +41,11 @@ In addition, additional formats are specified for JSON and JavaScript. For JSON 
 | `arsblue.datatype.TimeStamp` | yyyyMMddHHmmss.SSS | dd/MM/yyyy HH:mm:ss.SSS <br/> MM/dd/yyyy HH:mm:ss.SSS | yyyy-MM-dd HH:mm:ss | yyyy-MM-ddTHH:mm:ssZ | yyyy-MM-ddTHH:mm:ss.SSS | Y-m-d\TH:i:s.u |
 | `arsblue.datatype.YearWeek` | yyyyww | yyyy/ww | yyyy-MM-dd | yyyy-MM-dd | yyyy-MM-ddTHH:mm:ss | Y-m-d\TH:i:s |
 
-### Speicherbedarf
+### Memory Requirements
 
-Einer der großen Vorteile dieser Datentypen liegt im Umstand, dass sie als Dezimalzahlen in IRIS gehandhabt bzw. gespeichert werden. In der folgenden Tabelle wird der Unterschied zwischen den Standard IRIS Datentypen und den ars-blue Datentypen aufgezeigt. Der angegebene Speicherbedarf in Bytes entspricht nur dem Inhalt des jeweiligen Datentyps, tatsächlich werden pro Attribut zwei zusätzliche Byte benötigt (wegen `$LISTBUILD`): Anzahl der Bytes für dieses Attribut und Datentyp des Attributes.
+One of the great advantages of these types of data is that they are handled or stored as decimal numbers in InterSystems IRIS. The following table shows the difference between the standard InterSystems IRIS data types and the ars-blue data types. The specified memory requirement in bytes only corresponds to the content of the respective data type, in fact two additional bytes per attribute are required (because of `$ LISTBUILD`): Number of bytes for this attribute and data type of the attribute.
 
-| ars-blue Datentyp | Bytes | IRIS Datentype | Bytes |
+| ars-blue Data Types | Bytes | IRIS Data Types | Bytes |
 | --- | --- | --- | --- |
 | `arsblue.datatype.Date` | 4 | `%Library.Date` | 0 – 3 |
 | `arsblue.datatype.DateTime` | 6 | `%Library.DateTime` | 19 |
@@ -53,18 +53,18 @@ Einer der großen Vorteile dieser Datentypen liegt im Umstand, dass sie als Dezi
 | `arsblue.datatype.TimeStamp` | 9 | `%Library.TimeStamp` | 19 |
 | `arsblue.datatype.YearWeek` | 3 | - | - |
 
-Da IRIS nur den absolut notwendigen Speicher für Dezimalwerte belegt, können Datum und Zeit im angegebenen Bereich variieren. Der geringe Speicherbedarf wird durch Verwendung von Dezimalwerten für die Implementation erreicht. Aus diesem Grund gibt es folgende Einschränkungen:
+Since InterSystems IRIS uses only the absolutely necessary memory for decimal values, date and time can vary within the specified range. The low memory requirement is achieved by using decimal values for the implementation. For this reason, there are the following restrictions:
 
-- Minimaler Zeitstempel wegen IRIS `$HOROLOG` Implementation: **1840/12/31 00:00:00.0**
-- Maximaler Zeitstempel wegen IRIS `$HOROLOG` Implementation: **9999/12/31 23:59:59.9999**
+- Minimum Timestamp due to InterSystems IRIS `$HOROLOG` Implementation: **1840/12/31 00:00:00.0**
+- Maximum Timestamp due to InterSystems IRIS `$HOROLOG` Implementation: **9999/12/31 23:59:59.9999**
 
-Durch die Abhängigkeit zur IRIS `$HOROLOG` und Dezimalwert Implementation ist es leider nicht möglich ein Datum außerhalb der oben genannten Grenzen zu erfassen.
+Due to the dependency on the InterSystems IRIS `$HOROLOG` and decimal value implementation, it is unfortunately not possible to record a date outside the limits mentioned above.
 
-### SQL und Performance
+### SQL and Performance
 
-Ein weiterer Vorteil der Datentypen zeigt sich in SQL Abfragen. Im Gegensatz zu den Standard IRIS Datentypen sind die ars-blue Datentypen in einem menschlich lesbaren und sortierbaren Format. Man kann dadurch im logischen Format statt im Anzeigeformat Abfragen durchführen und erspart sich das Umrechnen von Datum und Zeit von und auf IRIS `$HOROLOG`. Ebenso ist das Datum/Zeit Format wie auch der Zeitstempel bereits in einem Format, mit dem man einfach ohne Konvertierung Zeiträume abfragen kann.
+Another benefit of the data types is evident in SQL queries. Unlike the standard InterSystems IRIS data types, the ars-blue data types are in a human readable and sortable format. This allows queries to be made in logical format rather than in the display format, saving the time and date from being converted to and from InterSystems IRIS `$HOROLOG`. Similarly, the date / time format as well as the timestamp is already in a format that allows you to easily query periods without conversion.
 
-Eine korrekte SQL Abfrage für einen Datumsbereich mit separatem Datum und Zeit Attribut kann mit Standard IRIS Datum und Zeit Datentypen nur durch komplexe Umformung der beiden Attribute zu einem Datum/Zeit Attribut erfolgen. Dasselbe Problem kann mit ars-blue Datum und Zeit Attributen hingegen sehr einfach gelöst werden, z.B. durch Verkettung der beiden Attribute oder durch Multiplikation und Addition der beiden Attribute:
+A correct SQL query for a date range with a separate date and time attribute can be done using standard InterSystems IRIS date and time data types only by complex transformation of both attributes to a date / time attribute. By contrast, the same problem can be solved very simply with ars-blue date and time attributes, e.g. by concatenating the two attributes or by multiplying and adding the two attributes:
 ```
 SELECT (Date || $EXTRACT(1000000 + Time,2,7)) AS DateTime
   FROM MyClassWithDateAndTime
@@ -72,9 +72,11 @@ SELECT (Date || $EXTRACT(1000000 + Time,2,7)) AS DateTime
 ```
 Trotz der nicht-nativen Implementation der ars-blue Datum-, Zeit- und Zeitstempel Datentypen und der daraus resultierenden Vorteile (Speicher, Lesbarkeit), ist bei der Performance der SQL Abfragen im Logischen Modus kein Unterschied feststellbar und im Anzeigemodus eine nicht signifikante Verschlechterung durch die nicht-native Implementation in ObjectScript bemerkbar (variiert je nach SQL Abfrage und OS des DBMS).
 
-### Migration von IRIS Standard Datentypen
+Despite the non-native implementation of the ars-blue date, time and timestamp data types and the resulting advantages (memory, readability), there is no difference in the performance of SQL queries in logical mode and a non-significant degradation in display mode noticeable by the non-native implementation in ObjectScript (varies depending on SQL query and OS of the DBMS).
 
-Um bestehende Standard IRIS Datum-, Zeit- und Zeitstempel Datentypen durch ars-blue Datum-, Zeit- und Zeitstempel Datentypen zu ersetzen, ohne dabei die Datensätze migrieren zu müssen, ist dies einfach möglich, indem man den jeweiligen Datentyp verwendet und im logischen Format das Format des originalen Datentyps definiert.
+### Migration of InterSystems IRIS Standard DataTypes
+
+To replace existing standard InterSystems IRIS date, time and timestamp data types with ars-blue date, time and timestamp data types, without having to migrate the datasets, this is easily possible by using the respective data type and in logical format defines the format of the original data type.
 ```
 Class SomeClass Extends %Persistent
 {
@@ -91,11 +93,11 @@ Class SomeClass Extends %Persistent
   Property SomeTimeStamp As arsblue.datatype.TimeStamp (LOGICALFORMAT="yyyy-MM-dd HH:mm:ss")
 }
 ```
-Dies behebt nicht den erhöhten Speicherbedarf, wofür eine tatsächliche Migration der Datensätze notwendig wäre, aber liefert den Vorteil flexible Ausgabeformate definieren zu können.
+This does not address the increased memory requirements, which would require an actual migration of the datasets, but provides the benefit of being able to define flexible output formats.
 
-### Aktuelles Datum für Klassenattribute
+### Current Date for Class Attributes
 
-Das aktuelle Datum eines Klassenattributs im logischen Format kann über den Namen des Attributs ermittelt werden.
+The current date of a class attribute in logical format can be determined by the name of the attribute.
 ```
 USER>write ##class(SomeClass).SomeDateNow()
 20190416
@@ -108,4 +110,4 @@ USER>write ##class(SomeClass).SomeTimeStampNow()
 USER>write ##class(SomeClass).SomeYearWeekNow()
 201916
 ```
-Es wird das Datum und die Zeit der aktuell eingestellten Zeitzone unter Berücksichtigung der Sommerzeit verwendet.
+The date and time of the currently set time zone, taking into account summer time, is used.
