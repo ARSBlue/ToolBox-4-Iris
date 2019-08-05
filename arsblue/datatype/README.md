@@ -1,10 +1,10 @@
-# ARSBlue ToolBox-4-Iris -- DataTypes
+# ARSBlue ToolBox-4-Iris -- Data Types
 
 - [Date, Time and Timestamp](#date-time-and-timestamp)
   - [Formatting](#formatting)
   - [Memory Requirements](#memory-requirements)
   - [SQL and Performance](#sql-and-performance)
-  - [Migration of InterSystems IRIS Standard DataTypes](#migration-of-InterSystems-iris-standard-datatypes)
+  - [Migration of InterSystems IRIS Standard Data Types](#migration-of-InterSystems-iris-standard-data-types)
   - [Current Date for Class Attributes](#current-date-for-class-attributes)
 
 ## Date, Time and Timestamp
@@ -29,8 +29,10 @@ All described date, time, and timestamp data types are preconfigured but can be 
 | **S** <br/> (Parts of a Second) | **S**: tenth of a second <br/> **SS**: hundredth of a second <br/> **SSS**: thousandth of a second = millisecond (standard for `$ ZTS`) <br/> **SSSS**: Ten thousandths of a second = microsecond |
 | [**$H**[**D**\|**T**]\|**$ZTS**] <br/> (InterSystems IRIS Horolog) | **$H**: corresponds to `$HOROLOG` in InterSystems IRIS <br/> **$HD**: corresponds to the date portion of `$HOROLOG` <br/> **$HT**: corresponds to the time portion of `$HOROLOG` <br/> **$ZTS**: corresponds  `$ZTIMESTAMP` in InterSystems IRIS |
 
-The date, time, and timestamp data types described below are specified using these formatting criteria. Each of the data types can therefore be adapted to individual needs by specifying the corresponding parameters in the definition of the properties. An example of such a case is the data type `arsblue.datatype.YearWeek`, which can be used for statistical purposes. In the ODBC, XSD or JSON representation, the first day (Monday) of the corresponding week is used (except at the turn of the year, the first day of the year is used, so as not to violate any selection criteria)
+The date, time, and timestamp data types described below are specified using these formatting criteria. Each of the data types can therefore be adapted to individual needs by specifying the corresponding parameters in the definition of the properties. An example of such a case is the data type `arsblue.datatype.YearWeek`, which can be used for statistical purposes. In the ODBC, XSD or JSON representation, the first day (Monday) of the corresponding week is used (except at the turn of the year, the first day of the year is used, so as not to violate any selection criteria).
+
 This also applies to ODBC and XSD formats, which have been specified at the value defined as the default for the respective implementation.
+
 In addition, additional formats are specified for JSON and JavaScript. For JSON there is the respective method for conversion to and from the logical format. For JavaScript the format has only been specified and it is not checked for syntax and semantics.
 
 | Data Type | Logical Format | Display Format (depending on NLS) | ODBC Format | XSD Format | JSON Format | JavaScript Format |
@@ -74,7 +76,7 @@ Trotz der nicht-nativen Implementation der ars-blue Datum-, Zeit- und Zeitstempe
 
 Despite the non-native implementation of the ars-blue date, time and timestamp data types and the resulting advantages (memory, readability), there is no difference in the performance of SQL queries in logical mode and a non-significant degradation in display mode noticeable by the non-native implementation in ObjectScript (varies depending on SQL query and OS of the DBMS).
 
-### Migration of InterSystems IRIS Standard DataTypes
+### Migration of InterSystems IRIS Standard Data Types
 
 To replace existing standard InterSystems IRIS date, time and timestamp data types with ars-blue date, time and timestamp data types, without having to migrate the datasets, this is easily possible by using the respective data type and in logical format defines the format of the original data type.
 ```
