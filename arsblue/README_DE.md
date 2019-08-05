@@ -45,18 +45,18 @@ Die `arsblue.Status` Include-Datei beinhaltet Makros, die `%Library.Status` Abfr
 | **$$$ISWARNING(%sc)** | Prüft, ob es sich beim Status um eine Warnung handelt. |
 | **$$$GETWARNING(%sc)** | Liefert die Warnung aus dem Status (`%sc`). |
 | **_`QUIT`-Mit Rückgabewert-Makros:_** ||
-| **$$$Quit(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und beendet den aktuellen Befehlsblock mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
+| **$$$Quit(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und beendet den aktuellen Befehlsblock mit diesem Status. <br/> **_Achtung:_** <br/> Nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
 | **$$$QuitIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
 | **$$$QuitOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet den aktuellen Befehlsblock in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
 | **$$$QuitError(%msg)** | Beendet den aktuellen Befehlsblock mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
 | **_`THROW`-Makros:_** ||
-| **$$$Throw(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und wirft eine Status-Ausnahme. <br/> **_Achtung:_** Nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
+| **$$$Throw(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und wirft eine Status-Ausnahme. <br/> **_Achtung:_** <br/> Nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
 | **$$$ThrowIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und wirft eine generelle Fehler-Ausnahme mit dem übergebenen Fehlertext (`%msg`). |
 | **$$$ThrowOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und wirft in diesem Fall eine SQL-Fehler-Ausnahme mit der Fehlermeldung aus dem Objekt. |
 | **$$$ThrowError(%msg)** | Wirft eine generelle Fehler-Ausnahme mit dem übergebenen Fehlertext (`%msg`).|
 | **_`RETURN`-Makros:_** ||
-| **$$$Return(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und beendet die Methode mit diesem Status. <br/> **_Achtung:_** nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
-| **$$$ReturnOnError(%sc)** | Setzt den Status (`%sc`) und prüft, ob der Status ein Fehler ist und beendet die Methode mit diesem Status. <br/> **_Achtung:_** im Gegensatz zu `$$$Return` funktioniert dieses Makro auch für übergebene Befehle! |
+| **$$$Return(%sc)** | Prüft, ob der Status (`%sc`) ein Fehler ist und beendet die Methode mit diesem Status. <br/> **_Achtung:_** <br/> Nur verwenden, wenn der Status in einer Variablen zur Verfügung steht, ein Befehl würde mehrmals ausgeführt werden! |
+| **$$$ReturnOnError(%sc)** | Setzt den Status (`%sc`) und prüft, ob der Status ein Fehler ist und beendet die Methode mit diesem Status. <br/> **_Achtung:_** <br/> Im Gegensatz zu `$$$Return` funktioniert dieses Makro auch für übergebene Befehle! |
 | **$$$RETURNONERROR(%sc,%expr)** | Setzt das Ergebnis des Befehls (`%expr`) mit dem Variablennamen (`%sc`) und prüft, ob der Status ein Fehler ist und beendet die Methode mit diesem Status. | 
 | **$$$ReturnIf(%expr,%msg)** | Prüft, ob der Befehl (`%expr`) wahr ist und beendet die Methode mit einem generellen Fehler mit dem übergebenen Fehlertext (`%msg`). |
 | **$$$ReturnOnSQLError(%rs,%rssql)** | Setzt das `%SQL.StatementResult`-Objekt mit dem Variablennamen (`%rs`) und prüft, ob das Objekt einen SQL-Fehlercode aufweist und beendet die Methode in diesem Fall mit einem SQL-Fehler mit der Fehlermeldung aus dem Objekt. |
