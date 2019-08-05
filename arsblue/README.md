@@ -1,6 +1,6 @@
 # ARSBlue ToolBox-4-Iris -- Macros 
 
-## Include Makro
+## Include Macro
 
 The `arsblue.Include` include-file contains all the macros described below:
 
@@ -15,29 +15,29 @@ Die `arsblue.OS` include-file contains macros, that should abbreviate ObjectScri
 
 | Macro | Description |
 | --- | --- |
-| **_String-Macros:_** ||
+| **_Macros with Strings:_** ||
 | **$$$NULL** | Corresponds to the NULL character (`$C(0)`) used in some InterSystems IRIS functions (e.g. streams, ...). |
 | **$$$ISNULL(%val)** | Checks if the passed value (`%val`) is an empty string (`$$$NULLOREF`) or a NULL character (`$$$NULL`). |
 | **$$$IFNULL(%val,%def)** | Checks the passed value (`%val`) and returns the default value (`%def`) if `$$$ISNULL` matches, otherwise the value (`%val`) itself. |
-| **_Zahlen-Makros:_** ||
+| **_Macros with Numbers:_** ||
 | **$$$MININT** | The value of the smallest possible integer number in InterSystems IRIS. |
 | **$$$MAXINT** | The value of the largest possible integer number in InterSystems IRIS. |
 | **$$$ISNUMERIC(%val)** | Checks if the passed value (`%val`) is a numeric value. Lead zeros and the special `$DOUBLE` values `INF`, `-INF` und `NAN` are interpreted as strings. |  
-| **_Datum- bzw. Zeit-Makros:_** ||
-| **$$$DAYINSEC** | Die Anzahl Sekunden für einen Tag (24 Stunden * 60 Minuten * 60 Sekunden = 86400 Sekunden). |
-| **$$$TimeStamp** | Der aktuelle Zeitstempel im Format yyyyMMddHHmmss.SSSSS |
-| **_$LIST-Makros:_** ||
-| **$$$ISLIST(%val)** | Prüft, ob der übergebene Wert (`%val`) eine `$LIST` ist (im Gegensatz zu `$LISTVALID` darf es sich nicht um einen Leerstring handeln). |
-| **$$$ISLISTEMPTY(%val)** | Prüft, ob der übergeben Wert (`%val`) eine `$LIST` mit mindestens einem nicht NULL-Eintrag ist. |
-| **_Konvertierungsmakros:_** ||
-| **$$$GETVALUE(%val)** | Prüft. ob der übergebene Wert (`%val`) eine Zahl ist und konvertiert diese als Zahl (z.B. `$DOUBLE`, ...) oder als Zeichenkette. |
-| **$$$GETVALUEQ(%val)** | Wie `$$$GETVALUE` nur werden Zeichenketten mit doppelten Anführungszeichen umschlossen. |
+| **_Macros with Date and Time:_** ||
+| **$$$DAYINSEC** | The number of seconds for a day (24 hours * 60 minutes * 60 seconds = 86400 seconds). |
+| **$$$TimeStamp** | The current timestamp in the format yyyyMMddHHmmss.SSSSS |
+| **_$LIST-Macros:_** ||
+| **$$$ISLIST(%val)** | Checks if the passed value (`%val`) is `$LIST`. Unlike `$LISTVALID` this must not be an empty string. |
+| **$$$ISLISTEMPTY(%val)** | Checks if the passed value (`%val`) is `$LIST` with at least one NULL entry. |
+| **_Conversion Macros:_** ||
+| **$$$GETVALUE(%val)** | Checks if the passed value (`%val`) is a number and converts it as a number (for example `$DOUBLE`, ...) or as a string. |
+| **$$$GETVALUEQ(%val)** | Like `$$$GETVALUE` - only strings are enclosed in double quotes. |
 
-## Status Makros
+## Status Macros
 
-Die `arsblue.Status` Include-Datei beinhaltet Makros, die `%Library.Status` Abfragen erleichtern.
+The `arsblue.Status` include-file contains macros that make `%Library.Status` queries easier.
 
-| Makro | Beschreibung |
+| Macro | Description |
 | --- | --- |
 | **$$$ISSTATUS(%val)** | Prüft, ob der übergebene Wert (`%val`) eine gültige `%Library.Status` Zeichenkette ist. |
 | **_Warnungen:_** ||
