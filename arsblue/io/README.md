@@ -285,9 +285,13 @@ To enable implicit JSON serialization on an object, this object must be derived 
 
 To serialize arbitrary objects with JSON, it is not mandatory to derive from this class. There is also the possibility of exporting any IRIS object to JSON via the JSON utilities, which derives from `%Library.RegisteredObject` (see [JSON Utilities](./arsblue/util/README.md#json-utilities) or [Export Data Objects to JSON](./arsblue/util/README.md#export-data-objects-to-JSON)).
 
-[Test-Link als interner Link](./arsblue/util/README.md#json-utilities)
+[Test-Link als interner Link 1](./arsblue/util/README.md#json-utilities)
 
-[Test-Link als externer Link](https://github.com/ARSBlue/ToolBox-4-Iris/blob/master/arsblue/util/README.md#json-utilities)
+[Test-Link als interner Link 2](../arsblue/util/README.md#json-utilities)
+
+[Test-Link als interner Link 3](master/arsblue/util/README.md#json-utilities)
+
+[Test-Link als externer Link 4](https://github.com/ARSBlue/ToolBox-4-Iris/blob/master/arsblue/util/README.md#json-utilities)
 
 ## Temporary File Objects for Data Streams
 
