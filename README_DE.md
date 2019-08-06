@@ -39,7 +39,7 @@ Dazu gehören allgemeine Datei- und Verzeichnis-Funktionen, Prüfung von Dateien
 
 Mit der im Package [arsblue.event](./arsblue/event) enthaltenen Funktionalität wird die Entwicklung von Applikationen, die dynamisch auf System- bzw. Datenereignisse reagieren können sollen, ermöglicht. InterSystems IRIS verfügt zwar über eine prozessbasierte  Ereignisbehandlung, hat aber keine Möglichkeit dynamisch auf System- bzw. Datenereignisse (nur durch Implementation von Triggern) zu reagieren.
 
-Zum Package gehören eine synchrone oder asynchrone Ereignisbehandlung durch Benutzerprozess oder Ereignisqueue, die synchrone oder asynchrone Anwendung von Systemereignissen oder die Behandlung persistierter Datenereignisse.
+Zum Package gehören eine synchrone oder asynchrone Ereignisbehandlung durch Benutzerprozess oder Ereignisqueue, die synchrone oder asynchrone Verwendung von Systemereignissen oder die Behandlung persistierter Datenereignisse.
 
 ## Nützliche Hilfsprogramme
 
