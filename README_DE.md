@@ -2,7 +2,7 @@
 
 **API für InterSystems IRIS mit einer Sammlung praktischer und nützlicher Tools**
 
-Die **ToolBox-4-IRIS** enthält eine Sammlung praktischer und nützlicher Tools - sprich Features, die in InterSystems IRIS nicht verfügbar sind, aber die Entwicklung von Applikationen wesentlich vereinfachen. Dies umfasst zusätzliche Klassen, einzelne Methoden oder auch effizientere Makros, welche in den jeweiligen Packages beschrieben sind.
+Die **ToolBox-4-Iris** enthält eine Sammlung praktischer und nützlicher Tools - sprich Features, die in InterSystems IRIS nicht verfügbar sind, aber die Entwicklung von Applikationen wesentlich vereinfachen. Dies umfasst zusätzliche Klassen, einzelne Methoden oder auch effizientere Makros, welche in den jeweiligen Packages beschrieben sind.
 
 **_Funktionen_**: Dabei handelt es sich generell um statische Methoden einer abstrakten Klasse. Abweichungen von dieser Regel werden als solche beschrieben.
 
