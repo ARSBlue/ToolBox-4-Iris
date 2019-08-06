@@ -156,7 +156,7 @@ USER>write ##class(arsblue.io.File).IsEmpty(filepath)
 ```
 $$$File.DeleteFilePath(<Dateipfad>[,<recursive>])
 ```
-This method deletes files and empty directories and their parent directories if they do not contain any other files. Wildcards can also be used (for example, `backups / * .bak`,` logfiles / log *. * `, etc.). The passed file path is normalized before.
+This method deletes files and empty directories and their parent directories if they do not contain any other files. Wildcards can also be used (for example, `backups/*.bak`,`logfiles/log*.* `, etc.). The passed file path is normalized before.
 The following example deletes files from a temporary directory to describe how it works. A Windows installation of InterSystems IRIS was used for the documentation. The functionality is naturally present on every system for which InterSystems IRIS is offered.
 
 **_Windows Command Prompt:_**
@@ -279,15 +279,15 @@ The advantage of this method is that you can automatically clean up directory st
 
 ## Serialize Object Instances from/to JSON
 
-In the standard InterSystems IRIS implementation, object serialization is only provided in XML format (`% XML.Adaptor`). Unfortunately, the offered InterSystems IRIS JSON implementation is only available for simple data types and not for complex classes (collections, etc.). The implicit arsblue JSON serialization can solve these problems.
+In the standard InterSystems IRIS implementation, object serialization is only provided in XML format (`%XML.Adaptor`). Unfortunately, the offered InterSystems IRIS JSON implementation is only available for simple data types and not for complex classes (collections, etc.). The implicit arsblue JSON serialization can solve these problems.
 
-To enable implicit JSON serialization on an object, this object must be derived from the JSON serialization `arsblue.io.Serializable`. From this point, the methods `% FromJSON (...)` are used to import data from JSON into this object and `% ToJSON (...)` to export data from this object to JSON.
+To enable implicit JSON serialization on an object, this object must be derived from the JSON serialization `arsblue.io.Serializable`. From this point, the methods `%FromJSON (...)` are used to import data from JSON into this object and `%ToJSON (...)` to export data from this object to JSON.
 
-To serialize arbitrary objects with JSON, it is not mandatory to derive from this class. There is also the possibility of exporting any IRIS object to JSON via the JSON utilities, which derives from `% Library.RegisteredObject` (see [Serializing Object Instances to/from JSON] (./ arsblue/util/README.md#json)).
+To serialize arbitrary objects with JSON, it is not mandatory to derive from this class. There is also the possibility of exporting any IRIS object to JSON via the JSON utilities, which derives from `%Library.RegisteredObject` (see [Serializing Object Instances to/from JSON] (./ arsblue/util/README.md#json)).
 
 ## Temporary File Objects for Data Streams
 
-InterSystems IRIS offers the possibility to generate temporary file names and also to read binary data streams from files. But there is no data type that combines both functions. In this case, the classes `arsblue.io.TempFileBinary` for binary data streams and` arsblue.io.TempFileCharacter` for character-based data streams have been developed. The advantage of these two classes over the InterSystems IRIS file streams `% Stream.FileBinary` and`% Stream.FileCharacter` is that no file name needs to be passed, i.e. automatically creates a temporary filename (i.e. a file in the default temporary directory) and automatically deletes that file when the class object is removed from memory. Thus, it can not happen that the temporary directory fills up uncontrollably with files for which no program feels responsible (e.g. %ZEN Reports, InterSystems IRIS Management Portal Import/Export, etc.). Of course, you can also pass your own temporary file name in the constructor.
+InterSystems IRIS offers the possibility to generate temporary file names and also to read binary data streams from files. But there is no data type that combines both functions. In this case, the classes `arsblue.io.TempFileBinary` for binary data streams and` arsblue.io.TempFileCharacter` for character-based data streams have been developed. The advantage of these two classes over the InterSystems IRIS file streams `%Stream.FileBinary` and`%Stream.FileCharacter` is that no file name needs to be passed, i.e. automatically creates a temporary filename (i.e. a file in the default temporary directory) and automatically deletes that file when the class object is removed from memory. Thus, it can not happen that the temporary directory fills up uncontrollably with files for which no program feels responsible (e.g. %ZEN Reports, InterSystems IRIS Management Portal Import/Export, etc.). Of course, you can also pass your own temporary file name in the constructor.
 
 The following example creates, describes and automatically deletes a new temporary character-based stream. A Windows installation of InterSystems IRIS was used for the documentation. The functionality is naturally present on every system for which InterSystems IRIS is offered.
 
