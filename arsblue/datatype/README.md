@@ -1,4 +1,4 @@
-# ARSBlue ToolBox-4-Iris -- Data Types
+# ARSBlue ToolBox-4-Iris -- Data Type Package
 
 - [Date, Time and Timestamp](#date-time-and-timestamp)
   - [Formatting](#formatting)
