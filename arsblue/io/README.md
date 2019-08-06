@@ -6,9 +6,9 @@
   - [Filename or Directory Path from File Path](#filename-or-directory-path-from-file-path)
   - [Check File or Directory for Existence](#check-file-or-directory-for-existence)
   - [Check File or Directory for Content](#check-file-or-directory-for-content)
-  - [Delete Files and Directories](#delete-file-and-directories)
+  - [Delete Files and Directories](#delete-files-and-directories)
 - [Serialize Object Instances from/to JSON](#serialize-object-instances-from-to-json)
-- [Temporary File Objects for Data Streams](#temporary-file-objects-for-data-stream)
+- [Temporary File Objects for Data Streams](#temporary-file-objects-for-data-streams)
 
 ## File and Directory Functions
 
