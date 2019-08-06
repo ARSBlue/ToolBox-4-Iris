@@ -1,4 +1,4 @@
-# ARSBlue ToolBox-4-Iris -- Macros 
+# ARSBlue ToolBox-4-Iris -- Macro Package 
 
 ## Include Macro
 
