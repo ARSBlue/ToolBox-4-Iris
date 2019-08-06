@@ -21,7 +21,7 @@ The **ToolBox-4-IRIS** contains a collection of handy and useful tools - feature
 
 The package [arsblue](./arsblue) contains macros that are not present in InterSystems IRIS but that facilitate the development of applications and increase their readability.
 
-These include e.g. general ObjectScript macros, status macros, National Language Support macros, and JavaScript macros.
+These include e.g. general ObjectScript macros, Status macros, National Language Support macros, and JavaScript macros.
 
 ## Data Types
 
@@ -39,13 +39,9 @@ These include general file and directory functions, examining files or directori
 
 The functionality contained in the package [arsblue.event](./arsblue/event) enables the development of applications which should react dynamically to system or data events. Although InterSystems IRIS has process-based event handling, it has no ability to respond dynamically to system or data events (only through the implementation of triggers).
 
-The package includes synchronous or asynchronous event handling by user process or event queue, synchronous or asynchronous application of system events, or handling of persisted data events.
+The package includes synchronous or asynchronous event handling by user process or event queue, synchronous or asynchronous use of system events, or handling of persisted data events.
 
 ## Useful Utilities
-
-Die im Package [arsblue.util](./arsblue/util) beschriebenen Hilfsprogramme erweitern den Funktionsumfang der in InterSystems IRIS nicht vorhandenen Standardfunktionen.
-
-Im Package enthalten sind unter anderem zahlreiche Kalender-Funktionen (Schaltjahr, Kalenderwoche, Wochentag, Feiertage etc.), eine Möglichkeit zur freien Formatierung von Datum, Zeit und Zeitstempel sowie Funktionen zur Ausführung von Betriebssystembefehlen und einige JSON Hilfsprogramme (zum Kopieren, Prüfen, Vergleichen, Exportieren, Importieren, Lesen, Schreiben etc.).
 
 The utilities described in the package [arsblue.util](./arsblue/util) extend the functionality of the standard functions not available in InterSystems IRIS.
 
