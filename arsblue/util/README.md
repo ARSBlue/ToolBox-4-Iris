@@ -1,52 +1,52 @@
 # ARSBlue ToolBox-4-Iris -- Util Package
 
-- [Gregorianischer Kalender](#gregorianischer-kalender)
-  - [Schaltjahr](#schaltjahr)
-  - [Anzahl Tage im Monat](#anzahl-tage-im-monat)
-  - [Anzahl der Kalenderwochen im Jahr](#anzahl-der-kalenderwochen-im-jahr)
-  - [Kalenderwoche für Datum](#kalenderwoche-f%C3%BCr-datum)
-  - [Erster Tag in Kalenderwoche](#erster-tag-in-kalenderwoche)
-  - [Letzter Tag in Kalenderwoche](#letzter-tag-in-kalenderwoche)
-  - [Wochentag für Datum](#wochentag-f%C3%BCr-datum)
-  - [Ostersonntag](#ostersonntag)
-  - [Feiertage](#feiertage)
-- [Datum, Zeit und Zeitstempel](#datum-zeit-und-zeitstempel)
-  - [Frei Formattieren](#frei-formattieren)
-- [Betriebssystem Befehle ausführen](#betriebssystem-befehle-ausf%C3%BChren)
-  - [Ausgabe und Fehlerausgabe einfangen](#ausgabe-und-fehlerausgabe-einfangen)
-  - [Eingabe übergeben](#eingabe-%C3%BCbergeben)
-  - [Verzeichnis angeben](#verzeichnis-angeben)
-  - [Rückruf verwenden](#r%C3%BCckruf-verwenden)
-  - [Befehl asynchron ausführen](#befehl-asynchron-ausf%C3%BChren)
-  - [Befehl asynchron ausführen mit Rückruf](#befehl-asynchron-ausf%C3%BChren-mit-r%C3%BCckruf)
-- [JSON Hilfsprogramme](#json-hilfsprogramme)
-  - [JSON Makro in Quellcode einbinden](#json-makro-in-quellcode-einbinden)
-  - [JSON Index Suche nach Wert](#json-index-suche-nach-wert)
-  - [JSON Arrays bzw. Objekte kopieren](#json-arrays-bzw-objekte-kopieren)
-    - [JSON kopieren](#json-kopieren)
-    - [JSON kopieren mit überschreiben der Zieldaten](#json-kopieren-mit-%C3%BCberschreiben-der-zieldaten)
-    - [JSON kopieren von nicht vorhandenen Daten](#json-kopieren-von-nicht-vorhandenen-daten)
-    - [JSON kopieren von vorhandenen Daten](#json-kopieren-von-vorhandenen-daten)
-  - [JSON Arrays bzw. Objekte auf Gleichheit prüfen](#json-arrays-bzw-objekte-auf-gleichheit-pr%C3%BCfen)
-  - [JSON Arrays bzw. Objekte vergleichen](#json-arrays-bzw-objekte-vergleichen)
-  - [Datenobjekte nach JSON exportieren](#datenobjekte-nach-json-exportieren)
-  - [Datenobjekte von JSON importieren](#datenobjekte-von-json-importieren)
-  - [JSON und `$LIST`](#json-und-list)
-  - [JSON und `%Library.Status`](#json-und-librarystatus)
-  - [JSON lesen](#json-lesen)
-  - [JSON schreiben](#json-schreiben)
+- [Gregorian Calender](#gregorian-calender)
+  - [Leap-Year](#leap-year)
+  - [Number of days a month](#number-of-days-a-month)
+  - [Number of Calender Weeks in the Year](#number-of-calendar-weeks-in-the-year)
+  - [Calendar Week for Date](#calender-week-for-date)
+  - [First Day in Calendar Week](#first-day-in-calendar-week)
+  - [Last Day in Calendar Week](#last-day-in-calendar-week)
+  - [Weekday for Date](#weekday-for-date)
+  - [Easter Sunday](#easter-sunday)
+  - [Public Holidays](#public-holidays)
+- [Date, Time and Timestamp](#date-time-and-timestamp)
+  - [Free Formatting](#free-formatting)
+- [Execute Operating System Commands](#execute-operating-system-commands)
+  - [Capture Output and Error Output](#capture-output-and-error-output)
+  - [Submit Input](#submit-input)
+  - [Specify Directory](#specify-directory)
+  - [Use Callback](#use-callback)
+  - [Execute Command asynchronously](#execute-command-asynchronously)
+  - [Execute Command asynchronously with Callback](#execute-command-asynchronously-with-callback)
+- [JSON Utilities](#json-utilites)
+  - [Include JSON Macro in Source Code](#include-json-macro-in-source-code)
+  - [JSON Index Search by Value](#json-index-search-by-value)
+  - [Copy JSON Arrays or Objects](#copy-json-arrays-or-objects)
+    - [Copy JSON](#copy-json)
+    - [Copy JSON with Overwrite the Target Data](#copy-json-with-overwrite-the-target-data)
+    - [JSON Copying of Non-Existant Data](#json-copying-of-non-existant-data)
+    - [JSON Copy from Existing Data](#json-copy-from-existing-data)
+  - [Check JSON Arrays or Objects for Equality](#check-json-arrays-or-objects-for-equality)
+  - [Compare JSON Arrays or Objects](#compare-json-arrays-or-objects)
+  - [Export Data Objects to JSON](#export-data-objects-to-json)
+  - [Import Data Objects from JSON](#import-data-objects-from-json)
+  - [JSON and `$LIST`](#json-and-list)
+  - [JSON and `%Library.Status`](#json-and-librarystatus)
+  - [Read JSON](#read-json)
+  - [Write JSON](#write-json)
 
-## Gregorianischer Kalender
+## Gregorian Calender
 
-Die Klasse `arsblue.util.Calendar` unterstütz bei Datum und Zeit Problemen. Im Folgenden werden die Funktionen vorgestellt, die in keiner Standard IRIS Datum oder Zeit Implementation vorhanden sind. Eine detaillierte Information der Methodenparameter der vorgestellten Methoden bzw. aller verfügbaren Methoden kann über die IRIS Klassendokumentation abgerufen werden.
+The class `arsblue.util.Calendar` supports problems with date and time. The following are the features that are not present in any standard InterSystems IRIS date or time implementation. Detailed information on the method parameters of the presented methods or all available methods can be found in the InterSystems IRIS class documentation.
 
-Die Funktionen wurden aufgrund europäischer Anforderungen umgesetzt, d.h. eine Woche beginnt mit Montag und endet mit Sonntag und die Feiertage entsprechen der konfigurierten Ländereinstellung. Derzeit stehen die Feiertage für Deutschland (Evangelische und Römisch-Katholische Festtage) und Österreich (Römisch-Katholischen Festtage) zur Verfügung. Die Schnittstelle kann aber für jedes Land individuell erweitert werden.
+The functions have been implemented due to European requirements, i.e. one week starts with Monday and ends with Sunday, and the holidays are the same as the configured locale. Currently, the holidays are available for Germany (Protestant and Roman Catholic feast days) and Austria (Roman Catholic feast days). However, the interface can be individually extended for each country.
 
-Die im Folgenden beschriebenen Methoden haben aufgrund der IRIS `$HOROLOG` Implementation einen Wertebereich für Datum von 31.12.1840 bis 31.12.9999, darunter bzw. darüber können keine Werte geliefert werden. Daraus resultierende Spezialfälle werden in den folgenden Methoden erwähnt.
+The methods described below have a range of values from 31/12/1840 to 31/12/9999 based on the IRIS `$HOROLOG` implementation. Below or above no values can be supplied. Resulting special cases are mentioned in the following methods.
 
-### Schaltjahr
+### Leapy-Year
 
-Mit dieser Methode kann ein Jahr überprüft werden, ob es sich dabei um ein Schaltjahr handelt.
+This method can be used to check a year whether it is a leap year.
 ```
 USER>write ##class(arsblue.util.Calendar).IsLeapYear(2019)
 0
@@ -54,9 +54,9 @@ USER>write ##class(arsblue.util.Calendar).IsLeapYear(2020)
 1
 ```
 
-### Anzahl Tage im Monat
+### Number of days a month
 
-Mit dieser Methode kann die Anzahl der Tage in einem Monat ermittelt werden (unter Berücksichtigung von Schaltjahren).
+This method can be used to determine the number of days in a month. Leap years are taken into account.
 ```
 USER>write ##class(arsblue.util.Calendar).GetDaysInMonth(2019,2)
 28
@@ -64,9 +64,9 @@ USER>write ##class(arsblue.util.Calendar).GetDaysInMonth(2020,2)
 29
 ```
 
-### Anzahl der Kalenderwochen im Jahr
+### Number of Calender Weeks in the Year
 
-Mit dieser Methode kann die Anzahl der Kalenderwochen in einem Jahr ermittelt werden.
+This method can be used to determine the number of calendar weeks in a year.
 ```
 USER>write ##class(arsblue.util.Calendar).GetWeeksInYear(2019)
 52
@@ -74,9 +74,9 @@ USER>write ##class(arsblue.util.Calendar).GetWeeksInYear(2020)
 53
 ```
 
-### Kalenderwoche für Datum
+### Calendar Week for Date
 
-Mit dieser Methode kann die Kalenderwoche für ein Datum ermittelt werden.
+This method can be used to determine the calendar week for a date.
 ```
 USER>set var=20160101 write "week for ",var," is ",##class(arsblue.util.Calendar).GetWeekInYear(.var)," in ",var
 week for 20160101 is 53 in 2015
@@ -86,9 +86,9 @@ USER>set var=20180101 write "week for ",var," is ",##class(arsblue.util.Calendar
 week for 20180101 is 01 in 2018
 ```
 
-### Erster Tag in Kalenderwoche
+### First Day in Calendar Week
 
-Mit dieser Methode kann der erste Tag (Montag) für eine Kalenderwoche ermittelt werden.
+This method can be used to determine the first day (Monday) for a calendar week.
 ```
 USER>write ##class(arsblue.util.Calendar).GetFirstDayInWeek(201553)
 20151228
@@ -97,18 +97,18 @@ USER>write ##class(arsblue.util.Calendar).GetFirstDayInWeek(201652)
 USER>write ##class(arsblue.util.Calendar).GetFirstDayInWeek(201752)
 20171225
 ```
-Da die Kalenderwoche nicht Jahrestreu ist, gibt es eine spezielle Variante dieser Methode, die beim Jahreswechsel nicht den ersten Tag der Kalenderwoche liefert, sondern den ersten Tag im Jahr (sonst funktioniert diese Methode aber gleich wie die Standardmethode).
+Since the calendar week is not year-old, there is a special variant of this method, which does not deliver the first day of the calendar week at the turn of the year, but the first day of the year (otherwise, this method works the same as the standard method).
 ```
 USER>write ##class(arsblue.util.Calendar).GetFirstDayInWeek(201901)
 20181231
 USER>write ##class(arsblue.util.Calendar).GetFirstDayInWeekInYear(201901)
 20190101
 ```
-Aufgrund der IRIS `$HOROLOG` Implementation kann für Kalenderwoche 1840/53 nicht das korrekte Datum geliefert werden, sondern es wird das erste valide IRIS `$HOROLOG` Datum (31.12.1840) geliefert.
+Since the correct date can not be delivered due to the InterSystems IRIS `$HOROLOG` implementation for calendar week 1840/53, the first valid InterSystems IRIS `$HOROLOG` date (31.12.1840) will be delivered.
 
-### Letzter Tag in Kalenderwoche
+### Last Day in Calendar Week
 
-Mit dieser Methode kann der letzte Tag (Sonntag) für eine Kalenderwoche ermittelt werden.
+This method can be used to determine the last day (Sunday) for a calendar week.
 ```
 USER>write ##class(arsblue.util.Calendar).GetLastDayInWeek(201553)
 20160103
@@ -117,28 +117,29 @@ USER>write ##class(arsblue.util.Calendar).GetLastDayInWeek(201652)
 USER>write ##class(arsblue.util.Calendar).GetLastDayInWeek(201752)
 20171231
 ```
-Aufgrund der IRIS `$HOROLOG` Implementation kann für die Kalenderwoche 9999/52 nicht das korrekte Datum geliefert werden, sondern es wird das letzte valide IRIS `$HOROLOG` Datum (31.12.9999) geliefert.
+Since the correct date can not be delivered due to the InterSystems IRIS `$HOROLOG` implementation for the calendar week 9999/52, the last valid InterSystems IRIS `$HOROLOG` date (31.12.9999) will be delivered.
 
-### Wochentag für Datum
+### Weekday for Date
 
-Mit dieser Methode kann der Wochentag für ein Datum bestimmt werden (`1`=Montag bis `7`=Sonntag).
+With this method the day of the week can be determined for a date (`1` = Monday to `7` = Sunday).
 ```
 USER>write ##class(arsblue.util.Calendar).GetDayInWeek(20190101)
 2
 ```
 
-### Ostersonntag
+### Easter Sunday
 
-Mit dieser Methode kann der Ostersonntag für ein Jahr bestimmt werden. Dieser Tag wird für die Berechnung der meisten kirchlichen Festtage für die Evangelische bzw. Römisch-Katholische Kirche verwendet.
+With this method, the Easter Sunday can be determined for a year. This day is used for the calculation of most church holidays for the Evangelical or Roman Catholic Church.
 ```
 USER>write ##class(arsblue.util.Calendar).GetEaster(2019)
 20190421
 ```
-Aufgrund der IRIS `$HOROLOG` Implementation kann kein Ostersonntag vor dem Jahr 1841 oder nach dem Jahr 9999 ermittelt werden.
+Due to the InterSystems IRIS `$HOROLOG` implementation, Easter Sunday can not be determined before 1841 or after 9999.
 
-### Feiertage
+### Public Holidays
 
-Mit dieser Methode kann für ein Datum ermittelt werden, ob es sich um einen Feiertag handelt oder nicht. Weiters können mit derselben Methode auch alle Feiertage eines Jahres ermittelt werden. Das im Folgenden gezeigt Beispiel verwendet Österreich (AT) als Ländereinstellung.
+This method can be used to determine for a date whether it is a holiday or not. Furthermore, all holidays of a year can be determined with the same method. The example shown below uses Austria (AT) as the country setting.
+
 ```
 USER>write ##class(arsblue.util.Calendar).GetHoliday(20190214,,,.holidays)
 valentines_day
@@ -179,11 +180,11 @@ holidays(20191225)=$lb(1,"christmas_day")
 holidays(20191226)=$lb(1,"boxing_day")
 holidays(20191231)=$lb(.5,"new_years_eve")
 ```
-Die Liste aller Festtage wird nur per Referenz übergeben und enthält pro Datum eine IRIS `$LIST` mit der Information ob es sich dabei um einen ganzen (`1`), halben (`.5`) oder keinen (`0`) gesetzlichen Feiertag handelt bzw. ob es sich dabei um einen Feiertag handelt, der nur in gewissen Bundesländern begangen wird (kommaseparierte Liste aller Bundesländerkürzel) und falls zwei Festtage auf dasselbe Datum fallen, werden ihre Kennungen als kommaseparierte Liste angegeben.
+The list of all holidays is given by reference only and contains per date an InterSystems IRIS `$LIST` with the information whether it is a whole (`1`), a half (`.5`) or no (`0`) legal Holiday is about or whether it is a holiday that is committed only in certain states (comma-separated list of all provincial abbreviations) and if two holidays on the same date, their identifiers are given as a comma-separated list.
 
-Aufgrund der IRIS `$HOROLOG` Implementation können keine Feiertage vor dem Jahr 1841 und nach dem Jahr 9999 ermittelt werden.
+Due to the InterSystems IRIS `$HOROLOG` implementation no holidays can be determined before the year 1841 and after the year 9999.
 
-Sollten die Feiertage für ein Land benötigt werden, dass noch nicht implementiert wurde, so kann dies einfach durch Erstellen einer Klasse `arsblue.util.Calendar.<Ländercode>` und Erweitern der Klasse `arsblue.util.Calendar` erfolgen. Es muss dabei nur die Methode `GetHoliday(...)` überschrieben werden.
+If holidays are needed for a country that has not yet been implemented, this can be done simply by creating a class `arsblue.util.Calendar. <Country code>` and extending the class `arsblue.util.Calendar`. Only the method `GetHoliday (...)` has to be overwritten.
 ```
 /// Holidays for country XY
 Class arsblue.util.Calendar.XY extends arsblue.util.Calendar
@@ -208,31 +209,31 @@ ClassMethod CreateHolidays(yyyy as %Integer = 0, ByRef holidays)
 }
 }
 ```
-Es sollten immer alle möglichen Feiertage berechnet werden! Das Zwischenspeichern der Feiertage obliegt der Applikation, die sie implementiert!
+You should always calculate all possible holidays. The caching of holidays is the responsibility of the application that implements them!
 
-## Datum, Zeit und Zeitstempel
+## Date, Time and Timestamp
 
-Die Klasse `arsblue.util.DateTime` beinhaltet jene Funktionalität, die aufgrund der IRIS Spezifikation von Datentypen nicht direkt in diesen untergebracht werden konnte (z.B. sind keine SQL Prozeduren in Datentypen erlaubt, usw.).
+The `arsblue.util.DateTime` class contains the functionality that could not be accommodated directly by the InterSystems IRIS specification of data types (for example, no SQL procedures are allowed in data types, etc.).
 
-### Frei Formattieren
+### Free Formatting
 
-Diese Methode erlaubt es Datum, Zeit oder Zeitstempel frei in ein anderes Format zu bringen.
+This method allows you to freely move the date, time or timestamp to another format.
 ```
 USER>write ##class(arsblue.util.DateTime).Format(20190406213405.123, "yyyyMMddHHmmss.SSS", "EEEE, dd-MM-yyyy/ww HH:mm:ss (SSS)")
 Samstag, 06-04-2019/14 21:34:05 (123)
 ```
-Dieselbe Methode kann auch als SQL Prozedur aufgerufen werden.
+The same method can also be called as an SQL procedure.
 ```
 SELECT arsblue_util.DateTime_Format(20190406213405.123, 'yyyyMMddHHmmss.SSS','EEEE, dd-MM-yyyy/ww HH:mm:ss (SSS)')
 ```
 
-## Betriebssystem Befehle ausführen
+## Execute Operating System Commands
 
-Die Standard IRIS Implementation bietet bereits eine Reihe von Möglichkeiten, einen Befehl im Betriebssystem auszuführen. Die Klasse `arsblue.util.Exec` erweitert diese Funktionalitäten um die Verarbeitung in IRIS zu vereinfachen.
+The standard InterSystems IRIS implementation already offers a number of options for executing a command in the operating system. The class `arsblue.util.Exec` extends these functionalities to simplify the processing in InterSystems IRIS.
 
-### Ausgabe und Fehlerausgabe einfangen
+### Capture Output and Error Output
 
-In der Standard IRIS Implementation muss sich der Programmierer selbst um das Einfangen der Ausgabe bzw. der Fehlerausgabe kümmern. Die Ausgabe und Fehlerausgabe können direkt über Datenströme abgefragt werden.
+In the standard InterSystems IRIS implementation, the programmer himself has to take care of capturing the output or the error output. The output and error output can be queried directly via data streams.
 ```
 USER>write $System.Status.GetErrorText(##class(arsblue.util.Exec).Call("dir",,,.out,.err))
 
@@ -258,11 +259,11 @@ USER>do out.OutputToDevice()
 USER>do err.OutputToDevice()
 Der Befehl "unknown_cmd" ist entweder falsch geschrieben oder konnte nicht gefunden werden.
 ```
-Die Ausgabe und Fehlerausgabe können auch im selben Datenstrom eingefangen werden (Beispiel s. Eingabe übergeben). Die Ausgabe und Fehlerausgabe können ebenfalls auf dem aktuellen Gerät ausgegeben werden, indem für die Datenströme die aktuelle `$IO` Variable übergeben wird (Beispiel s. Verzeichnis angeben).
+The output and error output can also be captured in the same data stream (example see [Submit Input](#submit-input)). The output and error output can also be output on the current device by passing the current `$IO` variable for the data streams (example see [Specify Directory](#specify-directory).
 
-### Eingabe übergeben
+### Submit Input
 
-In der Standard IRIS Implementation muss sich der Programmierer selbst um die Übergabe der Eingabe kümmern. Die Eingabe kann direkt über einen Datenstrom übergeben werden.
+In the standard InterSystems IRIS implementation, the programmer himself has to take care of the transfer of the input. The input can be transferred directly via a data stream.
 ```
 USER>set in=##class(%Stream.TmpCharacter).%New()
  
@@ -296,9 +297,9 @@ c:\intersystems\iris\mgr\user>unknown_cmd
  
 c:\intersystems\iris\mgr\user>
 USER>do err.OutputToDevice()
-Der Befehl "unknown_cmd" ist entweder falsch geschrieben oder konnte nicht gefunden werden.
+The command "unknown_cmd" is either misspelled or could not be found.
 ```
-Das Beispiel oben zeigt nun, dass die Ausgabe und Fehlerausgabe jeweils für sich keinen Aufschluss darüber geben, in welcher Reihenfolge diese passiert sind. Es ist sinnvoll, wenn mehrere Ausgaben und Fehlerausgaben erwartet werden, die beiden auf einen Datenstrom zusammenzuführen.
+The example above now shows that the output and the error output in each case give no indication of the order in which they happened. It makes sense to expect multiple outputs and error outputs to merge the two into one data stream.
 ```
 USER>set in=##class(%Stream.TmpCharacter).%New()
  
@@ -331,12 +332,12 @@ c:\intersystems\iris\mgr\user>dir
                3 Verzeichnis(se), 94 607 515 648 Bytes frei
  
 c:\intersystems\iris\mgr\user>unknown_cmd
-Der Befehl "unknown_cmd" ist entweder falsch geschrieben oder konnte nicht gefunden werden.
+The command "unknown_cmd" is either misspelled or could not be found.
 ``` 
 
-### Verzeichnis angeben
+### Specify Directory
 
-In der Standard IRIS Implementation ist es nicht direkt möglich, den Befehl in einem Verzeichnis des Betriebssystems auszuführen. Das Verzeichnis, in dem der Betriebssystem Befehl ausgeführt werden soll, kann angegeben werden.
+In the standard InterSystems IRIS implementation, it is not directly possible to execute the command in a directory of the operating system. The directory in which the operating system command is to be executed can be specified.
 ```
 USER>write $System.Status.GetErrorText(##class(arsblue.util.Exec).Call("dir","C:\InterSystems\IRIS\mgr\stream",,$IO,$IO))
  Volume in Laufwerk C: hat keine Bezeichnung.
@@ -350,9 +351,9 @@ USER>write $System.Status.GetErrorText(##class(arsblue.util.Exec).Call("dir","C:
                2 Verzeichnis(se), 94 609 014 784 Bytes frei
 ```
 
-### Rückruf verwenden
+### Use Callback
 
-In der Standard IRIS Implementation ist es nicht direkt möglich, eine Funktion anzugeben, die nach dem Betriebssystem Befehl ausgeführt werden soll. Der Unterschied zum Bearbeiten in der Aufrufenden Funktion, ist der direkte Zugriff auf die beim Aufruf verwendeten Parameter.
+In the standard InterSystems IRIS implementation, it is not directly possible to specify a function to be executed after the operating system command. The difference to editing in the calling function is the direct access to the parameters used in the call.
 
 **_Callback Definition:_**
 ```
@@ -386,7 +387,7 @@ ClassMethod ExecCallback(params...)
 }
 ```
 
-**_Callback Beispiel:_**
+**_Callback Sample:_**
 ```
 USER>write $System.Status.GetErrorText(##class(arsblue.util.Exec).Call("dir",,,,,,.pid,"User.TestCallback.ExecCallback","A","B","C",1,2,3))
  
@@ -417,9 +418,9 @@ USER>zw ^callback(pid)
 ^callback(21408,17)=""
 ```
 
-### Befehl asynchron ausführen
+### Execute Command asynchronously
 
-In der Standard IRIS Implementation ist es nicht direkt möglich, den Status eines Betriebssystem Befehls, der im Hintergrund (separater Prozess) ausgeführt wird, abzufragen. Die Prozess Nummer kann direkt abgefragt werden.
+In the standard InterSystems IRIS implementation, it is not directly possible to query the status of an operating system command executed in the background (separate process). The process number can be queried directly.
 ```
 USER>write $System.Status.GetErrorText(##class(arsblue.util.Exec).Call("dir /S /B >NUL","C:\InterSystems\IRIS",,,,1,.pid)),!,"pid=",pid
  
@@ -428,9 +429,9 @@ USER>while (##class(arsblue.util.Exec).IsProcessRunning(pid)) { write "." } writ
 ......finished
 ```
 
-### Befehl asynchron ausführen mit Rückruf
+### Execute Command asynchronously with Callback
 
-In der Standard IRIS Implementation ist es nicht direkt möglich, auf einen Betriebssystem Befehl zu reagieren, der im Hintergrund ausgeführt wird. Über die Rückruf Funktion ist es möglich, in IRIS Befehle auszuführen, nachdem der Betriebssystem Befehl im Hintergrund abgeschlossen wurde.
+In the standard InterSystems IRIS implementation, it is not directly possible to respond to an operating system command that runs in the background. The callback function allows you to execute commands in InterSystems IRIS after the operating system command completes in the background.
 ```
 USER>write $System.Status.GetErrorText(##class(arsblue.util.Exec).Call("dir",,,,,1,.pid,"User.TestCallback.ExecCallback","A","B","C",1,2,3))
  
@@ -461,13 +462,13 @@ USER>zw ^callback(pid)
 ^callback(1832,17)=""
 ```
 
-## JSON Hilfsprogramme
+## JSON Utilities
 
-In der Standard IRIS JSON Implementation sind bereits viele Funktionen vorhanden. Die hier beschriebenen Funktionen kombinieren einige der Funktionen bzw. erweitern sie für einen verbesserten Umgang mit JSON Objekten. Zum einen stehen die Funktionen der Klasse `arsblue.util.Json` zur Verfügung und zum anderen gibt es das entsprechende Makro `arsblue.util.Json` um die wichtigsten Funktionen der Klasse in gekürzter Schreibweise im Quellcode verwenden zu können. Im Folgenden werden die Funktionen immer mit dem äquivalenten Makro (sofern vorhanden) beschrieben. 
+Many functions already exist in the standard InterSystems IRIS JSON implementation. The functions described here combine some of the functions or expand them for improved handling of JSON objects. On the one hand the functions of the class `arsblue.util.Json` are available and on the other hand there is the corresponding macro` arsblue.util.Json` in order to be able to use the most important functions of the class in shortened notation in the source code. In the following, the functions are always described with the equivalent macro (if any).
 
-### JSON Makro in Quellcode einbinden
+### Include JSON Macro in Source Code
 
-Um das Makro im eigenen Quellcode verwenden zu können, ist es notwendig es in der ersten Zeile der Klasse einzubinden.
+To be able to use the macro in your own source code, it is necessary to include it in the first line of the class.
 ```
 Include (arsblue.util.Json)
 
@@ -477,19 +478,19 @@ Class my.Class {
 }
 ```
 
-### JSON Index Suche nach Wert
+### JSON Index Search by Value
 
 **_Syntax:_**
 ```
  ##class(arsblue.util.Json).IndexOf(<JSON-Array-Oder-Objekt>,<Wert>[,<Start-Index>])
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.IndexOf(<JSON-Array-Oder-Objekt>,<Wert>[,<Start-Index>])
 ```
 
-Die Suche liefert Default den Index an dem der Wert als erstes vorkommt. Über den optionalen Parameter `Start-Index` kann nach den weiteren Vorkommen gesucht werden. Wird kein Index für einen Wert gefunden, wird eine leere Zeichenkette zurückgeliefert.
+By default, the search returns the index where the value occurs first. The optional parameter `Start-Index` can be used to search for further occurrences. If no index for a value is found, an empty string is returned.
 
 **_JSON Array:_**
 ```
@@ -505,7 +506,7 @@ USER>write ##class(arsblue.util.Json).IndexOf(array,"a",4)
 
 ```
 
-**_JSON Objekt:_**
+**_JSON Object:_**
 ```
 USER>set object={"key0":"a","key1":"b","key2":"a","key3":"c","key4":"a","key5":"d"}
  
@@ -519,27 +520,27 @@ USER>write ##class(arsblue.util.Json).IndexOf(object,"a","key4")
 
 ```
 
-### JSON Arrays bzw. Objekte kopieren
+### Copy JSON Arrays or Objects
 
 **_Syntax:_**
 ```
  ##class(arsblue.util.Json).Copy(<JSON-Quell-Array-Oder-Objekt>,<JSON-Ziel-Array-Oder-Objekt>[,<Bedingung>])
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.Copy(<JSON-Quell-Array-Oder-Objekt>,<JSON-Ziel-Array-Oder-Objekt>[,<Bedingung>])
 ```
  
-Mit dieser Funktion können JSON Arrays bzw. Objekte kopiert bzw. verbunden werden. Wird ein leeres Ziel Array bzw. Objekt angegeben, handelt es sich um eine reine Kopierfunktion. Wird ein nicht leeres Ziel Array bzw. Objekt angegeben, werden die Daten im Zeil mit den Daten der Quelle verbunden. Die Art und Weise, wie die Daten verbunden werden, kann über die Bedingung angegeben werden.
+With this function, JSON arrays or objects can be copied or linked. If an empty destination array or object is specified, it is a pure copy function. If a non-empty target array or object is specified, the data in the destination is connected to the data of the source. The way the data is connected can be specified by the condition.
 
-| Bedingung | Beschreibung |
+| Condition | Description |
 | --- | --- |
-| **0** (Default) | Kopiert alle Daten der Quelle und überschreibt ggf. die Daten im Ziel. |
-| **1** | Kopiert nur jene Daten der Quelle, die im Ziel nicht vorhanden sind. |
-| **2** | Kopiert nur jene Daten der Quelle, die im Ziel vorhanden sind und überschreibt diese. |
+| **0** (Default) | Copies all data from the source and overwrites the data in the destination if necessary. |
+| **1** | Copies only those data of the source that are not present in the destination. |
+| **2** | Copies only those data of the source, which exist in the destination and overwrites these. |
 
-#### JSON kopieren
+#### Copy JSON
 
 ```
 USER>set source={"array":[1,2,3],"object":{"a":"b","c":"d"}},target=""
@@ -549,9 +550,9 @@ USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.t
 USER>write target.%ToJSON()
 {"array":[1,2,3],"object":{"a":"b","c":"d"}}
 ```
-Bei dieser Bedingung wird eine Tiefe-Kopie erstellt. Der Vorteil gegenüber der von IRIS vorgeschlagenen Variante (`set target={}.%FromJson(source.%ToJson())`) ist, dass Objektreferenzen kopiert werden, welche im IRIS Standardfall nicht nach JSON exportiert und damit auch nicht mehr von JSON importiert werden können.
+This condition creates a depth copy. The advantage over the variant proposed by InterSystems IRIS (`set target={}.%FromJson(source.% ToJson ())`) is that object references are copied, which in the InterSystems IRIS standard case are not exported to JSON and thus no longer can be imported from JSON.
 
-#### JSON kopieren mit überschreiben der Zieldaten
+#### Copy JSON with Overwrite the Target Data
 
 ```
 USER>set source={"array":[1,2,3],"object":{"a":"b","c":"d"}},target={"array":[3,4,5],"object":{"a":"x","b":"z"}}
@@ -561,9 +562,9 @@ USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.t
 USER>write target.%ToJSON()
 {"array":[1,2,3],"object":{"a":"b","b":"z","c":"d"}}
 ```
-Bei dieser Bedingung werden JSON Arrays vollständig ersetzt, in JSON Objekte werden die Daten nur überschrieben.
+With this condition JSON arrays are completely replaced, in JSON objects the data is only overwritten.
 
-#### JSON kopieren von nicht vorhandenen Daten
+#### JSON Copying of Non-Existant Data
 
 ```
 USER>set source={"array":[1,2,3],"object":{"a":"b","c":"d"}},target={"array":[3,4,5],"object":{"a":"x","b":"z"}}
@@ -573,9 +574,9 @@ USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.t
 USER>write target.%ToJSON()
 {"array":[3,4,5,1,2],"object":{"a":"x","b":"z","c":"d"}}
 ```
-Bei dieser Bedingung werden nicht vorhandene Werte in JSON Arrays am Ende hinzugefügt, in JSON Objekten werden nur nicht vorhandene Daten eingefügt.
+In this condition, non-existent values are added to JSON arrays at the end; JSON objects will only insert non-existent data.
 
-#### JSON kopieren von vorhandenen Daten
+#### JSON Copy from Existing Data
 
 ```
 USER>set source={"array":[1,2,3],"object":{"a":"b","c":"d"}},target={"array":[3,4,5],"object":{"a":"x","b":"z"}}
@@ -585,21 +586,21 @@ USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.t
 USER>write target.%ToJSON()
 {"array":[3,4,5],"object":{"a":"b","b":"z"}}
 ```
-Bei dieser Bedingung bleiben JSON Arrays unberührt, in JSON Objekten werden nur vorhandene Daten überschrieben.
+With this condition, JSON arrays remain untouched; in JSON objects, only existing data is overwritten.
 
-### JSON Arrays bzw. Objekte auf Gleichheit prüfen
+### Check JSON Arrays or Objects for Equality
 
 **_Syntax:_**
 ```
  ##class(arsblue.util.Json).Equals(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.Equals(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
 ```
  
-Mit dieser Funktion können JSON Arrays bzw. Objekte auf Gleichheit geprüft werden.
+With this function, JSON arrays or objects can be checked for equality.
 ```
 USER>set json1={"a":[{"b":"c"},1,2,3]},json2={"a":[{"b":"c"},1,2,3]}
  
@@ -614,7 +615,7 @@ USER>set json1={"a":[{"b":"c"},1,2,3,4,5]},json2={"a":[{"b":"c"},1,2,3]}
 USER>write ##class(arsblue.util.Json).Equals(json1,json2)
 0
 ```
-Es werden alle Ebenen der beiden JSON Arrays bzw. Objekte verglichen. Der Vorteil gegenüber der von IRIS vorgeschlagenen Variante (`set equals=(json1.%ToJSON()=json2.%ToJSON())`) ist, dass Objektreferenzen verglichen werden, welche im IRIS Standardfall nicht nach JSON exportiert und damit auch nicht verglichen werden können. Des Weiteren wird im IRIS JSON Export die Reihenfolge der Anlage der Werte berücksichtigt, womit es nicht möglich ist, zu prüfen, ob ein JSON Objekt (bei dem es nur auf den Inhalt und nicht auf die Reihenfolge - wie beim JSON Array - ankommt) wirklich gleich ist.
+All levels of the two JSON arrays or objects are compared. The advantage over the variant proposed by InterSystems IRIS (`set equals=(json1.% ToJSON()=json2.%ToJSON())`) is that object references are compared, which in the InterSystems IRIS standard case are not exported to JSON and thus can not be compared. Furthermore, the IRIS JSON export takes into account the order of creation of the values, so it is not possible to check whether a JSON object (which depends only on the content and not the order - as in the JSON array) really does is equal to.
 ```
 USER>set json1={"a":"b","c":"d"},json2={"c":"d","a":"b"}
  
@@ -627,19 +628,19 @@ USER>write ##class(arsblue.util.Json).Equals(json1,json2)
 1
 ```
 
-### JSON Arrays bzw. Objekte vergleichen
+### Compare JSON Arrays or Objects
 
 **_Syntax:_**
 ```
  ##class(arsblue.util.Json).Diff(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.Diff(<JSON-Array-Oder-Objekt>,<JSON-Vergleichs-Array-Oder-Objekt>)
 ```
  
-Mit dieser Funktion können JSON Arrays bzw. Objekte miteinander verglichen werden.
+This function can be used to compare JSON arrays or objects.
 ```
 USER>set json1={"a":"b","c":["d","e","f"]},json2={"c":["d","e","f"],"a":"b"}
  
@@ -650,9 +651,9 @@ USER>set json1={"a":"b","c":["d","E","f"]},json2={"c":["d","e","f"],"a":"B"}
 USER>write ##class(arsblue.util.Json).Diff(json1,json2).%ToJSON()
 {"a":["b","B"],"c":[null,["E","e"]]}
 ```
-Es werden alle Ebenen der beiden JSON Arrays bzw. Objekte verglichen. Wird kein JSON Array bzw. Objekt zurückgeliefert, sind die beiden JSON Arrays bzw. Objekte ident, andernfalls werden im zurückgelieferten JSON Array bzw. Objekt jene Werte als JSON Array (`[<Wert-1>,<Wert-2>]`) aufgelistet, die sich geändert haben (in einem JSON Array bedeutet `null`, dass sich der Wert an diesem Index nicht geändert hat, aber es einen Index dahinter gibt, der eine Änderung beinhaltet).
+All levels of the two JSON arrays or objects are compared. If no JSON array or object is returned, the two JSON arrays or objects are identical; otherwise, in the returned JSON array or object, those values are defined as JSON array (`[<value-1>,<value-2>]`) that have changed (in a JSON array, `null` means that the value at this index has not changed, but there is an index behind it that contains a change).
 
-### Datenobjekte nach JSON exportieren
+### Export Data Objects to JSON
 
 **_Syntax:_**
 ```
@@ -660,34 +661,35 @@ Es werden alle Ebenen der beiden JSON Arrays bzw. Objekte verglichen. Wird kein 
  ##class(arsblue.util.Json).GetJSONFromExtent(<Objekt-ID>,<Exportierte-JSON-Objektreferenz>[,<Alle-Daten-exportieren>][,<ID/GUID-nicht-exportieren>])
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.GetJSONFromObject(<Objektreferenz>,<Exportierte-JSON-Objektreferenz>[,<Alle-Daten-exportieren>][,<ID/GUID-nicht-exportieren>][,<Transiente-Daten-exportieren>])
 $$$JSON.GetJSONFromExtent(<Objekt-ID>,<Exportierte-JSON-Objektreferenz>[,<Alle-Daten-exportieren>][,<ID/GUID-nicht-exportieren>])
 ```
 
-Mit diesen Funktionen können Datenobjekte nach JSON exportiert werden. Der Unterschied zwischen den beiden Methoden ist, dass die Methode `GetJSONFromObject` mit den geladenen Objektreferenzen im Speicher arbeitet, wohingegen `GetJSONFromExtent` mit den Daten in den jeweiligen Objektglobal arbeitet. Die IRIS Architektur ist dahingehend ausgelegt, dass ein Datenobjekt nur einmal geladen wird, d.h. egal wie oft ich ein Objekt mit derselben Objekt-ID lade, im Speicher verweist es immer auf dieselbe Objektreferenz (mit all ihren bereits durchgeführten Änderungen). Dies ist manchmal nicht erwünscht, und die Applikation möchte wissen, was den nun tatsächlich noch im Objektglobal steht bzw. welche Änderungen bereits im Objektglobal verfügbar sind, dafür wurde die Möglichkeit geschaffen, diese Daten als JSON direkt vom Extent einzulesen.
-Mit der Methode `GetJSONFromObject` können alle im Speicher befindlichen Objektreferenzen nach JSON exportiert werden. Es ist nicht zwingend notwendig, dass es sich dabei um persistierbare Daten handelt, sondern nur, dass sie von `%Library.RegisteredObject` abgeleitet wurden.
-Der Entwickler kann sich entscheiden, ob er alle Daten exportieren will oder nur die "Kopf"-Daten (also Klasse, ID und wenn vorhanden GUID).
-Der Entwickler kann sich entscheiden, ob er alle Daten ausser den "Kopf"-Daten exportieren will. Diese Option ist vor allem dafür interessant, wenn man mit Fremdsystemen kommunizieren muss, die nicht unbedingt über interne Klassennamen und ID's Bescheid wissen sollen.
-Der Entwickler kann sich entscheiden, ob er auch transiente Daten exportieren will. Diese Option steht natürlich nicht für `GetJSONFromExtent` zur Verfügung, da hier nur Nicht-transiente Daten exportiert werden können.
+With these functions, data objects can be exported to JSON. The difference between the two methods is that the `GetJSONFromObject` method works with the loaded object references in memory, whereas` GetJSONFromExtent` works with the data in the respective object global. The InterSystems IRIS architecture is designed to load a data object only once, i.e. no matter how many times an object is loaded with the same object id, it always points to the same object reference in memory (with all its changes already made). This is sometimes not desirable and the application wants to know what is actually still in the object global or what changes are already available in the object world. For this, the possibility was created to read this data as JSON directly from the Extent.
 
-### Datenobjekte von JSON importieren
+With the `GetJSONFromObject` method, all object references stored in memory can be exported to JSON. It is not mandatory that these are persistable data, only that they are derived from `%Library.RegisteredObject`.
+The programmer can decide if he wants to export all data or just the "header" data (ie class, ID and if available GUID).
+The programmer can decide if he wants to export all data except the "header" data. This option is particularly interesting if you need to communicate with third-party systems that are not necessarily aware of internal class names and ID's.
+The programmer can decide if he also wants to export transient data. Of course, this option is not available for `GetJSONFromExtent` because only non-transient data can be exported here.
+
+### Import Data Objects from JSON
 
 **_Syntax:_**
 ```
  ##class(arsblue.util.Json).GetObjectFromJSON(<JSON-Objekt>,<Importierte-Objektreferenz>[,<Alle-Daten-importieren>][,<ID/GUID-nicht-importieren>][,<Transiente-Daten-importieren>])
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.GetObjectFromJSON(<JSON-Objekt>,<Importierte-Objektreferenz>[,<Alle-Daten-importieren>][,<ID/GUID-nicht-importieren>][,<Transiente-Daten-importieren>])
 ```
 
-Mit dieser Funktion können Datenobjekte von JSON importiert werden. Dabei werden die Objektreferenzen geladen (falls Datenobjekte) und entsprechend verändert aber nicht gespeichert (falls Datenobjekte). Das Speicher der Datenobjekte obliegt dem Entwickler. Es können prinzipiell alle von `%Library.RegisteredObject` abgeleiteten Klassen importiert werden.
-Der Entwickler kann sich entscheiden, ob er alle Daten importieren will oder nur die "Kopf"-Daten (also Klasse, ID und wenn vorhanden GUID). Dies entspricht einer Verfügbarkeitsprüfung, da nur kontrolliert werden kann, ob sich ein Datenobjekt mit den gegebenen "Kopf"-Daten laden läßt.
-Der Entwickler kann sich entscheiden, ob er alle Daten ausser den "Kopf"-Daten importieren will. Diese Option ist vor allem dafür interessant, wenn man Kopien von Daten erstellen muss, d.h. ein Export mit darauffolgendem Import ohne "Kopf"-Daten erzeugt eine Kopie der exportierten Daten (sofern mit automatischen IDs gearbeitet wird).
-Der Entwickler kann sich entscheiden, ob er auch transiente Daten importieren will.
+With this function, data objects can be imported from JSON. The object references are loaded (if data objects) and changed accordingly but not saved (if data objects). The memory of the data objects is the responsibility of the programmer. In principle, all classes derived from `% Library.RegisteredObject` can be imported.
+The developer can decide if he wants to import all the data or just the "header" data (i.e. class, ID and if available GUID). This corresponds to an availability check, as it is only possible to check whether a data object can be loaded with the given "header" data.
+The programmer can decide if he wants to import all data except the "header" data. This option is especially interesting when you need to make copies of data, i.e. an export with subsequent import without "header" data creates a copy of the exported data (if automatic IDs are used).
+The programmer can decide if he also wants to import transient data.
 
 ### JSON und `$LIST`
 
@@ -697,13 +699,13 @@ Der Entwickler kann sich entscheiden, ob er auch transiente Daten importieren wi
  ##class(arsblue.util.Json).GetListFromJSON(<JSON-Array>)
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.GetJSONFromList(<$LIST>)
 $$$JSON.GetListFromJSON(<JSON-Array>)
 ```
 
-Mit diesen Funktionen kann aus einer `$LIST` ein JSON Array bzw. aus einem JSON Array eine `$LIST` erzeugt werden.
+With these functions a `$LIST` can be used to create a JSON array or from a JSON array a `$LIST`.
 ```
 USER>set list=$LISTBUILD("a","b","c",$LISTBUILD(1,2,3))
  
@@ -724,13 +726,13 @@ $lb("a","b","c",$lb(1,2,3))
  ##class(arsblue.util.Json).GetStatusFromJSON(<JSON-Objekt>)
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.GetJSONFromStatus(<Status>)
 $$$JSON.GetStatusFromJSON(<JSON-Objekt>)
 ```
 
-Mit diesen Funktionen kann aus einem `%Library.Status` ein JSON Objekt bzw. aus einem JSON Objekt ein `%Library.Status` erzeugt werden.
+These functions can be used to create a JSON object from a `%Library.Status` or a `%Library.Status` from a JSON object.
 ```
 USER>set status=$System.Status.Error(5001,"This is an error!")
  
@@ -742,33 +744,33 @@ USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).GetStatusFromJ
 FEHLER #5001: This is an error!
 ```
 
-### JSON lesen
+### Read JSON
 
 **_Syntax:_**
 ```
  ##class(arsblue.util.Json).%FromJSON(<Zeichenkette-Oder-Datenstrom>)
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.%FromJSON(<Zeichenkette-Oder-Datenstrom>)
 ```
 
-Mit dieser Funktion kann JSON aus einer Zeichenkette bzw. einem Datenstrom gelesen werden. Der Unterschied zur Standard IRIS Implementation ist, dass sowohl strikte als auch nicht strikte JSON Syntax (Objektschlüsselwörter mit oder ohne Hochkommas), einzeilige wie auch mehrzeilige Kommentare und JavaScript-Funktionen (werden als Datenstrom-Objekte gespeichert) erlaubt sind. Die Einschränkung dabei ist, dass die Objekt-Schlüsselwörter immer am Anfang einer neuen Zeile (Leerzeichen und Tabulatoren werden dabei ignoriert) stehen müssen.
+With this function JSON can be read from a string or a data stream. The difference to the standard InterSystems IRIS implementation is that both strict and non-strict JSON syntax (object keywords with or without single quotes), single-line as well as multi-line comments and JavaScript functions (stored as data stream objects) are allowed. The limitation is that the object keywords always have to be at the beginning of a new line (spaces and tabs are ignored).
 
-### JSON schreiben
+### Write JSON
 
 **_Syntax:_**
 ```
  ##class(arsblue.util.Json).%ToJSON(<JSON-Array-Oder-Objekt>,<Ausgabedatenstrom-Objektreferenz>[,<Einrückungszeichen>][,<Einrückungsebene>])
 ```
 
-**_Makro:_**
+**_Macro:_**
 ```
 $$$JSON.%ToJSON(<JSON-Array-Oder-Objekt>,<Ausgabedatenstrom-Objektreferenz>[,<Einrückungszeichen>][,<Einrückungsebene>])
 ```
 
-Mit dieser Funktion kann JSON in einen Ausgabedatenstrom geschrieben werden. Die Ausgabe wird dabei automatisch formatiert. Die Formatierung kann mit den Zusatzparametern angepasst werden. Die Standard IRIS Implementation (`%ZEN.Auxiliary.jsonProvider`) weißt bei manchen Datentypen leider eine falsche bzw. unvollständige Implementation auf.
+This feature allows JSON to be written to an output stream. The output is automatically formatted. The formatting can be adjusted with the additional parameters. The standard InterSystems IRIS implementation (`% ZEN.Auxiliary.jsonProvider`) unfortunately has an incorrect or incomplete implementation for some data types.
 ```
 USER>set json={"a":"b","c":[1,2,3]}
  
