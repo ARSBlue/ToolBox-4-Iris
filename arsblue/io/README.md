@@ -275,7 +275,7 @@ C:\InterSystems\IRIS\mgr\Temp>dir /S
                0 Datei(en),              0 Bytes
                2 Verzeichnis(se), 101 845 786 624 Bytes frei
 ```
-he advantage of this method is that you can automatically clean up directory structures without having to worry about having other files or directories in them. This functionality is particularly important when exporting files or when cleaning up temporary or old data.
+The advantage of this method is that you can automatically clean up directory structures without having to worry about having other files or directories in them. This functionality is particularly important when exporting files or when cleaning up temporary or old data.
 
 ## Serialize Object Instances from/to JSON
 
