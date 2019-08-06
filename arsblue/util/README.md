@@ -184,7 +184,7 @@ The list of all holidays is given by reference only and contains per date an Int
 
 Due to the InterSystems IRIS `$HOROLOG` implementation no holidays can be determined before the year 1841 and after the year 9999.
 
-If holidays are needed for a country that has not yet been implemented, this can be done simply by creating a class `arsblue.util.Calendar. <Country code>` and extending the class `arsblue.util.Calendar`. Only the method `GetHoliday (...)` has to be overwritten.
+If holidays are needed for a country that has not yet been implemented, this can be done simply by creating a class `arsblue.util.Calendar.<Country code>` and extending the class `arsblue.util.Calendar`. Only the method `GetHoliday(...)` has to be overwritten.
 ```
 /// Holidays for country XY
 Class arsblue.util.Calendar.XY extends arsblue.util.Calendar
@@ -259,7 +259,7 @@ USER>do out.OutputToDevice()
 USER>do err.OutputToDevice()
 Der Befehl "unknown_cmd" ist entweder falsch geschrieben oder konnte nicht gefunden werden.
 ```
-The output and error output can also be captured in the same data stream (example see [Submit Input](#submit-input)). The output and error output can also be output on the current device by passing the current `$IO` variable for the data streams (example see [Specify Directory](#specify-directory).
+The output and error output can also be captured in the same data stream (example see [Submit Input](#submit-input)). The output and error output can also be output on the current device by passing the current `$IO` variable for the data streams (example see [Specify Directory](#specify-directory)).
 
 ### Submit Input
 
@@ -464,7 +464,7 @@ USER>zw ^callback(pid)
 
 ## JSON Utilities
 
-Many functions already exist in the standard InterSystems IRIS JSON implementation. The functions described here combine some of the functions or expand them for improved handling of JSON objects. On the one hand the functions of the class `arsblue.util.Json` are available and on the other hand there is the corresponding macro` arsblue.util.Json` in order to be able to use the most important functions of the class in shortened notation in the source code. In the following, the functions are always described with the equivalent macro (if any).
+Many functions already exist in the standard InterSystems IRIS JSON implementation. The functions described here combine some of the functions or expand them for improved handling of JSON objects. On the one hand the functions of the class `arsblue.util.Json` are available and on the other hand there is the corresponding macro `arsblue.util.Json` in order to be able to use the most important functions of the class in shortened notation in the source code. In the following, the functions are always described with the equivalent macro (if any).
 
 ### Include JSON Macro in Source Code
 
@@ -550,7 +550,7 @@ USER>write $System.Status.GetErrorText(##class(arsblue.util.Json).Copy(source,.t
 USER>write target.%ToJSON()
 {"array":[1,2,3],"object":{"a":"b","c":"d"}}
 ```
-This condition creates a depth copy. The advantage over the variant proposed by InterSystems IRIS (`set target={}.%FromJson(source.% ToJson ())`) is that object references are copied, which in the InterSystems IRIS standard case are not exported to JSON and thus no longer can be imported from JSON.
+This condition creates a depth copy. The advantage over the variant proposed by InterSystems IRIS (`set target={}.%FromJson(source.% ToJson())`) is that object references are copied, which in the InterSystems IRIS standard case are not exported to JSON and thus no longer can be imported from JSON.
 
 #### Copy JSON with Overwrite the Target Data
 
@@ -667,7 +667,7 @@ $$$JSON.GetJSONFromObject(<Objektreferenz>,<Exportierte-JSON-Objektreferenz>[,<A
 $$$JSON.GetJSONFromExtent(<Objekt-ID>,<Exportierte-JSON-Objektreferenz>[,<Alle-Daten-exportieren>][,<ID/GUID-nicht-exportieren>])
 ```
 
-With these functions, data objects can be exported to JSON. The difference between the two methods is that the `GetJSONFromObject` method works with the loaded object references in memory, whereas` GetJSONFromExtent` works with the data in the respective object global. The InterSystems IRIS architecture is designed to load a data object only once, i.e. no matter how many times an object is loaded with the same object id, it always points to the same object reference in memory (with all its changes already made). This is sometimes not desirable and the application wants to know what is actually still in the object global or what changes are already available in the object world. For this, the possibility was created to read this data as JSON directly from the Extent.
+With these functions, data objects can be exported to JSON. The difference between the two methods is that the `GetJSONFromObject` method works with the loaded object references in memory, whereas `GetJSONFromExtent` works with the data in the respective object global. The InterSystems IRIS architecture is designed to load a data object only once, i.e. no matter how many times an object is loaded with the same object id, it always points to the same object reference in memory (with all its changes already made). This is sometimes not desirable and the application wants to know what is actually still in the object global or what changes are already available in the object world. For this, the possibility was created to read this data as JSON directly from the Extent.
 
 With the `GetJSONFromObject` method, all object references stored in memory can be exported to JSON. It is not mandatory that these are persistable data, only that they are derived from `%Library.RegisteredObject`.
 The programmer can decide if he wants to export all data or just the "header" data (ie class, ID and if available GUID).
@@ -686,7 +686,7 @@ The programmer can decide if he also wants to export transient data. Of course, 
 $$$JSON.GetObjectFromJSON(<JSON-Objekt>,<Importierte-Objektreferenz>[,<Alle-Daten-importieren>][,<ID/GUID-nicht-importieren>][,<Transiente-Daten-importieren>])
 ```
 
-With this function, data objects can be imported from JSON. The object references are loaded (if data objects) and changed accordingly but not saved (if data objects). The memory of the data objects is the responsibility of the programmer. In principle, all classes derived from `% Library.RegisteredObject` can be imported.
+With this function, data objects can be imported from JSON. The object references are loaded (if data objects) and changed accordingly but not saved (if data objects). The memory of the data objects is the responsibility of the programmer. In principle, all classes derived from `%Library.RegisteredObject` can be imported.
 The developer can decide if he wants to import all the data or just the "header" data (i.e. class, ID and if available GUID). This corresponds to an availability check, as it is only possible to check whether a data object can be loaded with the given "header" data.
 The programmer can decide if he wants to import all data except the "header" data. This option is especially interesting when you need to make copies of data, i.e. an export with subsequent import without "header" data creates a copy of the exported data (if automatic IDs are used).
 The programmer can decide if he also wants to import transient data.
