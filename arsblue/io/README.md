@@ -285,6 +285,8 @@ To enable implicit JSON serialization on an object, this object must be derived 
 
 To serialize arbitrary objects with JSON, it is not mandatory to derive from this class. There is also the possibility of exporting any IRIS object to JSON via the JSON utilities, which derives from `%Library.RegisteredObject` (see [JSON Utilities](./arsblue/util/README.md#json-utilities) or [Export Data Objects to JSON](./arsblue/util/README.md#export-data-objects-to-JSON)).
 
+[Test-Link](https://github.com/ARSBlue/ToolBox-4-Iris/blob/master/arsblue/util/README.md#json-utilities)
+
 ## Temporary File Objects for Data Streams
 
 InterSystems IRIS offers the possibility to generate temporary file names and also to read binary data streams from files. But there is no data type that combines both functions. In this case, the classes `arsblue.io.TempFileBinary` for binary data streams and `arsblue.io.TempFileCharacter` for character-based data streams have been developed. The advantage of these two classes over the InterSystems IRIS file streams `%Stream.FileBinary` and`%Stream.FileCharacter` is that no file name needs to be passed, i.e. automatically creates a temporary filename (i.e. a file in the default temporary directory) and automatically deletes that file when the class object is removed from memory. Thus, it can not happen that the temporary directory fills up uncontrollably with files for which no program feels responsible (e.g. %ZEN Reports, InterSystems IRIS Management Portal Import/Export, etc.). Of course, you can also pass your own temporary file name in the constructor.
