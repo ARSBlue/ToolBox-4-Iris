@@ -258,7 +258,7 @@ USER>do out.OutputToDevice()
 USER>do err.OutputToDevice()
 Der Befehl "unknown_cmd" ist entweder falsch geschrieben oder konnte nicht gefunden werden.
 ```
-Die Ausgabe und Fehlerausgabe können auch im selben Datenstrom eingefangen werden (Beispiel siehe [Eingabe übergeben](#eingabe-%C3%BCbergeben). Die Ausgabe und Fehlerausgabe können ebenfalls auf dem aktuellen Gerät ausgegeben werden, indem für die Datenströme die aktuelle `$IO` Variable übergeben wird (Beispiel siehe [Verzeichnis angeben](#verzeichnis-angeben).
+Die Ausgabe und Fehlerausgabe können auch im selben Datenstrom eingefangen werden (Beispiel siehe [Eingabe übergeben](#eingabe-%C3%BCbergeben). Die Ausgabe und Fehlerausgabe können ebenfalls auf dem aktuellen Gerät ausgegeben werden, indem für die Datenströme die aktuelle `$IO` Variable übergeben wird (Beispiel siehe [Verzeichnis angeben](#verzeichnis-angeben)).
 
 ### Eingabe übergeben
 
