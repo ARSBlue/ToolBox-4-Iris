@@ -4,7 +4,7 @@
   - [Leap-Year](#leap-year)
   - [Number of days a month](#number-of-days-a-month)
   - [Number of Calender Weeks in the Year](#number-of-calendar-weeks-in-the-year)
-  - [Calendar Week for Date](#calender-week-for-date)
+  - [Calendar Week for Date](#calendar-week-for-date)
   - [First Day in Calendar Week](#first-day-in-calendar-week)
   - [Last Day in Calendar Week](#last-day-in-calendar-week)
   - [Weekday for Date](#weekday-for-date)
@@ -19,7 +19,7 @@
   - [Use Callback](#use-callback)
   - [Execute Command asynchronously](#execute-command-asynchronously)
   - [Execute Command asynchronously with Callback](#execute-command-asynchronously-with-callback)
-- [JSON Utilities](#json-utilites)
+- [JSON Utilities](#json-utilities)
   - [Include JSON Macro in Source Code](#include-json-macro-in-source-code)
   - [JSON Index Search by Value](#json-index-search-by-value)
   - [Copy JSON Arrays or Objects](#copy-json-arrays-or-objects)
@@ -44,7 +44,7 @@ The functions have been implemented due to European requirements, i.e. one week 
 
 The methods described below have a range of values from 31/12/1840 to 31/12/9999 based on the IRIS `$HOROLOG` implementation. Below or above no values can be supplied. Resulting special cases are mentioned in the following methods.
 
-### Leapy-Year
+### Leap-Year
 
 This method can be used to check a year whether it is a leap year.
 ```
@@ -64,7 +64,7 @@ USER>write ##class(arsblue.util.Calendar).GetDaysInMonth(2020,2)
 29
 ```
 
-### Number of Calender Weeks in the Year
+### Number of Calendar Weeks in the Year
 
 This method can be used to determine the number of calendar weeks in a year.
 ```
@@ -691,7 +691,7 @@ The developer can decide if he wants to import all the data or just the "header"
 The programmer can decide if he wants to import all data except the "header" data. This option is especially interesting when you need to make copies of data, i.e. an export with subsequent import without "header" data creates a copy of the exported data (if automatic IDs are used).
 The programmer can decide if he also wants to import transient data.
 
-### JSON und `$LIST`
+### JSON and `$LIST`
 
 **_Syntax:_**
 ```
@@ -718,7 +718,7 @@ USER>zwrite ##class(arsblue.util.Json).GetListFromJSON(json)
 $lb("a","b","c",$lb(1,2,3))
 ```
 
-### JSON und `%Library.Status`
+### JSON and `%Library.Status`
 
 **_Syntax:_**
 ```
