@@ -9,7 +9,7 @@
 ## Content
 
 - [Macros](#macros)
-- [DataTypes](#datatypes)
+- [Data Types](#data-types)
 - [Data Input and Output](#data-input-and-output)
 - [Serverside Eventhandling](#serverside-eventhandling)
 - [Useful Utilities](#useful-utilities)
@@ -18,9 +18,9 @@
 
 InterSystems IRIS contains a wide range of macros. The macros described in the package [arsblue](./arsblue) are not available in InterSystems IRIS, but facilitate the development of applications and increase their readability.
 
-## DataTypes
+## Data Types
 
-InterSystems IRIS contains a wide range of DataTypes. The DataTypes described in the package [arsblue.datatype](./arsblue/datatype) are not available in InterSystems IRIS, but facilitate the development of applications and increase their readability.
+InterSystems IRIS contains a wide range of data types. The data types described in the package [arsblue.datatype](./arsblue/datatype) are not available in InterSystems IRIS, but facilitate the development of applications and increase their readability.
 
 ## Data Input and Output
 
