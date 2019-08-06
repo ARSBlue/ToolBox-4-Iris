@@ -43,7 +43,7 @@ $$$FilePath(<Dateiname1>[,<DateinameN>])
 
  ##class(%Library.File).NormalizeFilename(<Name>,<Verzeichnispfad>)
 ```
-The difference between the standard InterSystems IRIS file implementation and the arsblue implementation is that it is possible to specify any number of parts of the file name and that all parts are merged into a normalized file path. If the first part of the file is specified relative, i. it is not a path separator or disk identifier, the current directory path is used. Also, the standard InterSystems IRIS implementation requires that a directory, if specified, already exist.
+The difference between the standard InterSystems IRIS file implementation and the arsblue implementation is that it is possible to specify any number of parts of the file name and that all parts are merged into a normalized file path. If the first part of the file is specified relative, i.e. it is not a path separator or disk identifier, the current directory path is used. Also, the standard InterSystems IRIS implementation requires that a directory, if specified, already exist.
 
 ```
 USER>write ##class(arsblue.io.File).GetFilePath()
