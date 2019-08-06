@@ -282,7 +282,9 @@ In der Standard InterSystems IRIS Implementation ist eine Objekt Serialisierung 
 
 Um die implizite JSON Serialisierung für ein Objekt zu aktivieren, muss dieses Objekt von der JSON Serialisierung `arsblue.io.Serializable` abgeleitet werden. Ab diesem Zeitpunkt stehen die Methoden `%FromJSON(...)` um Daten aus JSON in dieses Objekt zu importieren und `%ToJSON(...)` um Daten aus diesem Objekt nach JSON zu exportieren zur Verfügung.
 
-Um beliebige Objekte mit JSON zu serialisieren ist es nicht zwingend erforderlich von dieser Klasse abzuleiten. Es gibt auch die Möglichkeit über die JSON Hilfsprogramme jedes IRIS Objekt nach JSON zu exportieren, das von `%Library.RegisteredObject` ableitet (s. [Objektinstanzen von/nach JSON serialisieren](./arsblue/util/README.md#json)).
+Um beliebige Objekte mit JSON zu serialisieren ist es nicht zwingend erforderlich von dieser Klasse abzuleiten. Es gibt auch die Möglichkeit über die JSON Hilfsprogramme jedes IRIS Objekt nach JSON zu exportieren, das von `%Library.RegisteredObject` ableitet (siehe [JSON Hilfsprogramme](https://github.com/ARSBlue/ToolBox-4-Iris/blob/master/arsblue/util/README_DE.md#json-hilfsprogramme) oder [Datenobjekte nach JSON exportieren](https://github.com/ARSBlue/ToolBox-4-Iris/blob/master/arsblue/util/README_DE.md#datenobjekte-nach-JSON-exportieren)).
+
+(s. [Objektinstanzen von/nach JSON serialisieren](./arsblue/util/README.md#json)).
 
 ## Temporäre Dateiobjekte für Datenströme
 
