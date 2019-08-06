@@ -1,22 +1,22 @@
 # ARSBlue ToolBox-4-Iris -- IO Package
 
-- [Datei und Verzeichnis Funktionen](#datei-und-verzeichnis-funktionen)
-  - [Dateimakro in Quellcode einbinden](#dateimakro-in-quellcode-einbinden)
-  - [Normalisierter Datei- bzw. Verzeichnispfad](#normalisierter-datei--bzw-verzeichnispfad)
-  - [Dateiname bzw. Verzeichnispfad aus Dateipfad](#dateiname-bzw-verzeichnispfad-aus-dateipfad)
-  - [Datei bzw. Verzeichnis auf Existenz überprüfen](#datei-bzw-verzeichnis-auf-existenz-%C3%BCberpr%C3%BCfen)
-  - [Datei bzw. Verzeichnis auf Inhalt überprüfen](#datei-bzw-verzeichnis-auf-inhalt-%C3%BCberpr%C3%BCfen)
-  - [Dateien und Verzeichnisse löschen](#dateien-und-verzeichnisse-l%C3%B6schen)
-- [Objektinstanzen von/nach JSON serialisieren](#objektinstanzen-vonnach-json-serialisieren)
-- [Temporäre Dateiobjekte für Datenströme](#tempor%C3%A4re-dateiobjekte-f%C3%BCr-datenstr%C3%B6me)
+- [File and Directory Functions](#file-and-directory-functions)
+  - [Include File Macro in Source Code](#include-file-macro-in-source-code)
+  - [Normalized File or Directory Path](#normalized-file-or-directory-path)
+  - [Filename or Directory Path from File Path](#filename-or-directory-path-from-file-path)
+  - [Check File or Directory for Existence](#check-file-or-directory-for-existence)
+  - [Check File or Directory for Content](#check-file-or-directory-for-content)
+  - [Delete Files and Directories](#delete-file-and-directories)
+- [Serialize Object Instances from/to JSON](#serialize-object-instances-from-to-json)
+- [Temporary File Objects for Data Streams](#temporary-file-objects-for-data-stream)
 
-## Datei und Verzeichnis Funktionen
+## File and Directory Functions
 
-In der Standard IRIS Klasse `%Library.File` sind bereits viele Funktionen vorhanden. Die hier beschriebenen Funktionen kombinieren einige der Funktionen bzw. erweitern sie für einen verbesserten Umgang mit Dateien und Verzeichnissen. Zum einen stehen die Funktionen der Klasse `arsblue.io.File` zur Verfügung und zum anderen gibt es das entsprechende Makro `arsblue.io.File` um die wichtigsten Funktionen der Klasse in gekürzter Schreibweise im Quellcode verwenden zu können. Im Folgenden werden die Funktionen immer mit dem äquivalenten Makro (sofern vorhanden) beschrieben.
+Many functions already exist in the standard InterSystems IRIS class `% Library.File`. The functions described here combine some of these functions or extend them for improved handling of files and directories. On the one hand the functions of the class `arsblue.io.File` are available and on the other hand there is the corresponding macro` arsblue.io.File` in order to be able to use the most important functions of the class in abbreviated spelling in the source code. In the following, the functions are always described with the equivalent macro (if any).
 
-### Dateimakro in Quellcode einbinden
+### Include File Macro in Source Code
 
-Um das Makro im eigenen Quellcode verwenden zu können, ist es notwendig es in der ersten Zeile der Klasse einzubinden.
+To be able to use the macro in your own source code, it is necessary to include it in the first line of the class.
 ```
 Include (arsblue.io.File)
 
@@ -26,24 +26,25 @@ Class my.Class {
 }
 ```
 
-### Normalisierter Datei- bzw. Verzeichnispfad
+### Normalized File or Directory Path
 
 **_Syntax:_**
 ```
  ##class(arsblue.io.File).GetFilePath(<Dateiname1>[,<DateinameN>])
 ```
-**_Makro:_**
+**_Macro:_**
 ```
 $$$File.GetFilePath(<Dateiname1>[,<DateinameN>])
 $$$FilePath(<Dateiname1>[,<DateinameN>])
 ```
-**_Ersetzt IRIS Funktion:_**
+**_Replaces IRIS Function:_**
 ```
  ##class(%Library.File).NormalizeDirectory(<Name>,<Verzeichnispfad>)
 
  ##class(%Library.File).NormalizeFilename(<Name>,<Verzeichnispfad>)
 ```
-Der Unterschied zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation liegt darin, dass es möglich ist, beliebig viele Teile des Dateinamens anzugeben und alle Teile zu einem normalisierten Dateipfad zusammengefügt werden. Wird der erste Teil der Datei relativ angegeben, d.h. es handelt sich nicht um einen Pfadseparator oder eine Festplattenidentifizierung, wird der aktuelle Verzeichnispfad herangezogen. Auch erfordert die Standard IRIS Implementierung, dass ein Verzeichnis, falls angegeben, bereits existieren muss.
+The difference between the standard InterSystems IRIS file implementation and the arsblue implementation is that it is possible to specify any number of parts of the file name and that all parts are merged into a normalized file path. If the first part of the file is specified relative, i. it is not a path separator or disk identifier, the current directory path is used. Also, the standard InterSystems IRIS implementation requires that a directory, if specified, already exist.
+
 ```
 USER>write ##class(arsblue.io.File).GetFilePath()
 C:\InterSystems\IRIS\mgr\user
@@ -55,7 +56,7 @@ USER>write ##class(arsblue.io.File).GetFilePath("mydir", "mysubdir", "..", "myfi
 C:\InterSystems\IRIS\mgr\user\mydir\myfile
 ```
 
-### Dateiname bzw. Verzeichnispfad aus Dateipfad
+### Filename or Directory Path from File Path
 
 **_Syntax:_**
 ```
@@ -63,7 +64,7 @@ C:\InterSystems\IRIS\mgr\user\mydir\myfile
 
  ##class(arsblue.io.File).GetFileName(<Dateipfad>)
 ```
-**_Makro:_**
+**_Macro:_**
 ```
 $$$File.GetDirectory(<Dateipfad>)
 $$$Directory(<Dateipfad>)
@@ -71,13 +72,13 @@ $$$Directory(<Dateipfad>)
 $$$File.GetFileName(<Dateipfad>)
 $$$FileName(<Dateipfad>)
 ```
-**_Ersetzt IRIS Funktion:_**
+**_Replaces IRIS Function:_**
 ```
  ##class(%Library.File).ParentDirectoryName(<Verzeichnispfad>)
 
  ##class(%Library.File).GetFilename(<Dateipfad>)
 ```
-Zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation besteht kaum ein Unterschied. Die ars-blue Methoden- und Makronamen sind vereinheitlicht und kürzer zu schreiben als die Standard IRIS Methodennamen und der übergebene Dateipfad wird zuvor normalisiert.
+There is little difference between the standard InterSystems IRIS file implementation and the arsblue implementation. The arsblue method and macro names are unified and shorter to write than the standard InterSystems IRIS method names, and the passed file path is normalized beforehand.
 ```
 USER>set filepath=##class(arsblue.io.File).GetFilePath()
 USER>write filepath
@@ -88,7 +89,7 @@ USER>write ##class(arsblue.io.File).GetFileName(filepath)
 user
 ```
 
-### Datei bzw. Verzeichnis auf Existenz überprüfen
+### Check File or Directory for Existence
 
 **_Syntax:_**
 ```
@@ -96,7 +97,7 @@ user
 
  ##class(arsblue.io.File).IsFile(<Dateipfad>)
 ```
-**_Makro:_**
+**_Macro:_**
 ```
 $$$File.IsDirectory(<Dateipfad>)
 $$$IsDirectory(<Dateipfad>)
@@ -104,13 +105,13 @@ $$$IsDirectory(<Dateipfad>)
 $$$File.IsFile(<Dateipfad>)
 $$$IsFile(<Dateipfad>)
 ```
-**_Ersetzt IRIS Funktion:_**
+**_Replaces IRIS Function:_**
 ```
  ##class(%Library.File).DirectoryExists(<Verzeichnispfad>)
 
  ##class(%Library.File).Exists(<Dateipfad>)
 ```
-Der Unterschied zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation ist, dass die Dateiabfrage wirklich nur Dateien und keine Verzeichnisse berücksichtigt. Die ars-blue Methoden- und Makronamen sind vereinheitlicht und kürzer zu schreiben als die Standard IRIS Methodennamen und der übergebene Dateipfad wird zuvor normalisiert.
+The difference between the standard InterSystems IRIS file implementation and the arsblue implementation is that the file query really only considers files, not directories. The arsblue method and macro names are unified and shorter to write than the standard InterSystems IRIS method names, and the passed file path is normalized beforehand.
 ```
 USER>set filepath=##class(arsblue.io.File).GetFilePath()
 USER>write filepath
@@ -121,22 +122,22 @@ USER>write ##class(arsblue.io.File).IsFile(filepath)
 0
 ```
 
-### Datei bzw. Verzeichnis auf Inhalt überprüfen
+### Check File or Directory for Content
 
 **_Syntax:_**
 ```
  ##class(arsblue.io.File).IsEmpty(<Dateipfad>)
 ```
-**_Makro:_**
+**_Macro:_**
 ```
 $$$File.IsEmpty(<Dateipfad>)
 $$$IsEmpty(<Dateipfad>)
 ```
-**_Ersetzt IRIS Funktion:_**
+**_Replaces IRIS Function:_**
 ```
  ##class(%Library.File).SizeGet()
 ```
-Der Unterschied zwischen der Standard IRIS Dateiimplementierung und der ars-blue Implementation ist, dass in IRIS nur der Inhalt einer Datei aber nicht der Inhalt eines Verzeichnisses kontrolliert werden kann. Die Funktion liefert nur für Verzeichnisse ohne Dateien (Eigenreferenzen `.` und übergeordnete Verzeichnisreferenzen `..` werden nicht berücksichtigt) bzw. Dateien mit einer Größe von `0` Bytes den Wert `1`. Der übergebene Dateipfad wird zuvor normalisiert.
+The difference between the standard InterSystems IRIS file implementation and the arsblue implementation is that in InterSystems IRIS only the contents of a file but not the contents of a directory can be controlled. The function provides only for directories without files (own references `.` and higher directory references` ..` are not considered) or files with a size of `0` bytes the value` 1`. The passed file path is normalized before.
 ```
 USER>set filepath=##class(arsblue.io.File).GetFilePath()
 USER>write filepath
@@ -145,20 +146,20 @@ USER>write ##class(arsblue.io.File).IsEmpty(filepath)
 0
 ```
 
-### Dateien und Verzeichnisse löschen
+### Delete Files and Directories
 
 **_Syntax:_**
 ```
  ##class(arsblue.io.File).DeleteFilePath(<Dateipfad>[,<recursive>])
 ```
-**_Makro:_**
+**_Macro:_**
 ```
 $$$File.DeleteFilePath(<Dateipfad>[,<recursive>])
 ```
-Diese Methode löscht Dateien und leere Verzeichnisse und deren übergeordneten Verzeichnisse, wenn diese keine weiteren Dateien beinhalten. Es können auch Platzhalter verwendet werden (z.B. `backups/*.bak`, `logfiles/log*.*`, usw.). Der übergebene Dateipfad wird zuvor normalisiert.
-Im folgenden Beispiel werden Dateien aus einem temporären Verzeichnis gelöscht um die Funktionsweise zu beschreiben. Für die Dokumentation wurde eine Windows Installation von IRIS verwendet. Die Funktionalität ist natürlich auf jedem System vorhanden, für das IRIS angeboten wird.
+This method deletes files and empty directories and their parent directories if they do not contain any other files. Wildcards can also be used (for example, `backups / * .bak`,` logfiles / log *. * `, etc.). The passed file path is normalized before.
+The following example deletes files from a temporary directory to describe how it works. A Windows installation of InterSystems IRIS was used for the documentation. The functionality is naturally present on every system for which InterSystems IRIS is offered.
 
-**_Windows Eingabeaufforderung:_**
+**_Windows Command Prompt:_**
 ```
 C:\InterSystems\IRIS\mgr\Temp>dir /S
  Volume in Laufwerk C: hat keine Bezeichnung.
@@ -191,13 +192,13 @@ C:\InterSystems\IRIS\mgr\Temp>dir /S
                3 Datei(en),              0 Bytes
                8 Verzeichnis(se), 101 846 745 088 Bytes frei
 ```
-Wen man eine Datei aus einem Verzeichnis löscht, in dem noch weitere Dateien oder Verzeichnisse vorhanden sind, verhält es sich wie ein Standard IRIS Datei-Lösch-Befehl.
+Deleting a file from a directory that contains other files or directories behaves like a standard InterSystems IRIS file deletion command.
 
 **_IRIS Terminal:_**
 ```
 USER>write $System.Status.GetErrorText(##class(arsblue.io.File).DeleteFilePath("../Temp/my_dir1/my_dir2/my_file1.txt"))
 ```
-**_Windows Eingabeaufforderung:_**
+**_Windows Command Prompt:_**
 ```
 C:\InterSystems\IRIS\mgr\Temp>dir /S
  Volume in Laufwerk C: hat keine Bezeichnung.
@@ -229,13 +230,13 @@ C:\InterSystems\IRIS\mgr\Temp>dir /S
                2 Datei(en),              0 Bytes
                8 Verzeichnis(se), 101 843 353 600 Bytes frei
 ```
-Löscht man nun alle Dateien im Verzeichnis, wird das Verzeichnis selbst und die übergeordneten Verzeichnisse gelöscht, bis zu einem Verzeichnis, dass noch andere Dateien bzw. Verzeichnisse beinhaltet.
+If you now delete all files in the directory, the directory itself and the parent directories will be deleted, up to a directory that contains other files or directories.
 
 **_IRIS Terminal:_**
 ```
 USER>write $System.Status.GetErrorText(##class(arsblue.io.File).DeleteFilePath("../Temp/my_dir1/my_dir2/*.txt"))
 ```
-**_Windows Eingabeaufforderung:_**
+**_Windows Command Prompt:_**
 ```
 C:\InterSystems\IRIS\mgr\Temp>dir /S
  Volume in Laufwerk C: hat keine Bezeichnung.
@@ -252,13 +253,13 @@ C:\InterSystems\IRIS\mgr\Temp>dir /S
                1 Datei(en),              0 Bytes
                2 Verzeichnis(se), 101 840 396 288 Bytes frei
 ```
-Durch explizites Setzen des 2. Parameters der Funktion auf `0` kann die Funktionalität, dass übergeordnete Verzeichnisse gelöscht werden, ausgeschaltet werden.
+By explicitly setting the 2nd parameter of the function to `0`, the functionality of deleting higher-level directories can be switched off.
 
 **_IRIS Terminal:_**
 ```
 USER>write $System.Status.GetErrorText(##class(arsblue.io.File).DeleteFilePath("../Temp/*.txt",0))
 ```
-**_Windows Eingabeaufforderung:_**
+**_Windows Command Prompt:_**
 ```
 C:\InterSystems\IRIS\mgr\Temp>dir /S
  Volume in Laufwerk C: hat keine Bezeichnung.
@@ -274,23 +275,23 @@ C:\InterSystems\IRIS\mgr\Temp>dir /S
                0 Datei(en),              0 Bytes
                2 Verzeichnis(se), 101 845 786 624 Bytes frei
 ```
-Der Vorteil dieser Methode besteht darin, dass man automatisch Verzeichnisstrukturen bereinigen kann, ohne sich darum kümmern zu müssen, ob sich noch andere Dateien oder Verzeichnisse darin befinden. Diese Funktionalität spielt vor allem beim Exportieren von Dateien oder auch beim Bereinigen von temporären oder alten Daten eine Rolle.
+he advantage of this method is that you can automatically clean up directory structures without having to worry about having other files or directories in them. This functionality is particularly important when exporting files or when cleaning up temporary or old data.
 
-## Objektinstanzen von/nach JSON serialisieren
+## Serialize Object Instances from/to JSON
 
-In der Standard IRIS Implementation ist eine Objekt Serialisierung nur im XML Format (`%XML.Adaptor`) vorgesehen. Die angebotene IRIS JSON Implementation ist leider nur für simple Datentypen und nicht für komplexe Klassen (Sammlungen, usw.) verfügbar. Mit der impliziten ars-blue JSON Serialisierung können diese Probleme gelöst werden.
+In the standard InterSystems IRIS implementation, object serialization is only provided in XML format (`% XML.Adaptor`). Unfortunately, the offered InterSystems IRIS JSON implementation is only available for simple data types and not for complex classes (collections, etc.). The implicit arsblue JSON serialization can solve these problems.
 
-Um die implizite JSON Serialisierung für ein Objekt zu aktivieren, muss dieses Objekt von der JSON Serialisierung `arsblue.io.Serializable` abgeleitet werden. Ab diesem Zeitpunkt stehen die Methoden `%FromJSON(...)` um Daten aus JSON in dieses Objekt zu importieren und `%ToJSON(...)` um Daten aus diesem Objekt nach JSON zu exportieren zur Verfügung.
+To enable implicit JSON serialization on an object, this object must be derived from the JSON serialization `arsblue.io.Serializable`. From this point, the methods `% FromJSON (...)` are used to import data from JSON into this object and `% ToJSON (...)` to export data from this object to JSON.
 
-Um beliebige Objekte mit JSON zu serialisieren ist es nicht zwingend erforderlich von dieser Klasse abzuleiten. Es gibt auch die Möglichkeit über die JSON Hilfsprogramme jedes IRIS Objekt nach JSON zu exportieren, das von `%Library.RegisteredObject` ableitet (s. [Objektinstanzen von/nach JSON serialisieren](./arsblue/util/README.md#json)).
+To serialize arbitrary objects with JSON, it is not mandatory to derive from this class. There is also the possibility of exporting any IRIS object to JSON via the JSON utilities, which derives from `% Library.RegisteredObject` (see [Serializing Object Instances to/from JSON] (./ arsblue/util/README.md#json)).
 
-## Temporäre Dateiobjekte für Datenströme
+## Temporary File Objects for Data Streams
 
-IRIS bietet die Möglichkeit temporäre Dateinamen zu generieren und auch binäre Datenströme aus Dateien zu lesen, es gibt aber keinen Datentyp, der beide Funktionen miteinander verbindet. Für diesen Fall wurden die Klassen `arsblue.io.TempFileBinary` für binäre Datenströme und `arsblue.io.TempFileCharacter` für zeichenbasierte Datenströme entwickelt. Der Vorteil dieser beiden Klassen gegenüber den IRIS Dateidatenströmen `%Stream.FileBinary` und `%Stream.FileCharacter` ist, dass kein Dateiname übergeben werden muss, d.h. automatisch ein temporärer Dateiname erzeugt wird (also eine Datei im Standard temporären Verzeichnis) und diese Datei automatisch gelöscht wird, wenn das Klassenobjekt aus dem Speicher entfernt wird. Dadurch kann es nicht passieren, dass das temporäre Verzeichnis sich unkontrolliert mit Dateien befüllt, für die sich kein Programm mehr verantwortlich fühlt (z.B. %ZEN Reports, IRIS Management Portal Import/Export, usw.). Es kann natürlich auch ein eigener temporärer Dateiname im Konstruktor übergeben werden.
+InterSystems IRIS offers the possibility to generate temporary file names and also to read binary data streams from files. But there is no data type that combines both functions. In this case, the classes `arsblue.io.TempFileBinary` for binary data streams and` arsblue.io.TempFileCharacter` for character-based data streams have been developed. The advantage of these two classes over the InterSystems IRIS file streams `% Stream.FileBinary` and`% Stream.FileCharacter` is that no file name needs to be passed, i.e. automatically creates a temporary filename (i.e. a file in the default temporary directory) and automatically deletes that file when the class object is removed from memory. Thus, it can not happen that the temporary directory fills up uncontrollably with files for which no program feels responsible (e.g. %ZEN Reports, InterSystems IRIS Management Portal Import/Export, etc.). Of course, you can also pass your own temporary file name in the constructor.
 
-Im folgenden Beispiel wird ein neuer temporärer zeichenbasierter Datenstrom erzeugt, beschrieben und automatisch gelöscht. Für die Dokumentation wurde eine Windows Installation von IRIS verwendet. Die Funktionalität ist natürlich auf jedem System vorhanden, für das IRIS angeboten wird.
+The following example creates, describes and automatically deletes a new temporary character-based stream. A Windows installation of InterSystems IRIS was used for the documentation. The functionality is naturally present on every system for which InterSystems IRIS is offered.
 
-**_Windows Eingabeaufforderung:_**
+**_Windows Command Prompt:_**
 ```
 C:\InterSystems\IRIS\mgr\Temp>dir
  Volume in Laufwerk C: hat keine Bezeichnung.
@@ -309,9 +310,9 @@ USER>set tempfile=##class(arsblue.datatypes.TempFileCharacter).%New()
  
 USER>write $System.Status.GetErrorText(tempfile.WriteLine("Das ist ein temporärer Datenstrom"))
 ```
-Ab dem Moment, in dem der Datenstrom nicht mehr leer ist, wird die entsprechende Datei im temporären Verzeichnis angelegt, wenngleich auch noch keine Daten in die Datei geschrieben wurden (siehe entsprechende Speicher- bzw. Flush-Methoden).
+From the moment that the data stream is no longer empty, the corresponding file is created in the temporary directory, even though no data has been written to the file (see corresponding memory or flush methods).
 
-**_Windows Eingabeaufforderung:_**
+**_Windows Command Prompt:_**
 ```
 C:\InterSystems\IRIS\mgr\Temp>dir
  Volume in Laufwerk C: hat keine Bezeichnung.
@@ -325,15 +326,15 @@ C:\InterSystems\IRIS\mgr\Temp>dir
                1 Datei(en),              0 Bytes
                2 Verzeichnis(se), 105 098 268 672 Bytes frei
 ```
-Die weitere Handhabung entspricht der Klassendokumentation der Standard IRIS Klassen.
+The further handling corresponds to the class documentation of the standard InterSystems IRIS classes.
 
 **_Iris Terminal:_**
 ```
 USER>kill tempfile
 ```
-In dem Moment, wo das Klassenobjekt im Speicher nicht mehr existiert, wird auch die Datei im temporären Verzeichnis entfernt.
+The moment the class object in memory no longer exists, the file in the temporary directory is also removed.
 
-**_Windows Eingabeaufforderung:_**
+**_Windows Command Prompt:_**
 ```
 C:\InterSystems\IRIS\mgr\Temp>dir
  Volume in Laufwerk C: hat keine Bezeichnung.
@@ -346,4 +347,4 @@ C:\InterSystems\IRIS\mgr\Temp>dir
                0 Datei(en),              0 Bytes
                2 Verzeichnis(se), 105 097 224 192 Bytes frei
 ```
-Die beiden Klassen funktionieren auf dieselbe Weise, der Unterschied ist wie bei den Standard IRIS Klassen, dass der temporäre zeichenbasierte Datenstrom mit dem entsprechenden Zeichensatz kodiert wird, während der temporäre binäre Datenstrom die Daten unverändert schreibt.
+The two classes work in the same way, the difference being that the temporary character-based stream is encoded with the appropriate character set, as in the standard InterSystems IRIS classes, while the temporary binary stream writes the data unchanged.
