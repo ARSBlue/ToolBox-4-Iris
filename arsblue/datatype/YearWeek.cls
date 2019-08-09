@@ -1,5 +1,9 @@
 /// This datatype special for year/week instances.
 /// NOTE: the valid format patterns are described in arsblue.datatype.DateTimeFormat!
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.datatype.YearWeek Extends arsblue.datatype.Date [ ClientDataType = DATE, OdbcType = DATE, SqlCategory = DATE ]
 {
 

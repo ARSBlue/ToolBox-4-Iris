@@ -1,5 +1,9 @@
 /// This is a persistent event listener, it will inform you about all INSERT, UPDATE and DELETE actions on a persistent class.
 /// NOTE: you do not need to explicit save the event listener, it is saved automatically on each set of a property!
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.event.PersistentEventListener Extends arsblue.event.EventListener
 {
 

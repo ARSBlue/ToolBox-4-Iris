@@ -1,5 +1,9 @@
 ROUTINE arsblue.io.File [Type=INC]
 /// This include extends the functionality of %occFile and contains macros for working with files and directories
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 
 /// common file class
 #define File						##class(arsblue.io.File)

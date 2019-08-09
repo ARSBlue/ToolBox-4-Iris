@@ -20,6 +20,10 @@ Include arsblue.datatype.Include
 /// NOTE: if using 1-digit format pattern of possible 2-digit values a valid separator character MUST be in front of/behind format pattern!
 /// NOTE: if using 1-full letter format patterns a valid separator character MUST be in front of/behind format pattern!
 /// This list is inspired by java.text.SimpleDateFormat!<br/>
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.datatype.DateTimeFormat Extends %RegisteredObject [ Abstract ]
 {
 

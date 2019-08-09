@@ -1,6 +1,10 @@
 Include arsblue.util.Json
 
 /// This class gives the possibility to export to JSON or import from JSON
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.io.Serializable Extends %RegisteredObject
 {
 

@@ -1,6 +1,10 @@
 Include (arsblue.OS, arsblue.Status, arsblue.util.Json)
 
 /// This class contains utilities for executing operating system commands or programs
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.util.Exec Extends %RegisteredObject [ Abstract ]
 {
 

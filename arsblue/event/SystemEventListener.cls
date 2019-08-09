@@ -1,5 +1,9 @@
 /// This is a system event listener, it will inform you about all database, user, background process and external program call events.
 /// NOTE: you do not need to explicit save the event listener, it is saved automatically on each set of a property!
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.event.SystemEventListener Extends arsblue.event.EventListener
 {
 

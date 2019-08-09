@@ -1,4 +1,8 @@
 /// This class contains the holiday calculateion for country Austria 
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.util.Calendar.AT Extends arsblue.util.Calendar
 {
 
