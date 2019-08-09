@@ -2,7 +2,7 @@ Include (arsblue.OS, arsblue.Status)
 
 /// This the base class for all event listeners.
 /// NOTE: you do not need to explicit save the event listener, it is saved automatically on each set of a property!
-///
+/// 
 /// ARSBlue ToolBox-4-Iris
 /// Copyright &copy; 2019 ARS Blue GmbH
 /// http://www.ars-blue.at

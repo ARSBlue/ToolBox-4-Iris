@@ -1,5 +1,5 @@
 /// This class creates a temporary file binary stream which will be deleted on dispose of its instance.
-///
+/// 
 /// ARSBlue ToolBox-4-Iris
 /// Copyright &copy; 2019 ARS Blue GmbH
 /// http://www.ars-blue.at
