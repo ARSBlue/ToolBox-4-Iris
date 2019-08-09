@@ -1,6 +1,10 @@
 Include (arsblue.OS, arsblue.Status, arsblue.JS)
 
 /// This class contains JSON utilities
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.util.Json [ Abstract ]
 {
 

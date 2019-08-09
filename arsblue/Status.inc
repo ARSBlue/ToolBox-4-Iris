@@ -1,5 +1,9 @@
 ROUTINE arsblue.Status [Type=INC]
 /// This include extends the functionality of %occStatus and contains macros for working with status
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 
 /// check for status
 #define ISSTATUS(%val)				$S(%val=$$$OK:$$$YES,(($L(%val)>2)&&($E(%val,1,2)="0 ")&&($LV($E(%val,3,*)))):$$$YES,1:$$$NO)

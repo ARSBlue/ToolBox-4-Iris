@@ -1,5 +1,9 @@
 /// This datatype supports formated timestamp instances.
 /// NOTE: the valid format patterns are described in arsblue.datatype.DateTimeFormat!
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.datatype.TimeStamp Extends arsblue.datatype.DateTime [ ClientDataType = TIMESTAMP, OdbcType = TIMESTAMP, SqlCategory = TIMESTAMP ]
 {
 

@@ -1,5 +1,9 @@
 ROUTINE arsblue.NLS [Type=INC]
 /// This include contains NLS extensions
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 #include %syNLS
 
 /// get NLS format:

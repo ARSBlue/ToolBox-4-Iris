@@ -1,5 +1,9 @@
 ROUTINE arsblue.OS [Type=INC]
 /// This include contains object script extensions
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 
 /// IRIS defines internal an empty string/stream as NULL
 #define NULL					$C(0)

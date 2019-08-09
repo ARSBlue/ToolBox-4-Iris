@@ -2,6 +2,10 @@ Include (arsblue.OS, arsblue.Status)
 
 /// This class defines an event queue.
 /// An event queue is reponsible for a list of event listeners to handle them automatically like non-static listeners. 
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.event.EventQueue Extends (%Persistent, arsblue.event.SystemEventAdapter)
 {
 

@@ -1,5 +1,9 @@
 ROUTINE arsblue.JS [Type=INC]
 /// This include contains javascript extensions
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 
 /// since JSON (javascript object notation) is part of javascript, json include will be automatically loaded when javascript macros are loaded
 #include arsblue.util.Json

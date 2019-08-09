@@ -1,4 +1,8 @@
 /// This class contains the holiday calculateion for country Germany 
+///
+/// ARSBlue ToolBox-4-Iris
+/// Copyright &copy; 2019 ARS Blue GmbH
+/// http://www.ars-blue.at
 Class arsblue.util.Calendar.DE Extends arsblue.util.Calendar
 {
 
