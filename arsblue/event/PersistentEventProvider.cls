@@ -1,5 +1,5 @@
 /// The persistent event provider generates events for INSERT, UPDATE and DELETE actions on persistent objects.
-///
+/// 
 /// ARSBlue ToolBox-4-Iris
 /// Copyright &copy; 2019 ARS Blue GmbH
 /// http://www.ars-blue.at

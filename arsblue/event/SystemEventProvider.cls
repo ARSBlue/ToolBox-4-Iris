@@ -1,5 +1,5 @@
 /// The system event provider generates event for ISC IRIS startup/shutdown, user login/logout, job start/end and external programm start/end events.
-///
+/// 
 /// ARSBlue ToolBox-4-Iris
 /// Copyright &copy; 2019 ARS Blue GmbH
 /// http://www.ars-blue.at

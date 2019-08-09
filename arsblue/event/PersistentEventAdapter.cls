@@ -1,5 +1,5 @@
 /// This class must be implemented by a class listening for persistent events.
-///
+/// 
 /// ARSBlue ToolBox-4-Iris
 /// Copyright &copy; 2019 ARS Blue GmbH
 /// http://www.ars-blue.at
