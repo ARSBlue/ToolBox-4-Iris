@@ -1,5 +1,7 @@
 # ARSBlue ToolBox-4-Iris -- IO Package
 
+**_Documentation_**: The documentation is available in English [README.md](./README.md) as well as in German [README_DE.md](./README_DE.md).
+
 - [File and Directory Functions](#file-and-directory-functions)
   - [Include File Macro in Source Code](#include-file-macro-in-source-code)
   - [Normalized File or Directory Path](#normalized-file-or-directory-path)
