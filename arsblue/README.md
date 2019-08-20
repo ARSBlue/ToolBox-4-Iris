@@ -1,5 +1,7 @@
 # ARSBlue ToolBox-4-Iris -- Macro Package 
 
+**_Documentation_**: The documentation is available in English [README.md](./README.md) as well as in German [README_DE.md](./README_DE.md).
+
 ## Include Macro
 
 The `arsblue.Include` include-file contains all the macros described below:
