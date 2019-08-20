@@ -1,5 +1,7 @@
 # ARSBlue ToolBox-4-Iris -- Event Package
 
+**_Dokumentation_**: Die Dokumentation steht sowohl in Englisch [README.md](./README.md) als auch in Deutsch [README_DE.md](./README_DE.md) zur Verfügung.
+
 - [Serverseitige Ereignisbehandlung](#serverseitige-ereignisbehandlung)
   - [Synchrone Ereignisbehandlung](#synchrone-ereignisbehandlung)
   - [Asynchrone Ereignisbehandlung](#asynchrone-ereignisbehandlung)
