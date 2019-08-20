@@ -1,5 +1,7 @@
 # ARSBlue ToolBox-4-Iris -- Data Type Package
 
+**_Documentation_**: The documentation is available in English [README.md](./README.md) as well as in German [README_DE.md](./README_DE.md).
+
 - [Date, Time and Timestamp](#date-time-and-timestamp)
   - [Formatting](#formatting)
   - [Memory Requirements](#memory-requirements)
