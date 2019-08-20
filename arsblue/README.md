@@ -1,9 +1,5 @@
 # ARSBlue ToolBox-4-Iris -- Macro Package 
 
-The package [arsblue](./arsblue) contains macros that are not present in InterSystems IRIS but that facilitate the development of applications and increase their readability.
-
-These include e.g. general ObjectScript macros, Status macros, National Language Support macros, and JavaScript macros.
-
 **_Documentation_**: The documentation is available in English [README.md](./README.md) as well as in German [README_DE.md](./README_DE.md).
 
 ## Include Macro
