@@ -1,5 +1,7 @@
 # ARSBlue ToolBox-4-Iris -- IO Package
 
+**_Dokumentation_**: Die Dokumentation steht sowohl in Englisch [README.md](./README.md) als auch in Deutsch [README_DE.md](./README_DE.md) zur Verfügung.
+
 - [Datei und Verzeichnis Funktionen](#datei-und-verzeichnis-funktionen)
   - [Dateimakro in Quellcode einbinden](#dateimakro-in-quellcode-einbinden)
   - [Normalisierter Datei- bzw. Verzeichnispfad](#normalisierter-datei--bzw-verzeichnispfad)
