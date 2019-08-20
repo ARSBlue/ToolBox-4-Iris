@@ -1,5 +1,9 @@
 # ARSBlue ToolBox-4-Iris -- Data Type Package
 
+The package [arsblue.datatype](./arsblue/datatype) contains additional dynamic data types for date, time, and timestamps that are not present in InterSystems IRIS, but greatly facilitate the development of applications and increase readability.
+
+These data types include formatting, memory footprint, SQL and performance, and more.
+
 **_Documentation_**: The documentation is available in English [README.md](./README.md) as well as in German [README_DE.md](./README_DE.md).
 
 - [Date, Time and Timestamp](#date-time-and-timestamp)
