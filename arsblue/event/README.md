@@ -1,5 +1,7 @@
 # ARSBlue ToolBox-4-Iris -- Event Package
 
+**_Documentation_**: The documentation is available in English [README.md](./README.md) as well as in German [README_DE.md](./README_DE.md).
+
 - [Server-side Event Handling](#server-side-event-handling)
   - [Synchronous Event Handling](#synchronous-event-handling)
   - [Asynchronous Event Handling](#asynchronous-event-handling)
