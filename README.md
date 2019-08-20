@@ -6,7 +6,7 @@ The **ToolBox-4-Iris** contains a collection of handy and useful tools - feature
 
 **_Functions_**: These are generally static methods of an abstract class. Deviations from this rule are described as such.
 
-**_Documentation_**: The documentation is available in English (README.md) as well as in German [README_DE.md](./README_DE.md).
+**_Documentation_**: The documentation is available in English [README.md](./README.md) as well as in German [README_DE.md](./README_DE.md).
 
 ## Content
 
