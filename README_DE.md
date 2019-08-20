@@ -6,7 +6,7 @@ Die **ToolBox-4-Iris** enthält eine Sammlung praktischer und nützlicher Tools 
 
 **_Funktionen_**: Dabei handelt es sich generell um statische Methoden einer abstrakten Klasse. Abweichungen von dieser Regel werden als solche beschrieben.
 
-**_Dokumentation_**: Die Dokumentation steht sowohl in Englisch (README.md) als auch in Deutsch (README_DE.md) zur Verfügung.
+**_Dokumentation_**: Die Dokumentation steht sowohl in Englisch [README.md](./README.md) als auch in Deutsch [README_DE.md](./README_DE.md) zur Verfügung.
 
 ## Inhalt
 
